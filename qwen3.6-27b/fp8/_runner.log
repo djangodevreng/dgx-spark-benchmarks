@@ -1,0 +1,38 @@
+[19:18:49] === bench-spark run ===
+[19:18:49] Profile: qwen3.6-27b-fp8
+[19:18:49] Tests:   J
+[19:18:49] Results: /home/spark/benchmarks/bench-spark/results/qwen3.6-27b/fp8
+[19:18:50] ── START J ──
+[19:19:50]     ... J running: 60s, GPU 96%
+[19:20:50]     ... J running: 120s, GPU 96%
+[19:21:50]     ... J running: 180s, GPU 96%
+[19:22:50]     ... J running: 240s, GPU 96%
+[19:23:50]     ... J running: 300s, GPU 96%
+[19:24:50]     ... J running: 360s, GPU 96%
+[19:25:50]     ... J running: 420s, GPU 96%
+[19:26:50]     ... J running: 480s, GPU 96%
+[19:27:50]     ... J running: 540s, GPU 96%
+[19:28:50]     ... J running: 600s, GPU 96%
+[19:29:50]     ... J running: 660s, GPU 96%
+[19:30:50]     ... J running: 720s, GPU 96%
+[19:31:50]     ... J running: 780s, GPU 96%
+[19:32:50]     ... J running: 840s, GPU 96%
+[19:33:50]     ... J running: 900s, GPU 96%
+[19:34:50]     ... J running: 960s, GPU 96%
+[19:35:51]     ... J running: 1021s, GPU 96%
+[19:36:51]     ... J running: 1081s, GPU 96%
+[19:37:51]     ... J running: 1141s, GPU 96%
+[19:38:51]     ... J running: 1201s, GPU 96%
+[19:39:51]     ... J running: 1261s, GPU 96%
+[19:40:51]     ... J running: 1321s, GPU 96%
+[19:41:51]     ... J running: 1381s, GPU 96%
+[19:42:51]     ... J running: 1441s, GPU 96%
+[19:43:51]     ... J running: 1501s, GPU 96%
+[19:44:51]     ... J running: 1561s, GPU 96%
+[19:45:51]     ... J running: 1621s, GPU 96%
+[19:46:51]     ... J running: 1681s, GPU 96%
+[19:47:51]     ... J running: 1741s, GPU 96%
+[19:48:51]     ... J running: 1801s, GPU 96%
+[19:49:51]     ... J running: 1861s, GPU 96%
+[19:50:26] ── END J (1896s) ──
+[19:50:26] === klaar (1896s = 31m) ===

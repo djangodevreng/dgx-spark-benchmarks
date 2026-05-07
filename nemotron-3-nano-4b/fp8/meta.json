@@ -1,0 +1,15 @@
+{
+  "profile": "fp8",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-4B-FP8",
+  "served_name": "nemotron-3-nano-4b-fp8",
+  "vllm_image": "vllm/vllm-openai:cu130-nightly",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 49152,
+    "gpu_memory_utilization": 0.95,
+    "kv_cache_dtype": "fp8_e4m3",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-05-05T18:04:46+02:00"
+}

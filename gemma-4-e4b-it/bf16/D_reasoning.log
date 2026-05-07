@@ -1,0 +1,55 @@
+INFO 05-06 12:03:11 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+INFO 05-06 12:03:11 [nixl_utils.py:32] NIXL is available
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0xe8359cdfb1a0>, trust_remote_code=False, seed=42, num_prompts=50, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, spec_bench_output_len=256, spec_bench_category=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=1024, random_output_len=4096, random_range_ratio='0.9', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai-chat', base_url='http://localhost:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', header=None, max_concurrency=None, model='google/gemma-4-E4B-it', input_len=None, output_len=None, tokenizer='google/gemma-4-E4B-it', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=0.2, burstiness=1.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/tmp', result_filename='D_reasoning.json', ignore_eos=False, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,90,95,99', goodput=None, request_id_prefix='bench-766b3606-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name='gemma-4-e4b-it-bf16', lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 05-06 12:03:14 [utils.py:90] Sampling input_len from [102, 1946] and output_len from [409, 7783]
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 0.2
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [01:10<57:45, 70.73s/it]  4%|▍         | 2/50 [01:50<41:48, 52.26s/it]  6%|▌         | 3/50 [02:05<27:38, 35.28s/it]  8%|▊         | 4/50 [02:39<26:40, 34.80s/it] 10%|█         | 5/50 [03:08<24:40, 32.90s/it] 12%|█▏        | 6/50 [03:15<17:38, 24.07s/it] 14%|█▍        | 7/50 [03:36<16:36, 23.17s/it] 16%|█▌        | 8/50 [04:01<16:37, 23.74s/it] 18%|█▊        | 9/50 [04:04<11:38, 17.03s/it] 20%|██        | 10/50 [04:18<10:44, 16.11s/it] 22%|██▏       | 11/50 [04:18<07:19, 11.26s/it] 24%|██▍       | 12/50 [04:21<05:32,  8.75s/it] 26%|██▌       | 13/50 [04:30<05:25,  8.79s/it] 28%|██▊       | 14/50 [04:32<04:08,  6.91s/it] 30%|███       | 15/50 [04:42<04:26,  7.60s/it] 32%|███▏      | 16/50 [04:47<03:49,  6.76s/it] 34%|███▍      | 17/50 [04:56<04:07,  7.49s/it] 36%|███▌      | 18/50 [05:03<04:02,  7.57s/it] 38%|███▊      | 19/50 [05:37<07:55, 15.32s/it] 40%|████      | 20/50 [05:37<05:22, 10.76s/it] 42%|████▏     | 21/50 [05:38<03:48,  7.87s/it] 44%|████▍     | 22/50 [05:43<03:19,  7.12s/it] 46%|████▌     | 23/50 [06:06<05:16, 11.74s/it] 50%|█████     | 25/50 [06:08<02:48,  6.74s/it] 52%|█████▏    | 26/50 [06:12<02:28,  6.18s/it] 54%|█████▍    | 27/50 [06:13<01:50,  4.81s/it] 56%|█████▌    | 28/50 [06:30<02:56,  8.01s/it] 58%|█████▊    | 29/50 [06:31<02:08,  6.12s/it] 60%|██████    | 30/50 [06:55<03:42, 11.14s/it] 62%|██████▏   | 31/50 [07:04<03:24, 10.74s/it] 64%|██████▍   | 32/50 [07:05<02:21,  7.84s/it] 66%|██████▌   | 33/50 [07:08<01:49,  6.43s/it] 68%|██████▊   | 34/50 [07:25<02:29,  9.36s/it] 70%|███████   | 35/50 [07:38<02:36, 10.45s/it] 72%|███████▏  | 36/50 [07:52<02:41, 11.51s/it] 74%|███████▍  | 37/50 [07:58<02:10, 10.08s/it] 76%|███████▌  | 38/50 [08:04<01:44,  8.72s/it] 78%|███████▊  | 39/50 [08:25<02:15, 12.36s/it] 80%|████████  | 40/50 [08:39<02:09, 12.98s/it] 82%|████████▏ | 41/50 [08:44<01:34, 10.47s/it] 84%|████████▍ | 42/50 [08:57<01:30, 11.37s/it] 86%|████████▌ | 43/50 [09:02<01:05,  9.36s/it] 88%|████████▊ | 44/50 [09:11<00:54,  9.14s/it] 90%|█████████ | 45/50 [09:12<00:34,  6.89s/it] 92%|█████████▏| 46/50 [09:24<00:33,  8.43s/it] 94%|█████████▍| 47/50 [09:32<00:24,  8.20s/it] 96%|█████████▌| 48/50 [09:38<00:15,  7.50s/it] 98%|█████████▊| 49/50 [09:45<00:07,  7.32s/it]100%|██████████| 50/50 [10:21<00:00, 15.88s/it]100%|██████████| 50/50 [10:21<00:00, 12.42s/it]
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     50        
+Failed requests:                         0         
+Request rate configured (RPS):           0.20      
+Benchmark duration (s):                  621.11    
+Total input tokens:                      55484     
+Total generated tokens:                  209303    
+Request throughput (req/s):              0.08      
+Output token throughput (tok/s):         336.98    
+Peak output token throughput (tok/s):    656.00    
+Peak concurrent requests:                41.00     
+Total token throughput (tok/s):          426.32    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          313.37    
+Median TTFT (ms):                        307.56    
+P50 TTFT (ms):                           307.56    
+P90 TTFT (ms):                           407.12    
+P95 TTFT (ms):                           452.08    
+P99 TTFT (ms):                           649.28    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          57.32     
+Median TPOT (ms):                        57.60     
+P50 TPOT (ms):                           57.60     
+P90 TPOT (ms):                           60.23     
+P95 TPOT (ms):                           61.20     
+P99 TPOT (ms):                           62.13     
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           57.37     
+Median ITL (ms):                         57.20     
+P50 ITL (ms):                            57.20     
+P90 ITL (ms):                            62.74     
+P95 ITL (ms):                            64.00     
+P99 ITL (ms):                            72.61     
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          240453.38 
+Median E2EL (ms):                        228579.25 
+P50 E2EL (ms):                           228579.25 
+P90 E2EL (ms):                           376528.42 
+P95 E2EL (ms):                           409573.61 
+P99 E2EL (ms):                           423800.68 
+==================================================

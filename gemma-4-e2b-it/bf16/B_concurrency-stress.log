@@ -1,0 +1,46 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.7)
+Date: 2026-05-06 12:09:13
+Benchmarking model: gemma-4-e2b-it-bf16 at http://localhost:8000/v1
+Concurrency levels: [5, 10, 20]
+Error loading tokenizer: gemma-4-e2b-it-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/spark/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 7 tokens (Server: 29, Local: 22)
+Warmup (System+Empty) complete. Delta: 13 tokens (Server: 35, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 58.65 ms
+Running test: pp=25000, tg=256, depth=0, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=25000, tg=256, depth=0, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Running test: pp=25000, tg=256, depth=0, concurrency=20
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model               |          test |     t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |           ttfr (ms) |        est_ppt (ms) |       e2e_ttft (ms) |
+|:--------------------|--------------:|----------------:|------------------:|--------------:|-----------------:|--------------------:|--------------------:|--------------------:|
+| gemma-4-e2b-it-bf16 |  pp25000 (c5) |  6927.96 ± 6.70 | 3017.10 ± 1882.75 |               |                  |  10174.24 ± 4602.89 |  10115.59 ± 4602.89 |  10174.74 ± 4603.19 |
+| gemma-4-e2b-it-bf16 |    tg256 (c5) |    64.16 ± 0.21 |      22.24 ± 8.32 | 185.00 ± 0.00 |     37.00 ± 0.00 |                     |                     |                     |
+| gemma-4-e2b-it-bf16 | pp25000 (c10) |  6946.46 ± 7.97 | 1916.30 ± 1647.36 |               |                  |  18359.96 ± 9223.60 |  18301.31 ± 9223.60 |  18360.47 ± 9223.36 |
+| gemma-4-e2b-it-bf16 |   tg256 (c10) |    69.49 ± 0.15 |      14.72 ± 7.75 | 336.33 ± 4.50 |     34.00 ± 0.63 |                     |                     |                     |
+| gemma-4-e2b-it-bf16 | pp25000 (c20) | 6857.63 ± 86.12 | 1147.38 ± 1276.71 |               |                  | 34902.81 ± 18700.76 | 34844.16 ± 18700.76 | 34903.63 ± 18700.94 |
+| gemma-4-e2b-it-bf16 |   tg256 (c20) |    70.98 ± 0.73 |       8.61 ± 5.74 | 520.00 ± 0.00 |     29.15 ± 3.10 |                     |                     |                     |
+
+llama-benchy (0.3.7)
+date: 2026-05-06 12:09:13 | latency mode: generation

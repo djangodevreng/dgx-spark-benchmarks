@@ -1,0 +1,46 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.7)
+Date: 2026-05-04 21:43:45
+Benchmarking model: qwen3.6-35b-a3b-fp8 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+Error loading tokenizer: qwen3.6-35b-a3b-fp8 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/spark/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 8 tokens (Server: 30, Local: 22)
+Warmup (System+Empty) complete. Delta: 13 tokens (Server: 35, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 64.25 ms
+Running test: pp=256, tg=4096, depth=0, concurrency=1
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=256, tg=4096, depth=0, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=256, tg=4096, depth=0, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model               |         test |      t/s (total) |        t/s (req) |      peak t/s |   peak t/s (req) |      ttfr (ms) |   est_ppt (ms) |   e2e_ttft (ms) |
+|:--------------------|-------------:|-----------------:|-----------------:|--------------:|-----------------:|---------------:|---------------:|----------------:|
+| qwen3.6-35b-a3b-fp8 |   pp256 (c1) | 2670.76 ± 724.70 | 2670.76 ± 724.70 |               |                  | 160.26 ± 25.15 |  96.01 ± 25.15 |  160.26 ± 25.15 |
+| qwen3.6-35b-a3b-fp8 |  tg4096 (c1) |     52.01 ± 0.08 |     52.01 ± 0.08 |  53.33 ± 0.47 |     53.33 ± 0.47 |                |                |                 |
+| qwen3.6-35b-a3b-fp8 |   pp256 (c5) |  2733.88 ± 92.47 |   692.55 ± 99.79 |               |                  | 406.64 ± 44.70 | 342.39 ± 44.70 |  406.64 ± 44.70 |
+| qwen3.6-35b-a3b-fp8 |  tg4096 (c5) |     95.94 ± 2.55 |     23.18 ± 2.62 | 126.67 ± 2.36 |     36.40 ± 9.84 |                |                |                 |
+| qwen3.6-35b-a3b-fp8 |  pp256 (c10) | 3927.76 ± 276.45 |  533.43 ± 151.89 |               |                  | 534.25 ± 85.81 | 470.00 ± 85.81 |  534.25 ± 85.81 |
+| qwen3.6-35b-a3b-fp8 | tg4096 (c10) |    127.93 ± 1.37 |     16.83 ± 1.97 | 196.67 ± 4.71 |     24.40 ± 5.09 |                |                |                 |
+
+llama-benchy (0.3.7)
+date: 2026-05-04 21:43:45 | latency mode: generation

@@ -1,0 +1,202 @@
+[11:00:42] === bench-spark run ===
+[11:00:42] Profile: qwen3.6-35b-a3b-bf16
+[11:00:42] Tests:   A B C D E F G H I J
+[11:00:42] Results: /home/spark/benchmarks/bench-spark/results/qwen3.6-35b-a3b/bf16
+[11:00:42] ── START A ──
+[11:01:42]     ... A running: 60s, GPU 96%
+[11:02:42]     ... A running: 120s, GPU 96%
+[11:03:43]     ... A running: 181s, GPU 96%
+[11:04:43]     ... A running: 241s, GPU 96%
+[11:05:43]     ... A running: 301s, GPU 96%
+[11:06:43]     ... A running: 361s, GPU 96%
+[11:07:43]     ... A running: 421s, GPU 96%
+[11:08:43]     ... A running: 481s, GPU 96%
+[11:09:43]     ... A running: 541s, GPU 96%
+[11:10:43]     ... A running: 601s, GPU 96%
+[11:11:43]     ... A running: 661s, GPU 96%
+[11:12:43]     ... A running: 721s, GPU 96%
+[11:13:43]     ... A running: 781s, GPU 96%
+[11:14:43]     ... A running: 841s, GPU 96%
+[11:15:43]     ... A running: 901s, GPU 96%
+[11:16:43]     ... A running: 961s, GPU 96%
+[11:17:43]     ... A running: 1021s, GPU 96%
+[11:18:43]     ... A running: 1081s, GPU 96%
+[11:19:43]     ... A running: 1141s, GPU 96%
+[11:20:43]     ... A running: 1201s, GPU 96%
+[11:21:43]     ... A running: 1261s, GPU 96%
+[11:22:44]     ... A running: 1322s, GPU 96%
+[11:23:44]     ... A running: 1382s, GPU 96%
+[11:24:44]     ... A running: 1442s, GPU 96%
+[11:24:46] ── END A (1444s) ──
+[11:24:46] ── START B ──
+[11:25:46]     ... B running: 60s, GPU 96%
+[11:26:46]     ... B running: 120s, GPU 96%
+[11:27:47]     ... B running: 181s, GPU 96%
+[11:28:47]     ... B running: 241s, GPU 96%
+[11:29:47]     ... B running: 301s, GPU 96%
+[11:30:47]     ... B running: 361s, GPU 96%
+[11:31:47]     ... B running: 421s, GPU 96%
+[11:32:47]     ... B running: 481s, GPU 96%
+[11:33:47]     ... B running: 541s, GPU 96%
+[11:34:47]     ... B running: 601s, GPU 96%
+[11:35:47]     ... B running: 661s, GPU 96%
+[11:36:47]     ... B running: 721s, GPU 96%
+[11:37:47]     ... B running: 781s, GPU 96%
+[11:38:47]     ... B running: 841s, GPU 96%
+[11:39:47]     ... B running: 901s, GPU 96%
+[11:40:47]     ... B running: 961s, GPU 96%
+[11:41:47]     ... B running: 1021s, GPU 96%
+[11:42:36] ── END B (1070s) ──
+[11:42:36] ── START C ──
+[11:43:36]     ... C running: 60s, GPU 96%
+[11:44:36]     ... C running: 120s, GPU 96%
+[11:45:36]     ... C running: 180s, GPU 96%
+[11:46:36]     ... C running: 240s, GPU 96%
+[11:47:36]     ... C running: 300s, GPU 96%
+[11:48:36]     ... C running: 360s, GPU 96%
+[11:49:36]     ... C running: 420s, GPU 96%
+[11:50:36]     ... C running: 480s, GPU 96%
+[11:51:36]     ... C running: 540s, GPU 96%
+[11:52:36]     ... C running: 600s, GPU 96%
+[11:53:36]     ... C running: 660s, GPU 96%
+[11:54:36]     ... C running: 720s, GPU 96%
+[11:54:43] ── END C (727s) ──
+[11:54:43] ── START D ──
+[11:55:44]     ... D running: 61s, GPU 96%
+[11:56:44]     ... D running: 121s, GPU 96%
+[11:57:44]     ... D running: 181s, GPU 96%
+[11:58:44]     ... D running: 241s, GPU 96%
+[11:59:44]     ... D running: 301s, GPU 96%
+[12:00:44]     ... D running: 361s, GPU 96%
+[12:01:44]     ... D running: 421s, GPU 96%
+[12:02:44]     ... D running: 481s, GPU 96%
+[12:03:44]     ... D running: 541s, GPU 96%
+[12:04:44]     ... D running: 601s, GPU 96%
+[12:05:44]     ... D running: 661s, GPU 96%
+[12:06:44]     ... D running: 721s, GPU 96%
+[12:07:44]     ... D running: 781s, GPU 96%
+[12:08:44]     ... D running: 841s, GPU 96%
+[12:09:44]     ... D running: 901s, GPU 96%
+[12:10:44]     ... D running: 961s, GPU 96%
+[12:11:44]     ... D running: 1021s, GPU 96%
+[12:12:45]     ... D running: 1082s, GPU 96%
+[12:13:45]     ... D running: 1142s, GPU 96%
+[12:14:45]     ... D running: 1202s, GPU 96%
+[12:15:45]     ... D running: 1262s, GPU 96%
+[12:16:45]     ... D running: 1322s, GPU 96%
+[12:17:45]     ... D running: 1382s, GPU 96%
+[12:18:43] ── END D (1440s) ──
+[12:18:43] ── START E ──
+[12:19:43]     ... E running: 60s, GPU 96%
+[12:20:43]     ... E running: 120s, GPU 96%
+[12:21:43]     ... E running: 180s, GPU 96%
+[12:22:43]     ... E running: 240s, GPU 96%
+[12:23:43]     ... E running: 300s, GPU 96%
+[12:24:43]     ... E running: 360s, GPU 96%
+[12:25:08] ── END E (385s) ──
+[12:25:08] ── START F ──
+[12:26:08]     ... F running: 60s, GPU 77%
+[12:27:08]     ... F running: 120s, GPU 96%
+[12:28:09]     ... F running: 181s, GPU 96%
+[12:29:09]     ... F running: 241s, GPU 96%
+[12:30:09]     ... F running: 301s, GPU 96%
+[12:31:09]     ... F running: 361s, GPU 96%
+[12:32:09]     ... F running: 421s, GPU 96%
+[12:33:09]     ... F running: 481s, GPU 96%
+[12:34:09]     ... F running: 541s, GPU 96%
+[12:35:09]     ... F running: 601s, GPU 96%
+[12:36:09]     ... F running: 661s, GPU 96%
+[12:37:09]     ... F running: 721s, GPU 96%
+[12:38:03] ── END F (775s) ──
+[12:38:03] ── START G ──
+[12:39:03]     ... G running: 60s, GPU 96%
+[12:40:03]     ... G running: 120s, GPU 96%
+[12:41:03]     ... G running: 180s, GPU 96%
+[12:42:03]     ... G running: 240s, GPU 96%
+[12:43:03]     ... G running: 300s, GPU 96%
+[12:44:03]     ... G running: 360s, GPU 96%
+[12:45:03]     ... G running: 420s, GPU 96%
+[12:46:03]     ... G running: 480s, GPU 96%
+[12:47:04]     ... G running: 541s, GPU 96%
+[12:48:04]     ... G running: 601s, GPU 96%
+[12:49:04]     ... G running: 661s, GPU 96%
+[12:50:04]     ... G running: 721s, GPU 96%
+[12:51:04]     ... G running: 781s, GPU 96%
+[12:52:04]     ... G running: 841s, GPU 96%
+[12:53:04]     ... G running: 901s, GPU 96%
+[12:54:04]     ... G running: 961s, GPU 96%
+[12:55:04]     ... G running: 1021s, GPU 96%
+[12:56:04]     ... G running: 1081s, GPU 96%
+[12:57:04]     ... G running: 1141s, GPU 96%
+[12:58:04]     ... G running: 1201s, GPU 96%
+[12:59:04]     ... G running: 1261s, GPU 96%
+[13:00:04]     ... G running: 1321s, GPU 96%
+[13:01:04]     ... G running: 1381s, GPU 96%
+[13:02:04]     ... G running: 1441s, GPU 96%
+[13:03:04]     ... G running: 1501s, GPU 96%
+[13:04:05]     ... G running: 1562s, GPU 96%
+[13:05:05]     ... G running: 1622s, GPU 96%
+[13:06:05]     ... G running: 1682s, GPU 96%
+[13:07:05]     ... G running: 1742s, GPU 96%
+[13:08:05]     ... G running: 1802s, GPU 96%
+[13:09:05]     ... G running: 1862s, GPU 96%
+[13:10:05]     ... G running: 1922s, GPU 96%
+[13:10:06] ── END G (1923s) ──
+[13:10:06] ── START H ──
+[13:11:06]     ... H running: 60s, GPU 96%
+[13:12:06]     ... H running: 120s, GPU 96%
+[13:13:06]     ... H running: 180s, GPU 96%
+[13:14:06]     ... H running: 240s, GPU 96%
+[13:15:06]     ... H running: 300s, GPU 96%
+[13:16:06]     ... H running: 360s, GPU 96%
+[13:17:06]     ... H running: 420s, GPU 96%
+[13:18:06]     ... H running: 480s, GPU 96%
+[13:19:06]     ... H running: 540s, GPU 96%
+[13:20:06]     ... H running: 600s, GPU 96%
+[13:21:06]     ... H running: 660s, GPU 96%
+[13:22:06]     ... H running: 720s, GPU 96%
+[13:23:06]     ... H running: 780s, GPU 96%
+[13:23:42] ── END H (816s) ──
+[13:23:42] ── START I ──
+[13:23:42] Kopieer ShareGPT naar container...
+[13:24:42]     ... I running: 60s, GPU 96%
+[13:25:42]     ... I running: 120s, GPU 96%
+[13:26:43]     ... I running: 181s, GPU 96%
+[13:27:43]     ... I running: 241s, GPU 96%
+[13:28:43]     ... I running: 301s, GPU 96%
+[13:29:43]     ... I running: 361s, GPU 96%
+[13:30:43]     ... I running: 421s, GPU 96%
+[13:31:43]     ... I running: 481s, GPU 96%
+[13:32:43]     ... I running: 541s, GPU 96%
+[13:33:43]     ... I running: 601s, GPU 96%
+[13:34:43]     ... I running: 661s, GPU 96%
+[13:35:43]     ... I running: 721s, GPU 96%
+[13:36:43]     ... I running: 781s, GPU 0%
+[13:37:43]     ... I running: 841s, GPU 96%
+[13:37:59] ── END I (857s) ──
+[13:37:59] ── START J ──
+[13:38:59]     ... J running: 60s, GPU 96%
+[13:39:59]     ... J running: 120s, GPU 96%
+[13:40:59]     ... J running: 180s, GPU 96%
+[13:41:59]     ... J running: 240s, GPU 96%
+[13:42:59]     ... J running: 300s, GPU 96%
+[13:43:59]     ... J running: 360s, GPU 96%
+[13:44:59]     ... J running: 420s, GPU 96%
+[13:45:59]     ... J running: 480s, GPU 96%
+[13:46:59]     ... J running: 540s, GPU 96%
+[13:47:59]     ... J running: 600s, GPU 96%
+[13:48:59]     ... J running: 660s, GPU 96%
+[13:49:59]     ... J running: 720s, GPU 96%
+[13:50:59]     ... J running: 780s, GPU 96%
+[13:51:59]     ... J running: 840s, GPU 96%
+[13:52:59]     ... J running: 900s, GPU 96%
+[13:54:00]     ... J running: 961s, GPU 96%
+[13:55:00]     ... J running: 1021s, GPU 96%
+[13:56:00]     ... J running: 1081s, GPU 96%
+[13:57:00]     ... J running: 1141s, GPU 96%
+[13:58:00]     ... J running: 1201s, GPU 96%
+[13:59:00]     ... J running: 1261s, GPU 96%
+[14:00:00]     ... J running: 1321s, GPU 96%
+[14:01:00]     ... J running: 1381s, GPU 96%
+[14:01:52] ── END J (1433s) ──
+[14:01:52] === klaar (10870s = 181m) ===

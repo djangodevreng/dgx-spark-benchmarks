@@ -1,0 +1,46 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.7)
+Date: 2026-05-03 11:40:44
+Benchmarking model: nemotron-3-nano-omni-30b-fp8 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+Error loading tokenizer: nemotron-3-nano-omni-30b-fp8 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/spark/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 15 tokens (Server: 37, Local: 22)
+Warmup (System+Empty) complete. Delta: 28 tokens (Server: 50, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 79.40 ms
+Running test: pp=256, tg=4096, depth=0, concurrency=1
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=256, tg=4096, depth=0, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=256, tg=4096, depth=0, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model                        |         test |      t/s (total) |        t/s (req) |      peak t/s |   peak t/s (req) |      ttfr (ms) |   est_ppt (ms) |   e2e_ttft (ms) |
+|:-----------------------------|-------------:|-----------------:|-----------------:|--------------:|-----------------:|---------------:|---------------:|----------------:|
+| nemotron-3-nano-omni-30b-fp8 |   pp256 (c1) | 2825.24 ± 139.57 | 2825.24 ± 139.57 |               |                  |  160.32 ± 2.47 |   80.92 ± 2.47 |   160.32 ± 2.47 |
+| nemotron-3-nano-omni-30b-fp8 |  tg4096 (c1) |     49.75 ± 0.11 |     49.75 ± 0.11 |  51.00 ± 0.00 |     51.00 ± 0.00 |                |                |                 |
+| nemotron-3-nano-omni-30b-fp8 |   pp256 (c5) | 3108.81 ± 140.85 | 1090.89 ± 398.07 |               |                  | 318.54 ± 68.75 | 239.14 ± 68.75 |  318.54 ± 68.75 |
+| nemotron-3-nano-omni-30b-fp8 |  tg4096 (c5) |     89.46 ± 1.94 |     25.56 ± 3.52 | 120.00 ± 0.00 |     33.33 ± 9.57 |                |                |                 |
+| nemotron-3-nano-omni-30b-fp8 |  pp256 (c10) |  4963.28 ± 17.87 |  693.31 ± 272.61 |               |                  | 448.74 ± 75.73 | 369.34 ± 75.73 |  448.74 ± 75.73 |
+| nemotron-3-nano-omni-30b-fp8 | tg4096 (c10) |     94.62 ± 5.83 |     18.40 ± 4.88 | 180.00 ± 8.16 |    26.53 ± 10.34 |                |                |                 |
+
+llama-benchy (0.3.7)
+date: 2026-05-03 11:40:44 | latency mode: generation

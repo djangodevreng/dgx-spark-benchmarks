@@ -1,0 +1,52 @@
+[18:04:46] === bench-spark run ===
+[18:04:46] Profile: nemotron-3-nano-4b-fp8
+[18:04:46] Tests:   G H I J
+[18:04:46] Results: /home/spark/benchmarks/bench-spark/results/nemotron-3-nano-4b/fp8
+[18:04:46] ── START G ──
+[18:05:46]     ... G running: 60s, GPU 96%
+[18:06:46]     ... G running: 120s, GPU 96%
+[18:07:46]     ... G running: 180s, GPU 96%
+[18:08:46]     ... G running: 240s, GPU 96%
+[18:09:47]     ... G running: 301s, GPU 96%
+[18:10:47]     ... G running: 361s, GPU 96%
+[18:11:47]     ... G running: 421s, GPU 96%
+[18:12:10] ── END G (444s) ──
+[18:12:10] ── START H ──
+[18:13:11]     ... H running: 61s, GPU 96%
+[18:14:11]     ... H running: 121s, GPU 95%
+[18:15:11]     ... H running: 181s, GPU 96%
+[18:16:11]     ... H running: 241s, GPU 96%
+[18:17:11]     ... H running: 301s, GPU 96%
+[18:18:11]     ... H running: 361s, GPU 96%
+[18:19:11]     ... H running: 421s, GPU 96%
+[18:20:11]     ... H running: 481s, GPU 96%
+[18:21:11]     ... H running: 541s, GPU 96%
+[18:22:11]     ... H running: 601s, GPU 96%
+[18:23:11]     ... H running: 661s, GPU 96%
+[18:23:42] ── END H (692s) ──
+[18:23:42] ── START I ──
+[18:23:42] Kopieer ShareGPT naar container...
+[18:24:42]     ... I running: 60s, GPU 96%
+[18:25:42]     ... I running: 120s, GPU 0%
+[18:26:42]     ... I running: 180s, GPU 0%
+[18:27:42]     ... I running: 240s, GPU 96%
+[18:28:42]     ... I running: 300s, GPU 96%
+[18:29:42]     ... I running: 360s, GPU 0%
+[18:30:42]     ... I running: 420s, GPU 96%
+[18:31:43]     ... I running: 481s, GPU 96%
+[18:32:43]     ... I running: 541s, GPU 0%
+[18:33:43]     ... I running: 601s, GPU 96%
+[18:34:43]     ... I running: 661s, GPU 96%
+[18:35:43]     ... I running: 721s, GPU 96%
+[18:36:43]     ... I running: 781s, GPU 0%
+[18:37:43]     ... I running: 841s, GPU 96%
+[18:37:53] ── END I (851s) ──
+[18:37:53] ── START J ──
+[18:38:53]     ... J running: 60s, GPU 96%
+[18:39:53]     ... J running: 120s, GPU 94%
+[18:40:53]     ... J running: 180s, GPU 96%
+[18:41:53]     ... J running: 240s, GPU 96%
+[18:42:53]     ... J running: 300s, GPU 96%
+[18:43:53]     ... J running: 360s, GPU 96%
+[18:44:25] ── END J (392s) ──
+[18:44:25] === klaar (2379s = 39m) ===

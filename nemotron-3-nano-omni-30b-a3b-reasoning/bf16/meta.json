@@ -1,0 +1,15 @@
+{
+  "profile": "bf16",
+  "model": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16",
+  "served_name": "nemotron-3-nano-omni-30b-bf16",
+  "vllm_image": "vllm/vllm-openai:v0.20.0",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.95,
+    "kv_cache_dtype": "auto",
+    "enable_prefix_caching": false,
+    "async_scheduling": false
+  },
+  "generated_at": "2026-05-03T13:00:30+02:00"
+}
