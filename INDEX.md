@@ -30,6 +30,7 @@ Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` 
 | Model                       | Precisie | Suite    | vLLM    | Datum      | Path |
 | --------------------------- | -------- | -------- | ------- | ---------- | ---- |
 | ministral-3-3b-instruct     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
+| ministral-3-8b-instruct     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
 
 ## qwen-3.5
 
