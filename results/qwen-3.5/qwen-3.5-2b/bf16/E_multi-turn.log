@@ -1,6 +1,6 @@
 [transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
 llama-benchy (0.3.7)
-Date: 2026-05-07 14:18:56
+Date: 2026-05-07 16:29:22
 Benchmarking model: qwen3.5-2b-bf16 at http://localhost:8000/v1
 Concurrency levels: [1, 5, 10]
 Error loading tokenizer: qwen3.5-2b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
@@ -14,6 +14,33 @@ Warmup (User only) complete. Delta: 10 tokens (Server: 32, Local: 22)
 Warmup (System+Empty) complete. Delta: 15 tokens (Server: 37, Local: 22)
 
 Running coherence test...
-Coherence test FAILED: Expected 'Paris'. Got: ...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 48.60 ms
+Running test: pp=2048, tg=512, depth=4, concurrency=1
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=2048, tg=512, depth=4, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=2048, tg=512, depth=4, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
 
-Benchmark failed due to coherence test failure.
+
+
+| model           |              test |        t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |       ttfr (ms) |    est_ppt (ms) |   e2e_ttft (ms) |
+|:----------------|------------------:|-------------------:|------------------:|--------------:|-----------------:|----------------:|----------------:|----------------:|
+| qwen3.5-2b-bf16 |  pp2048 @ d4 (c1) |  6575.31 ± 2986.49 | 6575.31 ± 2986.49 |               |                  | 454.83 ± 250.55 | 406.23 ± 250.55 | 454.83 ± 250.55 |
+| qwen3.5-2b-bf16 |   tg512 @ d4 (c1) |       44.09 ± 0.18 |      44.09 ± 0.18 |  45.00 ± 0.00 |     45.00 ± 0.00 |                 |                 |                 |
+| qwen3.5-2b-bf16 |  pp2048 @ d4 (c5) | 13392.48 ± 1753.87 | 6023.04 ± 4321.18 |               |                  | 480.60 ± 200.39 | 432.00 ± 200.39 | 480.60 ± 200.39 |
+| qwen3.5-2b-bf16 |   tg512 @ d4 (c5) |     244.35 ± 10.09 |      52.10 ± 0.87 | 271.67 ± 2.36 |     54.53 ± 0.50 |                 |                 |                 |
+| qwen3.5-2b-bf16 | pp2048 @ d4 (c10) |  15297.91 ± 218.83 | 4183.68 ± 3478.66 |               |                  | 735.96 ± 346.21 | 687.36 ± 346.21 | 735.96 ± 346.21 |
+| qwen3.5-2b-bf16 |  tg512 @ d4 (c10) |     378.92 ± 30.36 |      47.70 ± 2.88 | 504.00 ± 4.32 |     52.17 ± 0.93 |                 |                 |                 |
+
+llama-benchy (0.3.7)
+date: 2026-05-07 16:29:22 | latency mode: generation

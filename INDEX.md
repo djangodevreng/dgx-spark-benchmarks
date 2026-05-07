@@ -36,7 +36,7 @@ Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` 
 | Model           | Precisie | Suite                            | vLLM    | Datum      | Path |
 | --------------- | -------- | -------------------------------- | ------- | ---------- | ---- |
 | qwen-3.5-0.8b   | `bf16`   | compleet                         | v0.20.0 | 2026-05    | [results/qwen-3.5/qwen-3.5-0.8b/bf16/](./results/qwen-3.5/qwen-3.5-0.8b/bf16/) |
-| qwen-3.5-2b     | `bf16`   | 9/10 — test E gefaald (coherence) | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
+| qwen-3.5-2b     | `bf16`   | compleet                         | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
 
 ## qwen-3.6
 
