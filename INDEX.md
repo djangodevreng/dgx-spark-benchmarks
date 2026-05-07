@@ -12,7 +12,7 @@ Alle runs in deze repo. Per model staan de gedraaide precisies, status, vLLM-ver
 | gemma-4-e2b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e2b-it/bf16/](./results/gemma-4/gemma-4-e2b-it/bf16/) |
 | gemma-4-e4b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e4b-it/bf16/](./results/gemma-4/gemma-4-e4b-it/bf16/) |
 
-Oude runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` (BF16) en `nvfp4-gemma4-cu130-old` precisie-folders.
+Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` precisie-folder.
 
 ## nemotron-3
 
@@ -45,5 +45,5 @@ Oude runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` (BF16) e
 
 - **Family-folder** = de model-familie (`gemma-4`, `nemotron-3`, `qwen-3.5`, `qwen-3.6`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
-- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`. Ook gebruikt: `no-prefix-cache` (BF16 op oude image) en `nvfp4-gemma4-cu130-old` (eerste NVFP4-run, vóór vLLM-upgrade).
+- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`. Ook gebruikt: `no-prefix-cache` (BF16 op oude image).
 - **Tests A–J** worden uitgelegd in [README.md](./README.md).
