@@ -51,6 +51,7 @@ Volledig overzicht van alle runs in [INDEX.md](./INDEX.md).
 ## Wat erin zit
 
 - `results/gemma-4/` (4 modellen, 5 precisie-runs)
+- `results/ministral-3/` (1 model, 1 precisie-run)
 - `results/nemotron-3/` (3 modellen, 6 precisie-runs)
 - `results/qwen-3.5/` (2 modellen, 2 precisie-runs)
 - `results/qwen-3.6/` (2 modellen, 3 precisie-runs)

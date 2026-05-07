@@ -25,12 +25,18 @@ Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` 
 | nemotron-3-nano-omni-30b-a3b-reasoning      | `nvfp4`  | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
 | nemotron-3-super-120b-a12b                  | `nvfp4`  | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/](./results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/) |
 
+## ministral-3
+
+| Model                       | Precisie | Suite    | vLLM    | Datum      | Path |
+| --------------------------- | -------- | -------- | ------- | ---------- | ---- |
+| ministral-3-3b-instruct     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
+
 ## qwen-3.5
 
-| Model           | Precisie | Suite    | vLLM    | Datum      | Path |
-| --------------- | -------- | -------- | ------- | ---------- | ---- |
-| qwen-3.5-0.8b   | `bf16`   | compleet | v0.20.0 | 2026-05    | [results/qwen-3.5/qwen-3.5-0.8b/bf16/](./results/qwen-3.5/qwen-3.5-0.8b/bf16/) |
-| qwen-3.5-2b     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
+| Model           | Precisie | Suite                            | vLLM    | Datum      | Path |
+| --------------- | -------- | -------------------------------- | ------- | ---------- | ---- |
+| qwen-3.5-0.8b   | `bf16`   | compleet                         | v0.20.0 | 2026-05    | [results/qwen-3.5/qwen-3.5-0.8b/bf16/](./results/qwen-3.5/qwen-3.5-0.8b/bf16/) |
+| qwen-3.5-2b     | `bf16`   | 9/10 — test E gefaald (coherence) | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
 
 ## qwen-3.6
 
@@ -43,7 +49,7 @@ Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` 
 
 ## Conventies
 
-- **Family-folder** = de model-familie (`gemma-4`, `nemotron-3`, `qwen-3.5`, `qwen-3.6`).
+- **Family-folder** = de model-familie (`gemma-4`, `ministral-3`, `nemotron-3`, `qwen-3.5`, `qwen-3.6`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
 - **Precisie-folder** = `bf16`, `fp8`, `nvfp4`. Ook gebruikt: `no-prefix-cache` (BF16 op oude image).
 - **Tests A–J** worden uitgelegd in [README.md](./README.md).
