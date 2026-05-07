@@ -1,0 +1,79 @@
+[13:59:04] === bench-spark run ===
+[13:59:04] Profile: qwen3.5-2b-bf16
+[13:59:04] Tests:   A B C D E F G H I J
+[13:59:04] Results: /home/eugene/benchmarks/bench-spark/results/qwen3.5-2b/bf16
+[13:59:04] ── START A ──
+[14:00:04]     ... A running: 60s, GPU 96%
+[14:01:04]     ... A running: 120s, GPU 96%
+[14:02:04]     ... A running: 180s, GPU 96%
+[14:03:04]     ... A running: 240s, GPU 96%
+[14:04:04]     ... A running: 300s, GPU 96%
+[14:05:04]     ... A running: 360s, GPU 96%
+[14:05:18] ── END A (374s) ──
+[14:05:18] ── START B ──
+[14:06:18]     ... B running: 60s, GPU 96%
+[14:07:18]     ... B running: 120s, GPU 96%
+[14:08:18]     ... B running: 180s, GPU 96%
+[14:09:16] ── END B (238s) ──
+[14:09:16] ── START C ──
+[14:10:16]     ... C running: 60s, GPU 96%
+[14:11:16]     ... C running: 120s, GPU 96%
+[14:12:10] ── END C (174s) ──
+[14:12:10] ── START D ──
+[14:13:10]     ... D running: 60s, GPU 96%
+[14:14:10]     ... D running: 120s, GPU 96%
+[14:15:10]     ... D running: 180s, GPU 96%
+[14:16:10]     ... D running: 240s, GPU 96%
+[14:17:10]     ... D running: 300s, GPU 96%
+[14:18:10]     ... D running: 360s, GPU 96%
+[14:18:55] ── END D (405s) ──
+[14:18:55] ── START E ──
+[14:18:58] ── END E (3s) ──
+[14:18:58] ── START F ──
+[14:19:58]     ... F running: 60s, GPU 96%
+[14:20:58]     ... F running: 120s, GPU 96%
+[14:21:32] ── END F (154s) ──
+[14:21:32] ── START G ──
+[14:22:32]     ... G running: 60s, GPU 96%
+[14:23:32]     ... G running: 120s, GPU 96%
+[14:24:32]     ... G running: 180s, GPU 96%
+[14:25:33]     ... G running: 241s, GPU 96%
+[14:26:33]     ... G running: 301s, GPU 96%
+[14:27:13] ── END G (341s) ──
+[14:27:13] ── START H ──
+[14:28:13]     ... H running: 60s, GPU 96%
+[14:29:13]     ... H running: 120s, GPU 96%
+[14:30:13]     ... H running: 180s, GPU 0%
+[14:31:13]     ... H running: 240s, GPU 96%
+[14:32:13]     ... H running: 300s, GPU 96%
+[14:33:13]     ... H running: 360s, GPU 96%
+[14:34:13]     ... H running: 420s, GPU 96%
+[14:35:13]     ... H running: 480s, GPU 96%
+[14:36:14]     ... H running: 541s, GPU 96%
+[14:37:14]     ... H running: 601s, GPU 96%
+[14:38:14]     ... H running: 661s, GPU 96%
+[14:38:40] ── END H (687s) ──
+[14:38:40] ── START I ──
+[14:38:40] Kopieer ShareGPT naar container...
+[14:39:40]     ... I running: 60s, GPU 96%
+[14:40:40]     ... I running: 120s, GPU 0%
+[14:41:40]     ... I running: 180s, GPU 0%
+[14:42:40]     ... I running: 240s, GPU 96%
+[14:43:40]     ... I running: 300s, GPU 96%
+[14:44:40]     ... I running: 360s, GPU 0%
+[14:45:40]     ... I running: 420s, GPU 96%
+[14:46:40]     ... I running: 480s, GPU 0%
+[14:47:40]     ... I running: 540s, GPU 0%
+[14:48:40]     ... I running: 600s, GPU 96%
+[14:49:40]     ... I running: 660s, GPU 96%
+[14:50:40]     ... I running: 720s, GPU 0%
+[14:51:40]     ... I running: 780s, GPU 0%
+[14:52:40]     ... I running: 840s, GPU 96%
+[14:52:53] ── END I (853s) ──
+[14:52:53] ── START J ──
+[14:53:53]     ... J running: 60s, GPU 96%
+[14:54:53]     ... J running: 120s, GPU 96%
+[14:55:53]     ... J running: 180s, GPU 96%
+[14:56:53]     ... J running: 240s, GPU 96%
+[14:57:18] ── END J (265s) ──
+[14:57:18] === klaar (3494s = 58m) ===
