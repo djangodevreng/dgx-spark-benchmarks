@@ -37,7 +37,7 @@ Open-loop (`vllm bench serve`):
 ## Structuur
 
 ```
-<model>/<precisie>/
+results/<family>/<model>/<precisie>/
   meta.json                snapshot van profile/server-config bij start van de run
   _runner.log              tijdsstempels per test
   A_context-scaling.md     human-readable resultaat met markdown-tabel
@@ -46,18 +46,14 @@ Open-loop (`vllm bench serve`):
   ...
 ```
 
+Volledig overzicht van alle runs in [INDEX.md](./INDEX.md).
+
 ## Wat erin zit
 
-- **gemma-4-26b-a4b-it**: `bf16`, `nvfp4` (complete suite, vLLM v0.20.1)
-- **gemma-4-31b-it**: `bf16` (complete suite)
-- **gemma-4-e2b-it**: `bf16` (complete suite)
-- **gemma-4-e4b-it**: `bf16` (complete suite)
-- **nemotron-3-nano-4b**: `bf16`, `fp8`
-- **nemotron-3-nano-omni-30b-a3b-reasoning**: `bf16`, `fp8`, `nvfp4`
-- **nemotron-3-super-120b-a12b**: `nvfp4`
-- **qwen3.5-0.8b**: `bf16`
-- **qwen3.6-27b**: `fp8`
-- **qwen3.6-35b-a3b**: `bf16`, `fp8`
+- `results/gemma-4/` (4 modellen, 5 precisie-runs)
+- `results/nemotron-3/` (3 modellen, 6 precisie-runs)
+- `results/qwen-3.5/` (1 model)
+- `results/qwen-3.6/` (2 modellen, 3 precisie-runs)
 
 ## Reproduceren
 
