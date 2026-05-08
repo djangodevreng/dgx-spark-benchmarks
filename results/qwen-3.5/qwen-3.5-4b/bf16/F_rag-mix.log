@@ -1,0 +1,46 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.7)
+Date: 2026-05-07 21:26:10
+Benchmarking model: qwen3.5-4b-bf16 at http://localhost:8000/v1
+Concurrency levels: [5, 10, 20]
+Error loading tokenizer: qwen3.5-4b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 8 tokens (Server: 30, Local: 22)
+Warmup (System+Empty) complete. Delta: 13 tokens (Server: 35, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 59.32 ms
+Running test: pp=8192, tg=512, depth=0, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=8192, tg=512, depth=0, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Running test: pp=8192, tg=512, depth=0, concurrency=20
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model           |         test |     t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |          ttfr (ms) |       est_ppt (ms) |      e2e_ttft (ms) |
+|:----------------|-------------:|----------------:|------------------:|--------------:|-----------------:|-------------------:|-------------------:|-------------------:|
+| qwen3.5-4b-bf16 |  pp8192 (c5) | 6508.30 ± 25.05 | 2809.48 ± 1647.21 |               |                  |  3528.57 ± 1552.50 |  3469.26 ± 1552.50 |  3528.57 ± 1552.50 |
+| qwen3.5-4b-bf16 |   tg512 (c5) |    95.91 ± 0.02 |      21.29 ± 1.17 | 120.00 ± 0.00 |     24.00 ± 0.00 |                    |                    |                    |
+| qwen3.5-4b-bf16 | pp8192 (c10) | 6403.72 ± 13.25 | 1785.37 ± 1489.73 |               |                  |  6454.42 ± 3262.98 |  6395.10 ± 3262.98 |  6454.42 ± 3262.98 |
+| qwen3.5-4b-bf16 |  tg512 (c10) |   146.81 ± 0.20 |      17.81 ± 1.75 | 210.00 ± 0.00 |     22.30 ± 1.10 |                    |                    |                    |
+| qwen3.5-4b-bf16 | pp8192 (c20) | 6145.53 ± 19.29 | 1062.63 ± 1165.32 |               |                  | 12616.50 ± 6918.96 | 12557.18 ± 6918.96 | 12616.50 ± 6918.96 |
+| qwen3.5-4b-bf16 |  tg512 (c20) |   188.58 ± 0.17 |      12.59 ± 1.86 | 322.67 ± 1.89 |     19.80 ± 2.63 |                    |                    |                    |
+
+llama-benchy (0.3.7)
+date: 2026-05-07 21:26:10 | latency mode: generation

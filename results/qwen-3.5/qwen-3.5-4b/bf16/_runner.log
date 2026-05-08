@@ -1,0 +1,32 @@
+[22:21:49] === bench-spark run ===
+[22:21:49] Profile: qwen3.5-4b-bf16
+[22:21:49] Tests:   I J
+[22:21:49] Results: /home/eugene/benchmarks/bench-spark/results/qwen3.5-4b/bf16
+[22:21:49] ── START I ──
+[22:22:49]     ... I running: 60s, GPU 96%
+[22:23:49]     ... I running: 120s, GPU 96%
+[22:24:49]     ... I running: 180s, GPU 96%
+[22:25:49]     ... I running: 240s, GPU 96%
+[22:26:49]     ... I running: 300s, GPU 96%
+[22:27:49]     ... I running: 360s, GPU 96%
+[22:28:49]     ... I running: 420s, GPU 96%
+[22:29:49]     ... I running: 480s, GPU 96%
+[22:30:49]     ... I running: 540s, GPU 96%
+[22:31:50]     ... I running: 601s, GPU 96%
+[22:32:50]     ... I running: 661s, GPU 0%
+[22:33:50]     ... I running: 721s, GPU 96%
+[22:34:50]     ... I running: 781s, GPU 0%
+[22:35:50]     ... I running: 841s, GPU 96%
+[22:36:17] ── END I (868s) ──
+[22:36:17] ── START J ──
+[22:37:17]     ... J running: 60s, GPU 96%
+[22:38:17]     ... J running: 120s, GPU 96%
+[22:39:17]     ... J running: 180s, GPU 96%
+[22:40:17]     ... J running: 240s, GPU 96%
+[22:41:17]     ... J running: 300s, GPU 96%
+[22:42:17]     ... J running: 360s, GPU 96%
+[22:43:17]     ... J running: 420s, GPU 96%
+[22:44:17]     ... J running: 480s, GPU 96%
+[22:45:17]     ... J running: 540s, GPU 96%
+[22:45:56] ── END J (579s) ──
+[22:45:56] === klaar (1447s = 24m) ===
