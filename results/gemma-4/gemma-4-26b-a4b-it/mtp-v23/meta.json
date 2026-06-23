@@ -1,0 +1,15 @@
+{
+  "profile": "mtp-v23",
+  "model": "google/gemma-4-26B-A4B-it",
+  "served_name": "gemma-4-26b-a4b-mtp",
+  "vllm_image": "vllm/vllm-openai:v0.23.0-aarch64-cu129-ubuntu2404",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.85,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-06-23T03:29:52+02:00"
+}

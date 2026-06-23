@@ -8,11 +8,16 @@ Alle runs in deze repo. Per model staan de gedraaide precisies, status, vLLM-ver
 | ------------------- | --------- | -------- | ------- | ------------- | ---- |
 | gemma-4-26b-a4b-it  | `bf16`    | compleet | v0.20.1 | 2026-05-05/06 | [results/gemma-4/gemma-4-26b-a4b-it/bf16/](./results/gemma-4/gemma-4-26b-a4b-it/bf16/) |
 | gemma-4-26b-a4b-it  | `nvfp4`   | compleet | v0.20.1 | 2026-05-05/06 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4/) |
+| gemma-4-26b-a4b-it  | `bf16-v23`  | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/](./results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/) |
+| gemma-4-26b-a4b-it  | `nvfp4-v23` | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
+| gemma-4-26b-a4b-it  | `mtp-v23`   | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/](./results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/) |
 | gemma-4-31b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-31b-it/bf16/](./results/gemma-4/gemma-4-31b-it/bf16/) |
 | gemma-4-e2b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e2b-it/bf16/](./results/gemma-4/gemma-4-e2b-it/bf16/) |
 | gemma-4-e4b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e4b-it/bf16/](./results/gemma-4/gemma-4-e4b-it/bf16/) |
 
 Eerdere BF16-runs op de `gemma4-cu130` image bewaard onder de `no-prefix-cache` precisie-folder.
+
+De `-v23` precisies zijn een 3-weg her-run op vLLM **v0.23.0** (stable): `bf16-v23` vs `nvfp4-v23` (nvidia NVFP4, modelopt+marlin) vs `mtp-v23` (bf16 + speculative decoding, assistant-drafter γ=4). Identieke config (gpu-util 0.85, kv fp8, prefix-cache uit) op de variabele-onder-test na.
 
 ## nemotron-3
 

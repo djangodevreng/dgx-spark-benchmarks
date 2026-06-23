@@ -1,0 +1,49 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.8)
+Date: 2026-06-23 00:22:17
+Benchmarking model: gemma-4-26b-a4b at http://localhost:8000/v1
+Concurrency levels: [5, 10, 20]
+Error loading tokenizer: gemma-4-26b-a4b is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 11 tokens (Server: 33, Local: 22)
+Warmup (System+Empty) complete. Delta: 17 tokens (Server: 39, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 111.58 ms
+Running test: pp=8192, tg=512, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=8192, tg=512, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Running test: pp=8192, tg=512, depth=0, concurrency=20
+  Warmup (batch size 20)...
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model           |         test |     t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |          ttfr (ms) |       est_ppt (ms) |      e2e_ttft (ms) |
+|:----------------|-------------:|----------------:|------------------:|--------------:|-----------------:|-------------------:|-------------------:|-------------------:|
+| gemma-4-26b-a4b |  pp8192 (c5) |  5121.41 ± 4.24 | 2301.15 ± 1493.57 |               |                  |  4540.10 ± 2050.31 |  4428.52 ± 2050.31 |  4540.10 ± 2050.31 |
+| gemma-4-26b-a4b |   tg512 (c5) |    55.50 ± 2.13 |      12.67 ± 0.91 |  73.33 ± 2.36 |     15.80 ± 2.26 |                    |                    |                    |
+| gemma-4-26b-a4b | pp8192 (c10) |  5120.73 ± 4.63 | 1440.73 ± 1339.54 |               |                  |  8487.64 ± 4328.88 |  8376.06 ± 4328.88 |  8487.64 ± 4328.88 |
+| gemma-4-26b-a4b |  tg512 (c10) |    78.35 ± 4.17 |       9.53 ± 0.82 | 114.00 ± 4.32 |     12.97 ± 1.17 |                    |                    |                    |
+| gemma-4-26b-a4b | pp8192 (c20) | 5139.06 ± 10.52 |  891.77 ± 1097.12 |               |                  | 15698.98 ± 8338.58 | 15587.40 ± 8338.58 | 15698.98 ± 8338.58 |
+| gemma-4-26b-a4b |  tg512 (c20) |   100.81 ± 1.87 |       6.16 ± 0.63 | 160.00 ± 0.00 |      9.85 ± 1.74 |                    |                    |                    |
+
+llama-benchy (0.3.8)
+date: 2026-06-23 00:22:17 | latency mode: generation
