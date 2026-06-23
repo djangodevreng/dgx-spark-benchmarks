@@ -1,0 +1,15 @@
+{
+  "profile": "nvfp4",
+  "model": "RedHatAI/Mistral-Small-3.2-24B-Instruct-2506-NVFP4",
+  "served_name": "mistral-small-3.2-24b",
+  "vllm_image": "vllm/vllm-openai:v0.23.0-aarch64-cu129-ubuntu2404",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.70,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-06-23T09:40:30+02:00"
+}

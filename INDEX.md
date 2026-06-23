@@ -37,6 +37,14 @@ De `-v23` precisies zijn een 3-weg her-run op vLLM **v0.23.0** (stable): `bf16-v
 | ministral-3-3b-instruct     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
 | ministral-3-8b-instruct     | `bf16`   | compleet | v0.20.1 | 2026-05-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
 
+## mistral-small
+
+| Model                       | Precisie | Suite    | vLLM    | Datum      | Path |
+| --------------------------- | -------- | -------- | ------- | ---------- | ---- |
+| mistral-small-3.2-24b-it    | `nvfp4`  | compleet | v0.23.0 | 2026-06-23 | [results/mistral-small/mistral-small-3.2-24b-it/nvfp4/](./results/mistral-small/mistral-small-3.2-24b-it/nvfp4/) |
+
+Dense 24B (géén MoE, dus 24B actief — fors trager dan de MoE-modellen). NVFP4-build van RedHatAI. Vereiste op SM121 (GB10) drie env-vars om Marlin te forceren i.p.v. de kapotte CUTLASS-FP4-kernel: `VLLM_USE_FLASHINFER_MOE_FP4=0`, `VLLM_NVFP4_GEMM_BACKEND=marlin`, `VLLM_TEST_FORCE_FP8_MARLIN=1`. Config: gpu-util 0.70, kv fp8, prefix-cache uit, async-scheduling aan.
+
 ## qwen-3.5
 
 | Model           | Precisie | Suite                            | vLLM    | Datum      | Path |
