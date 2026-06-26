@@ -75,4 +75,4 @@ Heb je zelf een Spark en kom je tot andere cijfers? Open een issue, vooral inter
 
 ## Licentie
 
-[MIT](./LICENSE).
+De data in deze repo staat onder [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/): vrij te gebruiken, ook commercieel en aangepast, mits naamsvermelding (Django de Vreng, https://djangodevreng.nl). Zie [LICENSE](./LICENSE) en het citatie-blok hierboven.
