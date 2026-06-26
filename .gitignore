@@ -3,3 +3,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# HuggingFace upload-staging, gegenereerd door scripts/build_hf_dataset.py
+hf-dataset/

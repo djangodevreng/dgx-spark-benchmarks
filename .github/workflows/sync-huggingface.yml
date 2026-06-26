@@ -1,0 +1,37 @@
+name: Sync dataset to HuggingFace
+
+# Publiceert de gecureerde arena-dataset naar HuggingFace. Bron: de live
+# data.json van de website (die de gescoorde data al genereert). Handmatig te
+# draaien na een nieuwe meting, plus een nachtelijk vangnet.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *" # dagelijks 03:00 UTC
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate dataset artifacts from live data.json
+        run: python scripts/build_hf_dataset.py
+
+      - name: Upload to HuggingFace
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "HF_TOKEN-secret niet gezet, upload overgeslagen."
+            exit 0
+          fi
+          python -m pip install -U --quiet huggingface_hub
+          hf upload Djangodevreng/dgx-spark-benchmarks ./hf-dataset . \
+            --repo-type=dataset \
+            --commit-message "Sync arena dataset from djangodevreng.nl/arena/data.json"
