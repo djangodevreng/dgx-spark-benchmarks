@@ -13,7 +13,7 @@ Deze repo is de bronlaag: per model en per precisie de complete suite van 9 test
 - llama-benchy voor closed-loop tests
 - `vllm bench serve` voor open-loop tests
 
-## De 9 tests
+## De 10 tests
 
 Closed-loop (`llama-benchy`):
 
@@ -30,9 +30,12 @@ Open-loop (`vllm bench serve`):
 
 | ID  | Naam              | Workload      | Druk                                                            |
 | --- | ----------------- | ------------- | --------------------------------------------------------------- |
+| D   | reasoning         | 1k in, 4k uit | Poisson 0.2 rps, burstiness 1.0, 50 prompts                     |
 | H   | office-baseline   | random 4k     | Poisson 0.3 rps, burstiness 0.7, 200 prompts                    |
 | I   | sharegpt-replay   | ShareGPT V3   | Poisson 0.3 rps, burstiness 0.7, 250 prompts                    |
 | J   | monday-burst      | random 4k     | Poisson 1.5 rps, burstiness 1.0, 300 prompts, max 25 concurrent |
+
+Test D is later toegevoegd dan de rest en is niet op alle configs gedraaid. Welke runs hem missen staat in [INDEX.md](./INDEX.md).
 
 ## Structuur
 

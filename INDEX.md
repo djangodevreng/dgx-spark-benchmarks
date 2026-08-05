@@ -8,10 +8,11 @@ Alle runs in deze repo. Per model staan de gedraaide precisies, status, vLLM-ver
 | ------------------- | --------- | -------- | ------- | ------------- | ---- |
 | gemma-4-26b-a4b-it  | `bf16`    | compleet | v0.20.1 | 2026-05-05/06 | [results/gemma-4/gemma-4-26b-a4b-it/bf16/](./results/gemma-4/gemma-4-26b-a4b-it/bf16/) |
 | gemma-4-26b-a4b-it  | `nvfp4`   | compleet | v0.20.1 | 2026-05-05/06 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4/) |
-| gemma-4-26b-a4b-it  | `bf16-v23`  | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/](./results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/) |
-| gemma-4-26b-a4b-it  | `nvfp4-v23` | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
-| gemma-4-26b-a4b-it  | `mtp-v23`   | compleet | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/](./results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/) |
+| gemma-4-26b-a4b-it  | `bf16-v23`  | A–J behalve D | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/](./results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/) |
+| gemma-4-26b-a4b-it  | `nvfp4-v23` | A–J behalve D | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
+| gemma-4-26b-a4b-it  | `mtp-v23`   | A–J behalve D | v0.23.0 | 2026-06-22/23 | [results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/](./results/gemma-4/gemma-4-26b-a4b-it/mtp-v23/) |
 | gemma-4-31b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-31b-it/bf16/](./results/gemma-4/gemma-4-31b-it/bf16/) |
+| gemma-4-31b-it      | `nvfp4`   | compleet | v0.20.1 | 2026-05-08    | [results/gemma-4/gemma-4-31b-it/nvfp4/](./results/gemma-4/gemma-4-31b-it/nvfp4/) |
 | gemma-4-e2b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e2b-it/bf16/](./results/gemma-4/gemma-4-e2b-it/bf16/) |
 | gemma-4-e4b-it      | `bf16`    | compleet | v0.20.1 | 2026-05-06    | [results/gemma-4/gemma-4-e4b-it/bf16/](./results/gemma-4/gemma-4-e4b-it/bf16/) |
 
@@ -25,9 +26,9 @@ De `-v23` precisies zijn een 3-weg her-run op vLLM **v0.23.0** (stable): `bf16-v
 | ------------------------------------------- | -------- | -------- | ------- | ---------- | ---- |
 | nemotron-3-nano-4b                          | `bf16`   | compleet | v0.20.0 | 2026-05-05 | [results/nemotron-3/nemotron-3-nano-4b/bf16/](./results/nemotron-3/nemotron-3-nano-4b/bf16/) |
 | nemotron-3-nano-4b                          | `fp8`    | compleet | v0.20.0 | 2026-05-05 | [results/nemotron-3/nemotron-3-nano-4b/fp8/](./results/nemotron-3/nemotron-3-nano-4b/fp8/) |
-| nemotron-3-nano-omni-30b-a3b-reasoning      | `bf16`   | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
-| nemotron-3-nano-omni-30b-a3b-reasoning      | `fp8`    | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
-| nemotron-3-nano-omni-30b-a3b-reasoning      | `nvfp4`  | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning      | `bf16`   | A–J behalve D | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning      | `fp8`    | A–J behalve D | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning      | `nvfp4`  | A–J behalve D | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
 | nemotron-3-super-120b-a12b                  | `nvfp4`  | compleet | v0.20.0 | 2026-05    | [results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/](./results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/) |
 
 ## ministral-3
@@ -41,7 +42,7 @@ De `-v23` precisies zijn een 3-weg her-run op vLLM **v0.23.0** (stable): `bf16-v
 
 | Model                       | Precisie | Suite    | vLLM    | Datum      | Path |
 | --------------------------- | -------- | -------- | ------- | ---------- | ---- |
-| mistral-small-3.2-24b-it    | `nvfp4`  | compleet | v0.23.0 | 2026-06-23 | [results/mistral-small/mistral-small-3.2-24b-it/nvfp4/](./results/mistral-small/mistral-small-3.2-24b-it/nvfp4/) |
+| mistral-small-3.2-24b-it    | `nvfp4`  | A–J behalve D | v0.23.0 | 2026-06-23 | [results/mistral-small/mistral-small-3.2-24b-it/nvfp4/](./results/mistral-small/mistral-small-3.2-24b-it/nvfp4/) |
 
 Dense 24B (géén MoE, dus 24B actief — fors trager dan de MoE-modellen). NVFP4-build van RedHatAI. Vereiste op SM121 (GB10) drie env-vars om Marlin te forceren i.p.v. de kapotte CUTLASS-FP4-kernel: `VLLM_USE_FLASHINFER_MOE_FP4=0`, `VLLM_NVFP4_GEMM_BACKEND=marlin`, `VLLM_TEST_FORCE_FP8_MARLIN=1`. Config: gpu-util 0.70, kv fp8, prefix-cache uit, async-scheduling aan.
 
@@ -52,19 +53,31 @@ Dense 24B (géén MoE, dus 24B actief — fors trager dan de MoE-modellen). NVFP
 | qwen-3.5-0.8b   | `bf16`   | compleet                         | v0.20.0 | 2026-05    | [results/qwen-3.5/qwen-3.5-0.8b/bf16/](./results/qwen-3.5/qwen-3.5-0.8b/bf16/) |
 | qwen-3.5-2b     | `bf16`   | compleet                         | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
 | qwen-3.5-4b     | `bf16`   | compleet                         | v0.20.1 | 2026-05-07 | [results/qwen-3.5/qwen-3.5-4b/bf16/](./results/qwen-3.5/qwen-3.5-4b/bf16/) |
+| qwen-3.5-9b     | `bf16`   | compleet                         | v0.20.1 | 2026-05-09 | [results/qwen-3.5/qwen-3.5-9b/bf16/](./results/qwen-3.5/qwen-3.5-9b/bf16/) |
 
 ## qwen-3.6
 
-| Model              | Precisie | Suite                    | vLLM    | Datum   | Path |
-| ------------------ | -------- | ------------------------ | ------- | ------- | ---- |
-| qwen-3.6-27b       | `fp8`    | compleet                 | v0.20.0 | 2026-05 | [results/qwen-3.6/qwen-3.6-27b/fp8/](./results/qwen-3.6/qwen-3.6-27b/fp8/) |
-| qwen-3.6-27b       | `bf16`   | nog niet gedraaid        |         |         |      |
-| qwen-3.6-35b-a3b   | `bf16`   | compleet                 | v0.20.0 | 2026-05 | [results/qwen-3.6/qwen-3.6-35b-a3b/bf16/](./results/qwen-3.6/qwen-3.6-35b-a3b/bf16/) |
-| qwen-3.6-35b-a3b   | `fp8`    | compleet                 | v0.20.0 | 2026-05 | [results/qwen-3.6/qwen-3.6-35b-a3b/fp8/](./results/qwen-3.6/qwen-3.6-35b-a3b/fp8/) |
+| Model              | Precisie | Suite                    | vLLM           | Datum      | Path |
+| ------------------ | -------- | ------------------------ | -------------- | ---------- | ---- |
+| qwen-3.6-27b       | `fp8`    | A–J behalve D            | v0.20.0        | 2026-05    | [results/qwen-3.6/qwen-3.6-27b/fp8/](./results/qwen-3.6/qwen-3.6-27b/fp8/) |
+| qwen-3.6-27b       | `bf16`   | compleet                 | cu130-nightly  | 2026-05-09 | [results/qwen-3.6/qwen-3.6-27b/bf16/](./results/qwen-3.6/qwen-3.6-27b/bf16/) |
+| qwen-3.6-35b-a3b   | `bf16`   | compleet                 | cu130-nightly  | 2026-05    | [results/qwen-3.6/qwen-3.6-35b-a3b/bf16/](./results/qwen-3.6/qwen-3.6-35b-a3b/bf16/) |
+| qwen-3.6-35b-a3b   | `fp8`    | A–J behalve D            | cu130-nightly  | 2026-05    | [results/qwen-3.6/qwen-3.6-35b-a3b/fp8/](./results/qwen-3.6/qwen-3.6-35b-a3b/fp8/) |
+| qwen-3.6-35b-a3b   | `nvfp4`  | compleet                 | cu130-nightly  | 2026-06-26 | [results/qwen-3.6/qwen-3.6-35b-a3b/nvfp4/](./results/qwen-3.6/qwen-3.6-35b-a3b/nvfp4/) |
+
+De qwen-3.6-runs draaiden op de tag `cu130-nightly`, die niet gepind is. De bootlog van de 35B-A3B BF16-run identificeert die build als `v0.19.2rc1.dev134+gfe9c3d6c5`. Die runs zijn dus niet reproduceerbaar zonder een herrun op een gepinde versie. Let ook op de `kv_cache_dtype`: `auto` bij BF16 en NVFP4, `fp8_e4m3` bij FP8, dus die drie zijn geen zuivere precisievergelijking.
+
+## gpt-oss
+
+| Model        | Precisie | Suite    | vLLM    | Datum      | Path |
+| ------------ | -------- | -------- | ------- | ---------- | ---- |
+| gpt-oss-20b  | `mxfp4`  | compleet | v0.23.0 | 2026-06-26 | [results/gpt-oss/gpt-oss-20b/mxfp4/](./results/gpt-oss/gpt-oss-20b/mxfp4/) |
+
+MoE met native MXFP4-gewichten, Apache 2.0. Config: gpu-util 0.90, kv fp8, prefix-cache uit, async-scheduling aan. De 120B-variant uit dezelfde familie is nog niet gedraaid.
 
 ## Conventies
 
-- **Family-folder** = de model-familie (`gemma-4`, `ministral-3`, `nemotron-3`, `qwen-3.5`, `qwen-3.6`).
+- **Family-folder** = de model-familie (`gemma-4`, `gpt-oss`, `ministral-3`, `mistral-small`, `nemotron-3`, `qwen-3.5`, `qwen-3.6`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
 - **Precisie-folder** = `bf16`, `fp8`, `nvfp4`. Ook gebruikt: `no-prefix-cache` (BF16 op oude image).
 - **Tests A–J** worden uitgelegd in [README.md](./README.md).
