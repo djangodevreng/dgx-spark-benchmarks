@@ -13,39 +13,76 @@ Deze repo is de bronlaag: per model en per precisie de complete suite van 9 test
 - llama-benchy voor closed-loop tests
 - `vllm bench serve` voor open-loop tests
 
-## De 10 tests
+## De 11 tests
 
-Closed-loop (`llama-benchy`):
+Sinds augustus 2026 heten de tests `NN-naam` in plaats van losse letters. De
+nummers dragen de uitvoervolgorde (closed-loop eerst, binnen elke helft licht
+naar zwaar), de namen komen overeen met de bench-id's op
+[djangodevreng.nl/arena](https://djangodevreng.nl/arena/). Runs van vóór die
+wijziging gebruiken de oude letters; de mapping staat onderaan deze sectie.
 
-| ID  | Naam                | Vorm                                     | Concurrency  |
-| --- | ------------------- | ---------------------------------------- | ------------ |
-| A   | context-scaling     | 4k → 25k context                         | c=1, 5, 10   |
-| B   | concurrency-stress  | 25k context                              | c=5, 10, 20  |
-| C   | output-throughput   | 1k prompt + 1k output                    | c=1, 5, 10   |
-| E   | multi-turn          | depth=4, 2k startcontext                 | c=1, 5, 10   |
-| F   | rag-mix             | 8k prompt + 512 output                   | c=5, 10, 20  |
-| G   | long-output         | 256 prompt + 4096 output                 | c=1, 5, 10   |
+Closed-loop (`llama-benchy`), vaste concurrency:
 
-Open-loop (`vllm bench serve`):
+| ID                     | Vorm                        | Concurrency |
+| ---------------------- | --------------------------- | ----------- |
+| `01-chat`              | 1k prompt + 1k output       | c=1, 5, 10  |
+| `02-rag-8k`            | 8k prompt + 512 output      | c=5, 10, 20 |
+| `03-long-output`       | 256 prompt + 4096 output    | c=1, 5, 10  |
+| `04-multi-turn`        | depth=4, 2k startcontext    | c=1, 5, 10  |
+| `05-big-context`       | 4k → 25k context            | c=1, 5, 10  |
+| `06-concurrency-stress`| 25k context                 | c=20        |
 
-| ID  | Naam              | Workload      | Druk                                                            |
-| --- | ----------------- | ------------- | --------------------------------------------------------------- |
-| D   | reasoning         | 1k in, 4k uit | Poisson 0.2 rps, burstiness 1.0, 50 prompts                     |
-| H   | office-baseline   | random 4k     | Poisson 0.3 rps, burstiness 0.7, 200 prompts                    |
-| I   | sharegpt-replay   | ShareGPT V3   | Poisson 0.3 rps, burstiness 0.7, 250 prompts                    |
-| J   | monday-burst      | random 4k     | Poisson 1.5 rps, burstiness 1.0, 300 prompts, max 25 concurrent |
+Open-loop (`vllm bench serve`), Poisson-aankomsten:
 
-Test D is later toegevoegd dan de rest en is niet op alle configs gedraaid. Welke runs hem missen staat in [INDEX.md](./INDEX.md).
+| ID                   | Workload      | Druk                                                            |
+| -------------------- | ------------- | --------------------------------------------------------------- |
+| `07-office-baseline` | random 4k     | 0.3 rps, burstiness 0.7, 200 prompts                            |
+| `08-sharegpt`        | ShareGPT V3   | 0.3 rps, burstiness 0.7, 250 prompts                            |
+| `09-reasoning`       | 1k in, 4k uit | 0.2 rps, burstiness 1.0, 50 prompts                             |
+| `10-monday-peak`     | random 4k     | 1.5 rps, burstiness 1.0, 300 prompts, max 25 concurrent         |
+| `11-rate-sweep`      | random 4k     | 0.3 → 1.3 rps in vijf treden, burstiness 0.7                    |
+
+`11-rate-sweep` is anders dan de rest: hij meet niet één punt maar de curve, en
+leidt daaruit de **capaciteit** af, de hoogste request rate die onder een
+p95-TTFT-grens blijft (standaard 2000 ms). Resultaat staat in
+`11-rate-sweep.json` en `11-rate-sweep.md`.
+
+`06-concurrency-stress` draait alleen c=20; c=5 en c=10 op 25k context zitten al
+in `05-big-context`.
+
+### Mapping van de oude letters
+
+| Oud | Nieuw                   |
+| --- | ----------------------- |
+| A   | `05-big-context`        |
+| B   | `06-concurrency-stress` |
+| C   | `01-chat`               |
+| D   | `09-reasoning`          |
+| E   | `04-multi-turn`         |
+| F   | `02-rag-8k`             |
+| G   | `03-long-output`        |
+| H   | `07-office-baseline`    |
+| I   | `08-sharegpt`           |
+| J   | `10-monday-peak`        |
+| -   | `11-rate-sweep` (nieuw) |
+
+Test D (nu `09-reasoning`) is later toegevoegd dan de rest en ontbreekt op een
+aantal oudere runs. Welke, staat in [INDEX.md](./INDEX.md).
 
 ## Structuur
 
 ```
 results/<family>/<model>/<precisie>/
-  meta.json                snapshot van profile/server-config bij start van de run
-  _runner.log              tijdsstempels per test
-  A_context-scaling.md     human-readable resultaat met markdown-tabel
-  A_context-scaling.log    raw stdout/stderr van de runner
-  H_office-baseline.json   raw JSON resultaat (alleen voor open-loop H/I/J)
+  meta.json                snapshot van profiel, serverconfig, driver, VBIOS en
+                           de door de server gerapporteerde vLLM-versie
+  _runner.log              tijdstempels per test, appendt per sessie
+  _sanity.txt              modeloutput waarmee is aangetoond dat de run geldig is
+  01-chat.md               human-readable resultaat met markdown-tabel
+  01-chat.log              raw stdout/stderr van de runner
+  01-telemetry.csv         stroom, temperatuur, SM-klok en geheugen, per 10 s
+  07-office-baseline.json  raw JSON (alleen open-loop)
+  11-rate-sweep-0.3.json   ruwe cijfers per trede van de sweep
+  11-rate-sweep.json       samenvatting met het afgeleide capaciteitscijfer
   ...
 ```
 
