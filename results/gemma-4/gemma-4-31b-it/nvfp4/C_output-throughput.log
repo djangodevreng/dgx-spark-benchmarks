@@ -1,0 +1,45 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+llama-benchy (0.3.7)
+Date: 2026-05-08 11:15:40
+Benchmarking model: gemma-4-31b-nvfp4 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+Error loading tokenizer: gemma-4-31b-nvfp4 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 11 tokens (Server: 33, Local: 22)
+Warmup (System+Empty) complete. Delta: 17 tokens (Server: 39, Local: 22)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 309748.27 ms
+Running test: pp=1024, tg=1024, depth=0, concurrency=1
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=5
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=10
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model             |         test |      t/s (total) |   t/s (req) |     peak t/s |   peak t/s (req) |         ttfr (ms) |   est_ppt (ms) |     e2e_ttft (ms) |
+|:------------------|-------------:|-----------------:|------------:|-------------:|-----------------:|------------------:|---------------:|------------------:|
+| gemma-4-31b-nvfp4 |  tg1024 (c1) |      1.71 ± 0.24 | 1.71 ± 0.24 |  2.67 ± 0.47 |      2.67 ± 0.47 |                   |                |                   |
+| gemma-4-31b-nvfp4 |  pp1024 (c5) |  1404.41 ± 11.34 |             |              |                  |   3330.33 ± 49.12 |    0.00 ± 0.00 |   3330.33 ± 49.12 |
+| gemma-4-31b-nvfp4 |  tg1024 (c5) |      6.72 ± 0.70 | 2.01 ± 0.11 | 15.00 ± 0.00 |      3.07 ± 0.25 |                   |                |                   |
+| gemma-4-31b-nvfp4 | pp1024 (c10) | 1245.51 ± 236.55 |             |              |                  | 6940.88 ± 1712.98 |    0.00 ± 0.00 | 6940.88 ± 1712.98 |
+| gemma-4-31b-nvfp4 | tg1024 (c10) |     15.46 ± 0.74 | 2.21 ± 0.08 | 37.33 ± 3.77 |      3.93 ± 0.25 |                   |                |                   |
+
+llama-benchy (0.3.7)
+date: 2026-05-08 11:15:40 | latency mode: generation

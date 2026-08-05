@@ -1,0 +1,15 @@
+{
+  "profile": "mxfp4",
+  "model": "openai/gpt-oss-20b",
+  "served_name": "gpt-oss-20b-mxfp4",
+  "vllm_image": "vllm/vllm-openai:v0.23.0-aarch64-cu129-ubuntu2404",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.90,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-06-26T09:29:33+02:00"
+}
