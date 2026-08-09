@@ -1,0 +1,15 @@
+{
+  "profile": "no-prefix-cache",
+  "model": "google/gemma-4-31B-it",
+  "served_name": "gemma-4-31b",
+  "vllm_image": "vllm/vllm-openai:v0.20.1",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.95,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-05-05T22:47:23+02:00"
+}

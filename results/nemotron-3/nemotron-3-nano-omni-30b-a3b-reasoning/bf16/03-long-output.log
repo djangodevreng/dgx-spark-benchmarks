@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-06 00:24:44
+Benchmarking model: nemotron-3-nano-omni-30b-bf16 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'nemotron-3-nano-omni-30b-bf16': nemotron-3-nano-omni-30b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a73b82c-53f296a55a53806c450f4838;475da132-db62-4d91-811f-7bd2e94bff67)
+
+Repository Not Found for url: https://huggingface.co/nemotron-3-nano-omni-30b-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 15 tokens (Server: 37, Local: 22)
+Warmup (System+Probe) complete. Delta: 28 tokens (Server: 51, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 135.98 ms
+Running test: pp=256, tg=4096, depth=0, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=256, tg=4096, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=256, tg=4096, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model                         |         test |      t/s (total) |       t/s (req) |      peak t/s |   peak t/s (req) |       ttfr (ms) |    est_ppt (ms) |   e2e_ttft (ms) |
+|:------------------------------|-------------:|-----------------:|----------------:|--------------:|-----------------:|----------------:|----------------:|----------------:|
+| nemotron-3-nano-omni-30b-bf16 |   pp256 (c1) |  1492.58 ± 74.09 | 1492.58 ± 74.09 |               |                  |  295.01 ± 10.47 |  159.03 ± 10.47 |  295.01 ± 10.47 |
+| nemotron-3-nano-omni-30b-bf16 |  tg4096 (c1) |     29.32 ± 0.08 |    29.32 ± 0.08 |  30.00 ± 0.00 |     30.00 ± 0.00 |                 |                 |                 |
+| nemotron-3-nano-omni-30b-bf16 |   pp256 (c5) | 2466.29 ± 518.68 | 754.76 ± 207.62 |               |                  |  470.10 ± 99.58 |  334.12 ± 99.58 |  470.10 ± 99.58 |
+| nemotron-3-nano-omni-30b-bf16 |  tg4096 (c5) |     50.84 ± 4.52 |    15.20 ± 3.10 |  72.33 ± 2.05 |     20.00 ± 5.39 |                 |                 |                 |
+| nemotron-3-nano-omni-30b-bf16 |  pp256 (c10) | 2934.24 ± 103.40 | 484.88 ± 236.22 |               |                  | 688.07 ± 167.17 | 552.09 ± 167.17 | 688.07 ± 167.17 |
+| nemotron-3-nano-omni-30b-bf16 | tg4096 (c10) |     63.28 ± 5.06 |    10.24 ± 2.44 | 103.33 ± 4.71 |     15.80 ± 6.36 |                 |                 |                 |
+
+llama-benchy (0.4.0)
+date: 2026-08-06 00:24:44 | latency mode: generation

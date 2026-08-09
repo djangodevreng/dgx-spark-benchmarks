@@ -2,14 +2,20 @@
   "profile": "bf16",
   "model": "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16",
   "served_name": "nemotron-3-nano-4b-bf16",
-  "vllm_image": "vllm/vllm-openai:cu130-nightly",
+  "vllm_image": "vllm/vllm-openai:v0.26.0-aarch64-cu129-ubuntu2404",
+  "vllm_version_reported": "0.26.0",
+  "llama_benchy_version": "0.4.0",
   "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
   "server_config": {
     "max_model_len": 49152,
-    "gpu_memory_utilization": 0.95,
+    "gpu_memory_utilization": 0.90,
     "kv_cache_dtype": "fp8_e4m3",
     "enable_prefix_caching": false,
-    "async_scheduling": true
+    "async_scheduling": true,
+    "extra_vllm_args": "--trust-remote-code",
+    "profile_env_vars": ""
   },
-  "generated_at": "2026-05-05T14:45:31+02:00"
+  "generated_at": "2026-08-06T05:29:55+02:00"
 }

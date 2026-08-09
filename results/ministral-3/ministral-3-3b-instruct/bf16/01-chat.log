@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-09 00:19:17
+Benchmarking model: ministral-3-3b-instruct-bf16 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'ministral-3-3b-instruct-bf16': ministral-3-3b-instruct-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a77ab66-7a6b9109512de8e8704249ae;8c4a7c32-40b9-4682-8e00-ab5c7b0288d2)
+
+Repository Not Found for url: https://huggingface.co/ministral-3-3b-instruct-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 3 tokens (Server: 25, Local: 22)
+Warmup (System+Probe) complete. Delta: 5 tokens (Server: 28, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 43.86 ms
+Running test: pp=1024, tg=1024, depth=0, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model                        |         test |        t/s (total) |        t/s (req) |      peak t/s |   peak t/s (req) |       ttfr (ms) |    est_ppt (ms) |   e2e_ttft (ms) |
+|:-----------------------------|-------------:|-------------------:|-----------------:|--------------:|-----------------:|----------------:|----------------:|----------------:|
+| ministral-3-3b-instruct-bf16 |  pp1024 (c1) |   3024.60 ± 568.92 | 3024.60 ± 568.92 |               |                  |  363.69 ± 34.01 |  319.82 ± 34.01 |  363.69 ± 34.01 |
+| ministral-3-3b-instruct-bf16 |  tg1024 (c1) |       52.04 ± 0.20 |     52.04 ± 0.20 |  53.00 ± 0.00 |     53.00 ± 0.00 |                 |                 |                 |
+| ministral-3-3b-instruct-bf16 |  pp1024 (c5) |    6211.62 ± 96.49 | 1412.59 ± 162.43 |               |                  |  700.20 ± 73.44 |  656.33 ± 73.44 |  700.20 ± 73.44 |
+| ministral-3-3b-instruct-bf16 |  tg1024 (c5) |      194.51 ± 5.06 |     49.29 ± 0.46 | 255.00 ± 0.00 |     51.67 ± 0.70 |                 |                 |                 |
+| ministral-3-3b-instruct-bf16 | pp1024 (c10) | 10083.28 ± 1230.71 | 1217.52 ± 457.88 |               |                  | 863.67 ± 182.28 | 819.80 ± 182.28 | 863.67 ± 182.28 |
+| ministral-3-3b-instruct-bf16 | tg1024 (c10) |      356.50 ± 9.72 |     42.31 ± 0.63 | 450.00 ± 0.00 |     45.80 ± 1.96 |                 |                 |                 |
+
+llama-benchy (0.4.0)
+date: 2026-08-09 00:19:17 | latency mode: generation

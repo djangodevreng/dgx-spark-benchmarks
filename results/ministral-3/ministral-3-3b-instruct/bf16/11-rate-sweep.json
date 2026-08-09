@@ -1,0 +1,76 @@
+{
+  "model": "mistralai/Ministral-3-3B-Instruct-2512",
+  "served_name": "ministral-3-3b-instruct-bf16",
+  "profile": "bf16",
+  "aborted_at_rps": 1.0,
+  "capacity_by_slo_ms": {
+    "2000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.281,
+      "ttft_p95_ms": 1566.8,
+      "output_tps": 138.1,
+      "peak_concurrent": 14
+    },
+    "5000": {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.461,
+      "ttft_p95_ms": 2049.8,
+      "output_tps": 225.4,
+      "peak_concurrent": 37
+    },
+    "10000": {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.461,
+      "ttft_p95_ms": 2049.8,
+      "output_tps": 225.4,
+      "peak_concurrent": 37
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.098,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 659.8,
+      "ttft_p95_ms": 1060.7,
+      "ttft_p99_ms": 1373.0,
+      "output_tps": 48.3,
+      "peak_concurrent": 5
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.192,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 666.2,
+      "ttft_p95_ms": 1186.5,
+      "ttft_p99_ms": 1403.9,
+      "output_tps": 94.6,
+      "peak_concurrent": 13
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.281,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 754.9,
+      "ttft_p95_ms": 1566.8,
+      "ttft_p99_ms": 1980.6,
+      "output_tps": 138.1,
+      "peak_concurrent": 14
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.461,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 1098.3,
+      "ttft_p95_ms": 2049.8,
+      "ttft_p99_ms": 2285.2,
+      "output_tps": 225.4,
+      "peak_concurrent": 37
+    }
+  ]
+}

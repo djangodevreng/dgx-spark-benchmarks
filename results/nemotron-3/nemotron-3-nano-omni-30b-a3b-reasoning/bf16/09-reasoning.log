@@ -1,0 +1,57 @@
+<frozen importlib._bootstrap_external>:1297: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1297: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0xe7a2ab9c7560>, trust_remote_code=False, seed=42, num_prompts=50, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, custom_ensure_client_side_data=False, spec_bench_output_len=256, spec_bench_category=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, timed_trace_chunk_hash_size=16, timed_trace_sec_multiplier=1, timed_trace_label_timestamp='timestamp', timed_trace_label_input_length='input_length', timed_trace_label_output_length='output_length', timed_trace_label_hash_ids='hash_ids', blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=1024, random_output_len=4096, random_range_ratio='0.9', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai-chat', base_url='http://localhost:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', header=None, max_concurrency=None, model='nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16', input_len=None, output_len=None, tokenizer='nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=0.2, burstiness=1.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/tmp', result_filename='09-reasoning.json', ignore_eos=False, self_timed=None, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,90,95,99', goodput=None, request_id_prefix='bench-bf6fb23d-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name='nemotron-3-nano-omni-30b-bf16', lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] You are using a model of type `NemotronH_Nano_Omni_Reasoning_V3` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+INFO 08-06 00:00:22 [utils.py:90] Sampling input_len from [102, 1946] and output_len from [409, 7783]
+WARNING: /tokenize unavailable, skipping alignment.
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 0.2
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [02:05<1:42:22, 125.35s/it]  4%|▍         | 2/50 [04:34<1:51:17, 139.11s/it]  6%|▌         | 3/50 [04:38<1:00:50, 77.67s/it]   8%|▊         | 4/50 [04:52<40:14, 52.50s/it]   10%|█         | 5/50 [05:55<42:16, 56.38s/it] 12%|█▏        | 6/50 [06:32<36:25, 49.66s/it] 14%|█▍        | 7/50 [07:01<30:45, 42.92s/it] 16%|█▌        | 8/50 [07:02<20:44, 29.63s/it] 18%|█▊        | 9/50 [08:04<27:08, 39.73s/it] 20%|██        | 10/50 [08:06<18:41, 28.04s/it] 22%|██▏       | 11/50 [08:19<15:17, 23.53s/it] 24%|██▍       | 12/50 [09:10<20:08, 31.80s/it] 26%|██▌       | 13/50 [09:38<18:54, 30.66s/it] 28%|██▊       | 14/50 [09:48<14:35, 24.31s/it] 30%|███       | 15/50 [09:49<10:08, 17.40s/it] 32%|███▏      | 16/50 [10:03<09:15, 16.34s/it] 34%|███▍      | 17/50 [10:16<08:26, 15.33s/it] 36%|███▌      | 18/50 [10:22<06:45, 12.67s/it] 38%|███▊      | 19/50 [10:26<05:09,  9.99s/it] 40%|████      | 20/50 [10:35<04:51,  9.73s/it] 42%|████▏     | 21/50 [10:46<04:54, 10.15s/it] 44%|████▍     | 22/50 [11:31<09:37, 20.62s/it] 46%|████▌     | 23/50 [11:38<07:26, 16.54s/it] 48%|████▊     | 24/50 [11:39<05:04, 11.72s/it] 50%|█████     | 25/50 [11:39<03:25,  8.24s/it] 52%|█████▏    | 26/50 [11:50<03:37,  9.08s/it] 54%|█████▍    | 27/50 [12:01<03:38,  9.51s/it] 56%|█████▌    | 28/50 [12:17<04:17, 11.69s/it] 58%|█████▊    | 29/50 [12:57<07:03, 20.16s/it] 60%|██████    | 30/50 [13:19<06:55, 20.77s/it] 62%|██████▏   | 31/50 [13:52<07:41, 24.30s/it] 64%|██████▍   | 32/50 [14:35<08:57, 29.87s/it] 66%|██████▌   | 33/50 [14:42<06:33, 23.16s/it] 68%|██████▊   | 34/50 [14:47<04:39, 17.50s/it] 70%|███████   | 35/50 [14:47<03:05, 12.38s/it] 72%|███████▏  | 36/50 [15:01<02:59, 12.79s/it] 74%|███████▍  | 37/50 [15:21<03:13, 14.87s/it] 76%|███████▌  | 38/50 [15:37<03:05, 15.42s/it] 78%|███████▊  | 39/50 [15:48<02:35, 14.15s/it] 80%|████████  | 40/50 [15:56<02:01, 12.16s/it] 82%|████████▏ | 41/50 [16:23<02:29, 16.61s/it] 84%|████████▍ | 42/50 [16:38<02:09, 16.17s/it] 86%|████████▌ | 43/50 [16:42<01:27, 12.52s/it] 88%|████████▊ | 44/50 [16:47<01:01, 10.21s/it] 90%|█████████ | 45/50 [16:51<00:41,  8.38s/it] 92%|█████████▏| 46/50 [17:00<00:34,  8.56s/it] 94%|█████████▍| 47/50 [17:04<00:21,  7.26s/it] 96%|█████████▌| 48/50 [17:14<00:16,  8.04s/it] 98%|█████████▊| 49/50 [17:18<00:06,  6.94s/it]100%|██████████| 50/50 [17:24<00:00,  6.48s/it]100%|██████████| 50/50 [17:24<00:00, 20.89s/it]
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     50        
+Failed requests:                         0         
+Request rate configured (RPS):           0.20      
+Benchmark duration (s):                  1044.40   
+Total input tokens:                      55836     
+Total generated tokens:                  209303    
+Request throughput (req/s):              0.05      
+Output token throughput (tok/s):         200.41    
+Peak output token throughput (tok/s):    133.00    
+Peak concurrent requests:                49.00     
+Total token throughput (tok/s):          253.87    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          651.77    
+Median TTFT (ms):                        650.31    
+P50 TTFT (ms):                           650.31    
+P90 TTFT (ms):                           803.44    
+P95 TTFT (ms):                           835.59    
+P99 TTFT (ms):                           907.54    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          145.08    
+Median TPOT (ms):                        146.35    
+P50 TPOT (ms):                           146.35    
+P90 TPOT (ms):                           167.67    
+P95 TPOT (ms):                           170.72    
+P99 TPOT (ms):                           175.09    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           379.71    
+Median ITL (ms):                         160.95    
+P50 ITL (ms):                            160.95    
+P90 ITL (ms):                            271.99    
+P95 ITL (ms):                            317.42    
+P99 ITL (ms):                            372.34    
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          582602.37 
+Median E2EL (ms):                        590266.99 
+P50 E2EL (ms):                           590266.99 
+P90 E2EL (ms):                           835922.34 
+P95 E2EL (ms):                           903200.08 
+P99 E2EL (ms):                           939497.39 
+==================================================

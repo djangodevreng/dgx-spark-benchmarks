@@ -1,0 +1,39 @@
+llama-benchy (0.4.0)
+Date: 2026-08-07 17:39:59
+Benchmarking model: qwen3.5-4b-bf16 at http://localhost:8000/v1
+Concurrency levels: [20]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'qwen3.5-4b-bf16': qwen3.5-4b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a75fc50-0e41f6cb22dbf7ea3467af70;671de946-ac3b-4eb1-a811-82d347a88c5d)
+
+Repository Not Found for url: https://huggingface.co/qwen3.5-4b-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 8 tokens (Server: 30, Local: 22)
+Warmup (System+Probe) complete. Delta: 13 tokens (Server: 36, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 58.86 ms
+Running test: pp=25000, tg=256, depth=0, concurrency=20
+  Warmup (batch size 20)...
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model           |          test |    t/s (total) |        t/s (req) |      peak t/s |   peak t/s (req) |           ttfr (ms) |        est_ppt (ms) |       e2e_ttft (ms) |
+|:----------------|--------------:|---------------:|-----------------:|--------------:|-----------------:|--------------------:|--------------------:|--------------------:|
+| qwen3.5-4b-bf16 | pp25000 (c20) | 5239.06 ± 1.34 | 978.54 ± 1186.88 |               |                  | 44647.77 ± 25058.68 | 44588.91 ± 25058.68 | 44648.88 ± 25058.86 |
+| qwen3.5-4b-bf16 |   tg256 (c20) |   51.26 ± 0.03 |      5.94 ± 3.19 | 240.00 ± 0.00 |     16.98 ± 3.64 |                     |                     |                     |
+
+llama-benchy (0.4.0)
+date: 2026-08-07 17:39:59 | latency mode: generation

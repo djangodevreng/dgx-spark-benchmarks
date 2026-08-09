@@ -1,0 +1,97 @@
+{
+  "model": "Qwen/Qwen3.5-2B",
+  "served_name": "qwen3.5-2b-bf16",
+  "profile": "bf16",
+  "capacity_by_slo_ms": {
+    "2000": {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.929,
+      "ttft_p95_ms": 1041.8,
+      "output_tps": 457.0,
+      "peak_concurrent": 26
+    },
+    "5000": {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.929,
+      "ttft_p95_ms": 1041.8,
+      "output_tps": 457.0,
+      "peak_concurrent": 26
+    },
+    "10000": {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.929,
+      "ttft_p95_ms": 1041.8,
+      "output_tps": 457.0,
+      "peak_concurrent": 26
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.098,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 385.8,
+      "ttft_p95_ms": 614.2,
+      "ttft_p99_ms": 785.8,
+      "output_tps": 48.1,
+      "peak_concurrent": 5
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.192,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 402.1,
+      "ttft_p95_ms": 705.5,
+      "ttft_p99_ms": 830.1,
+      "output_tps": 94.3,
+      "peak_concurrent": 7
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.282,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 409.1,
+      "ttft_p95_ms": 752.1,
+      "ttft_p99_ms": 913.5,
+      "output_tps": 138.8,
+      "peak_concurrent": 10
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.47,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 410.2,
+      "ttft_p95_ms": 827.5,
+      "ttft_p99_ms": 1062.5,
+      "output_tps": 230.4,
+      "peak_concurrent": 13
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.658,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 415.9,
+      "ttft_p95_ms": 872.7,
+      "ttft_p99_ms": 1141.0,
+      "output_tps": 321.3,
+      "peak_concurrent": 16
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.929,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 449.4,
+      "ttft_p95_ms": 1041.8,
+      "ttft_p99_ms": 1293.1,
+      "output_tps": 457.0,
+      "peak_concurrent": 26
+    }
+  ]
+}

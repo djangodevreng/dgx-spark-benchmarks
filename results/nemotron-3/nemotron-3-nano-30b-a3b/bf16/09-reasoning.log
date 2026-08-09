@@ -1,0 +1,56 @@
+<frozen importlib._bootstrap_external>:1297: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1297: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+Namespace(subparser='bench', bench_type='serve', dispatch_function=<function BenchmarkServingSubcommand.cmd at 0xe3e58214b240>, trust_remote_code=False, seed=42, num_prompts=50, dataset_name='random', no_stream=False, dataset_path=None, no_oversample=False, skip_chat_template=False, enable_multimodal_chat=False, disable_shuffle=False, custom_output_len=256, custom_ensure_client_side_data=False, spec_bench_output_len=256, spec_bench_category=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, timed_trace_chunk_hash_size=16, timed_trace_sec_multiplier=1, timed_trace_label_timestamp='timestamp', timed_trace_label_input_length='input_length', timed_trace_label_output_length='output_length', timed_trace_label_hash_ids='hash_ids', blazedit_min_distance=0.0, blazedit_max_distance=1.0, asr_max_audio_len_sec=inf, asr_min_audio_len_sec=0.0, random_input_len=1024, random_output_len=4096, random_range_ratio='0.9', random_prefix_len=0, random_batch_size=1, no_reranker=False, random_mm_base_items_per_request=1, random_mm_num_mm_items_range_ratio=0.0, random_mm_limit_mm_per_prompt={'image': 255, 'video': 1}, random_mm_bucket_config={(256, 256, 1): 0.5, (720, 1280, 1): 0.5, (720, 1280, 16): 0.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai-chat', base_url='http://localhost:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', header=None, max_concurrency=None, model='nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16', input_len=None, output_len=None, tokenizer='nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=0.2, burstiness=1.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=True, save_detailed=False, append_result=False, metadata=None, result_dir='/tmp', result_filename='09-reasoning.json', ignore_eos=False, self_timed=None, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='50,90,95,99', goodput=None, request_id_prefix='bench-6a8512e5-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name='nemotron-3-nano-30b-bf16', lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 08-09 02:51:07 [utils.py:90] Sampling input_len from [102, 1946] and output_len from [409, 7783]
+WARNING: /tokenize unavailable, skipping alignment.
+WARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.
+Starting initial single prompt test run...
+Skipping endpoint ready check.
+Starting main benchmark run...
+Traffic request rate: 0.2
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: None
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [02:06<1:43:31, 126.77s/it]  4%|▍         | 2/50 [04:43<1:55:27, 144.33s/it]  6%|▌         | 3/50 [04:45<1:02:19, 79.56s/it]   8%|▊         | 4/50 [05:03<42:09, 54.98s/it]   10%|█         | 5/50 [06:11<44:46, 59.70s/it] 12%|█▏        | 6/50 [06:47<37:52, 51.65s/it] 14%|█▍        | 7/50 [07:13<31:10, 43.49s/it] 16%|█▌        | 8/50 [07:14<20:52, 29.83s/it] 18%|█▊        | 9/50 [08:04<24:34, 35.97s/it] 20%|██        | 10/50 [08:08<17:27, 26.18s/it] 22%|██▏       | 11/50 [08:19<14:01, 21.59s/it] 24%|██▍       | 12/50 [08:57<16:47, 26.52s/it] 26%|██▌       | 13/50 [09:16<15:02, 24.40s/it] 28%|██▊       | 14/50 [09:25<11:52, 19.81s/it] 30%|███       | 15/50 [09:27<08:16, 14.20s/it] 32%|███▏      | 16/50 [09:37<07:27, 13.15s/it] 34%|███▍      | 17/50 [09:49<06:55, 12.58s/it] 36%|███▌      | 18/50 [09:53<05:20, 10.02s/it] 38%|███▊      | 19/50 [09:54<03:50,  7.42s/it] 40%|████      | 20/50 [10:02<03:49,  7.64s/it] 42%|████▏     | 21/50 [10:12<04:00,  8.30s/it] 44%|████▍     | 22/50 [10:48<07:48, 16.72s/it] 46%|████▌     | 23/50 [10:53<05:52, 13.07s/it] 48%|████▊     | 24/50 [10:53<04:00,  9.25s/it] 50%|█████     | 25/50 [10:54<02:43,  6.56s/it] 52%|█████▏    | 26/50 [11:00<02:39,  6.64s/it] 54%|█████▍    | 27/50 [11:08<02:39,  6.92s/it] 56%|█████▌    | 28/50 [11:20<03:03,  8.35s/it] 58%|█████▊    | 29/50 [11:52<05:27, 15.57s/it] 60%|██████    | 30/50 [12:07<05:09, 15.46s/it] 62%|██████▏   | 31/50 [12:32<05:44, 18.13s/it] 64%|██████▍   | 32/50 [13:03<06:35, 22.00s/it] 66%|██████▌   | 33/50 [13:08<04:47, 16.90s/it] 68%|██████▊   | 34/50 [13:11<03:23, 12.69s/it] 70%|███████   | 35/50 [13:11<02:14,  8.95s/it] 72%|███████▏  | 36/50 [13:21<02:10,  9.32s/it] 74%|███████▍  | 37/50 [13:34<02:17, 10.57s/it] 76%|███████▌  | 38/50 [13:50<02:24, 12.02s/it] 78%|███████▊  | 39/50 [13:58<01:58, 10.76s/it] 80%|████████  | 40/50 [14:06<01:39,  9.91s/it] 82%|████████▏ | 41/50 [14:29<02:06, 14.01s/it] 84%|████████▍ | 42/50 [14:43<01:52, 14.01s/it] 86%|████████▌ | 43/50 [14:46<01:15, 10.76s/it] 88%|████████▊ | 44/50 [14:50<00:51,  8.54s/it] 90%|█████████ | 45/50 [14:54<00:36,  7.22s/it] 92%|█████████▏| 46/50 [15:01<00:29,  7.32s/it] 94%|█████████▍| 47/50 [15:06<00:19,  6.38s/it] 96%|█████████▌| 48/50 [15:17<00:15,  7.90s/it] 98%|█████████▊| 49/50 [15:22<00:07,  7.14s/it]100%|██████████| 50/50 [15:27<00:00,  6.50s/it]100%|██████████| 50/50 [15:27<00:00, 18.56s/it]
+tip: install termplotlib and gnuplot to plot the metrics
+============ Serving Benchmark Result ============
+Successful requests:                     50        
+Failed requests:                         0         
+Request rate configured (RPS):           0.20      
+Benchmark duration (s):                  927.90    
+Total input tokens:                      55805     
+Total generated tokens:                  209303    
+Request throughput (req/s):              0.05      
+Output token throughput (tok/s):         225.57    
+Peak output token throughput (tok/s):    400.00    
+Peak concurrent requests:                49.00     
+Total token throughput (tok/s):          285.71    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          646.82    
+Median TTFT (ms):                        662.49    
+P50 TTFT (ms):                           662.49    
+P90 TTFT (ms):                           787.73    
+P95 TTFT (ms):                           843.00    
+P99 TTFT (ms):                           885.21    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          135.20    
+Median TPOT (ms):                        134.42    
+P50 TPOT (ms):                           134.42    
+P90 TPOT (ms):                           169.18    
+P95 TPOT (ms):                           181.30    
+P99 TPOT (ms):                           184.43    
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           125.57    
+Median ITL (ms):                         109.32    
+P50 ITL (ms):                            109.32    
+P90 ITL (ms):                            182.42    
+P95 ITL (ms):                            198.90    
+P99 ITL (ms):                            212.81    
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          526301.68 
+Median E2EL (ms):                        550507.89 
+P50 E2EL (ms):                           550507.89 
+P90 E2EL (ms):                           730032.57 
+P95 E2EL (ms):                           786492.06 
+P99 E2EL (ms):                           823460.31 
+==================================================

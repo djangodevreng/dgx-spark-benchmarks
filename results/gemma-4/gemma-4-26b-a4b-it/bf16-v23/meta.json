@@ -2,14 +2,20 @@
   "profile": "bf16-v23",
   "model": "google/gemma-4-26B-A4B-it",
   "served_name": "gemma-4-26b-a4b",
-  "vllm_image": "vllm/vllm-openai:v0.23.0-aarch64-cu129-ubuntu2404",
+  "vllm_image": "vllm/vllm-openai:v0.26.0-aarch64-cu129-ubuntu2404",
+  "vllm_version_reported": "0.26.0",
+  "llama_benchy_version": "0.4.0",
   "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
   "server_config": {
     "max_model_len": 131072,
     "gpu_memory_utilization": 0.85,
     "kv_cache_dtype": "fp8",
     "enable_prefix_caching": false,
-    "async_scheduling": true
+    "async_scheduling": true,
+    "extra_vllm_args": "--max-num-batched-tokens 8192",
+    "profile_env_vars": ""
   },
-  "generated_at": "2026-06-22T23:16:36+02:00"
+  "generated_at": "2026-08-06T08:12:07+02:00"
 }
