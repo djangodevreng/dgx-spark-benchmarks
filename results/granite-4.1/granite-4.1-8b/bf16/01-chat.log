@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-09 06:26:41
+Benchmarking model: granite-4-1-8b-bf16 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'granite-4-1-8b-bf16': granite-4-1-8b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a780181-6bbd86ce517f12c55ae9bc98;56762010-c762-4b1f-a7e4-baefd0782316)
+
+Repository Not Found for url: https://huggingface.co/granite-4-1-8b-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 7 tokens (Server: 29, Local: 22)
+Warmup (System+Probe) complete. Delta: 12 tokens (Server: 35, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 154.47 ms
+Running test: pp=1024, tg=1024, depth=0, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=1024, tg=1024, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model               |         test |      t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |        ttfr (ms) |     est_ppt (ms) |    e2e_ttft (ms) |
+|:--------------------|-------------:|-----------------:|------------------:|--------------:|-----------------:|-----------------:|-----------------:|-----------------:|
+| granite-4-1-8b-bf16 |  pp1024 (c1) | 2942.64 ± 802.37 |  2942.64 ± 802.37 |               |                  |  492.78 ± 102.07 |  338.31 ± 102.07 |  492.78 ± 102.07 |
+| granite-4-1-8b-bf16 |  tg1024 (c1) |     12.26 ± 0.10 |      12.26 ± 0.10 |  13.00 ± 0.00 |     13.00 ± 0.00 |                  |                  |                  |
+| granite-4-1-8b-bf16 |  pp1024 (c5) |  3351.07 ± 57.36 | 1506.12 ± 1345.33 |               |                  | 1080.69 ± 391.11 |  926.22 ± 391.11 | 1080.69 ± 391.11 |
+| granite-4-1-8b-bf16 |  tg1024 (c5) |     39.69 ± 4.79 |      12.52 ± 0.25 |  70.00 ± 0.00 |     14.00 ± 0.00 |                  |                  |                  |
+| granite-4-1-8b-bf16 | pp1024 (c10) | 3576.91 ± 216.58 |  861.14 ± 1108.02 |               |                  | 1886.73 ± 689.10 | 1732.26 ± 689.10 | 1886.73 ± 689.10 |
+| granite-4-1-8b-bf16 | tg1024 (c10) |     60.09 ± 7.00 |      11.99 ± 0.50 | 136.67 ± 4.71 |     13.73 ± 0.44 |                  |                  |                  |
+
+llama-benchy (0.4.0)
+date: 2026-08-09 06:26:41 | latency mode: generation

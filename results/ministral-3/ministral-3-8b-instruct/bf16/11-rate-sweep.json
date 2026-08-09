@@ -1,0 +1,37 @@
+{
+  "model": "mistralai/Ministral-3-8B-Instruct-2512",
+  "served_name": "x",
+  "profile": "bf16",
+  "aborted_at_rps": 0.2,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.096,
+      "ttft_p95_ms": 2674.8,
+      "output_tps": 47.4,
+      "peak_concurrent": 8
+    },
+    "10000": {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.096,
+      "ttft_p95_ms": 2674.8,
+      "output_tps": 47.4,
+      "peak_concurrent": 8
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.096,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1492.5,
+      "ttft_p95_ms": 2674.8,
+      "ttft_p99_ms": 3363.4,
+      "output_tps": 47.4,
+      "peak_concurrent": 8
+    }
+  ]
+}

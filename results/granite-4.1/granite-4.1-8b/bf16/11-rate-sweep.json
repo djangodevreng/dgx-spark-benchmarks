@@ -1,0 +1,92 @@
+{
+  "model": "ibm-granite/granite-4.1-8b",
+  "served_name": "granite-4-1-8b-bf16",
+  "profile": "bf16",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.234,
+      "ttft_p95_ms": 4638.3,
+      "output_tps": 115.1,
+      "peak_concurrent": 32
+    },
+    "10000": {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.391,
+      "ttft_p95_ms": 8463.8,
+      "output_tps": 191.0,
+      "peak_concurrent": 153
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.093,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1462.4,
+      "ttft_p95_ms": 2950.7,
+      "ttft_p99_ms": 3685.8,
+      "output_tps": 45.7,
+      "peak_concurrent": 14
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.173,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1665.0,
+      "ttft_p95_ms": 4081.1,
+      "ttft_p99_ms": 4469.8,
+      "output_tps": 85.0,
+      "peak_concurrent": 20
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.234,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1820.0,
+      "ttft_p95_ms": 4638.3,
+      "ttft_p99_ms": 5460.1,
+      "output_tps": 115.1,
+      "peak_concurrent": 32
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.342,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 2574.0,
+      "ttft_p95_ms": 5646.7,
+      "ttft_p99_ms": 6733.8,
+      "output_tps": 167.3,
+      "peak_concurrent": 86
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.391,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 3884.2,
+      "ttft_p95_ms": 8463.8,
+      "ttft_p99_ms": 9807.3,
+      "output_tps": 191.0,
+      "peak_concurrent": 153
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.439,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 20198.2,
+      "ttft_p95_ms": 37574.4,
+      "ttft_p99_ms": 40041.3,
+      "output_tps": 215.8,
+      "peak_concurrent": 247
+    }
+  ]
+}

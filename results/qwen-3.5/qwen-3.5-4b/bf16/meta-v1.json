@@ -1,0 +1,15 @@
+{
+  "profile": "bf16",
+  "model": "Qwen/Qwen3.5-4B",
+  "served_name": "qwen3.5-4b-bf16",
+  "vllm_image": "vllm/vllm-openai:v0.20.1",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.95,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true
+  },
+  "generated_at": "2026-05-07T22:21:49+02:00"
+}

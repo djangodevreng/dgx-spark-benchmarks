@@ -1,0 +1,97 @@
+{
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16",
+  "served_name": "nemotron-3-nano-4b-bf16",
+  "profile": "bf16",
+  "capacity_by_slo_ms": {
+    "2000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.272,
+      "ttft_p95_ms": 1755.8,
+      "output_tps": 133.5,
+      "peak_concurrent": 15
+    },
+    "5000": {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.756,
+      "ttft_p95_ms": 4815.1,
+      "output_tps": 371.9,
+      "peak_concurrent": 133
+    },
+    "10000": {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.756,
+      "ttft_p95_ms": 4815.1,
+      "output_tps": 371.9,
+      "peak_concurrent": 133
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.097,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 787.3,
+      "ttft_p95_ms": 1357.5,
+      "ttft_p99_ms": 1626.2,
+      "output_tps": 47.4,
+      "peak_concurrent": 7
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.187,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 815.8,
+      "ttft_p95_ms": 1634.0,
+      "ttft_p99_ms": 2072.7,
+      "output_tps": 91.9,
+      "peak_concurrent": 14
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.272,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 867.4,
+      "ttft_p95_ms": 1755.8,
+      "ttft_p99_ms": 2190.6,
+      "output_tps": 133.5,
+      "peak_concurrent": 15
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.449,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 948.4,
+      "ttft_p95_ms": 2030.0,
+      "ttft_p99_ms": 2721.2,
+      "output_tps": 219.8,
+      "peak_concurrent": 24
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.597,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 1093.5,
+      "ttft_p95_ms": 2191.2,
+      "ttft_p99_ms": 2980.6,
+      "output_tps": 291.6,
+      "peak_concurrent": 42
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.756,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 1934.6,
+      "ttft_p95_ms": 4815.1,
+      "ttft_p99_ms": 6312.4,
+      "output_tps": 371.9,
+      "peak_concurrent": 133
+    }
+  ]
+}

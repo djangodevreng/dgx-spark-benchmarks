@@ -1,0 +1,12 @@
+{
+  "model": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-FP8",
+  "served_name": "nemotron-3-nano-omni-30b-fp8",
+  "profile": "fp8",
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": null,
+    "10000": null
+  },
+  "queue_knee_rps": null,
+  "steps": []
+}

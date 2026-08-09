@@ -1,0 +1,65 @@
+{
+  "model": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4",
+  "served_name": "x",
+  "profile": "nvfp4",
+  "aborted_at_rps": 0.5,
+  "capacity_by_slo_ms": {
+    "2000": {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.099,
+      "ttft_p95_ms": 1704.8,
+      "output_tps": 48.4,
+      "peak_concurrent": 5
+    },
+    "5000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.283,
+      "ttft_p95_ms": 3177.3,
+      "output_tps": 139.1,
+      "peak_concurrent": 18
+    },
+    "10000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.283,
+      "ttft_p95_ms": 3177.3,
+      "output_tps": 139.1,
+      "peak_concurrent": 18
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.099,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 973.9,
+      "ttft_p95_ms": 1704.8,
+      "ttft_p99_ms": 2836.6,
+      "output_tps": 48.4,
+      "peak_concurrent": 5
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.193,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 940.2,
+      "ttft_p95_ms": 2105.0,
+      "ttft_p99_ms": 2545.3,
+      "output_tps": 94.7,
+      "peak_concurrent": 13
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.283,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1390.9,
+      "ttft_p95_ms": 3177.3,
+      "ttft_p99_ms": 7079.0,
+      "output_tps": 139.1,
+      "peak_concurrent": 18
+    }
+  ]
+}

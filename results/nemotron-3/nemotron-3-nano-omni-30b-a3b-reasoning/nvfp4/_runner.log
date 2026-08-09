@@ -1,7 +1,7 @@
 [09:37:57] === bench-spark run ===
 [09:37:57] Profile: nemotron-30b-nvfp4
 [09:37:57] Tests:   A B C E F G H I J
-[09:37:57] Results: /home/spark/benchmarks/bench-spark/results/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4
+[09:37:57] Results: /home/eugene/benchmarks/bench-spark/results/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4
 [09:37:57] ── START A ──
 [09:38:57]     ... A running: 60s, GPU 0%
 [09:39:57]     ... A running: 120s, GPU 96%
@@ -86,3 +86,161 @@
 [10:48:49]     ... J running: 540s, GPU 0%
 [10:48:59] ── END J (550s) ──
 [10:48:59] === klaar (4262s = 71m) ===
+
+════════ nieuwe sessie 2026-08-07T12:24:19+02:00 ════════
+[12:24:19] === bench-spark run ===
+[12:24:19] Profile: nemotron-30b-nvfp4
+[12:24:19] Tests:   01 02 03 04 05 06 07 08 09 10 11
+[12:24:19] Results: /home/eugene/benchmarks/bench-spark/results/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4
+[12:24:23] Sanity-check op modeloutput...
+[12:24:24] SANITY: OK, model antwoordt: 1 2 3 4 5 The user says "Tel van 1 tot 5." That's Dutch: "Count from 1
+[12:24:24] ── START 01 ──
+[12:25:25]     ... 01 running: 61s, GPU 96%, 46.65W, 56C, 2509MHz
+[12:26:25]     ... 01 running: 121s, GPU 96%, 42.32W, 60C, 2509MHz
+[12:27:25]     ... 01 running: 181s, GPU 96%, 44.61W, 64C, 2489MHz
+[12:28:26]     ... 01 running: 242s, GPU 96%, 46.05W, 66C, 2489MHz
+[12:29:26]     ... 01 running: 302s, GPU 96%, 46.60W, 68C, 2489MHz
+[12:30:16] ── END 01 (352s) ──
+[12:30:16] ── START 02 ──
+[12:31:17]     ... 02 running: 61s, GPU 96%, 44.08W, 67C, 2489MHz
+[12:32:17]     ... 02 running: 121s, GPU 96%, 40.44W, 67C, 2489MHz
+[12:33:17]     ... 02 running: 181s, GPU 96%, 46.60W, 68C, 2489MHz
+[12:34:18]     ... 02 running: 242s, GPU 96%, 48.28W, 70C, 2489MHz
+[12:35:18]     ... 02 running: 302s, GPU 96%, 48.21W, 70C, 2489MHz
+[12:36:18]     ... 02 running: 362s, GPU 96%, 79.17W, 74C, 2450MHz
+[12:36:59] ── END 02 (403s) ──
+[12:36:59] ── START 03 ──
+[12:38:00]     ... 03 running: 61s, GPU 96%, 43.87W, 67C, 2489MHz
+[12:39:00]     ... 03 running: 121s, GPU 96%, 40.38W, 65C, 2489MHz
+[12:40:00]     ... 03 running: 181s, GPU 96%, 41.66W, 65C, 2496MHz
+[12:41:01]     ... 03 running: 242s, GPU 96%, 43.35W, 65C, 2496MHz
+[12:42:01]     ... 03 running: 302s, GPU 96%, 39.74W, 64C, 2483MHz
+[12:43:02]     ... 03 running: 363s, GPU 96%, 43.42W, 65C, 2496MHz
+[12:44:02]     ... 03 running: 423s, GPU 96%, 39.65W, 64C, 2483MHz
+[12:45:02]     ... 03 running: 483s, GPU 96%, 39.57W, 64C, 2489MHz
+[12:46:03]     ... 03 running: 544s, GPU 96%, 43.41W, 65C, 2496MHz
+[12:47:03]     ... 03 running: 604s, GPU 96%, 41.60W, 64C, 2496MHz
+[12:47:18] ── END 03 (619s) ──
+[12:47:18] ── START 04 ──
+[12:48:19]     ... 04 running: 61s, GPU 96%, 43.27W, 64C, 2489MHz
+[12:49:19]     ... 04 running: 121s, GPU 96%, 43.49W, 65C, 2496MHz
+[12:50:20]     ... 04 running: 182s, GPU 96%, 46.11W, 66C, 2489MHz
+[12:50:33] ── END 04 (195s) ──
+[12:50:33] ── START 05 ──
+[12:51:33]     ... 05 running: 60s, GPU 96%, 43.74W, 66C, 2489MHz
+[12:52:34]     ... 05 running: 121s, GPU 96%, 46.63W, 68C, 2489MHz
+[12:53:34]     ... 05 running: 181s, GPU 57%, 65.75W, 67C, 2444MHz
+[12:54:34]     ... 05 running: 241s, GPU 96%, 47.02W, 70C, 2489MHz
+[12:55:35]     ... 05 running: 302s, GPU 96%, 41.12W, 69C, 2483MHz
+[12:56:35]     ... 05 running: 362s, GPU 46%, 48.46W, 73C, 2470MHz
+[12:57:35]     ... 05 running: 422s, GPU 96%, 81.11W, 78C, 2437MHz
+[12:58:36]     ... 05 running: 483s, GPU 96%, 84.27W, 83C, 2431MHz
+[12:59:36]     ... 05 running: 543s, GPU 96%, 83.13W, 83C, 2437MHz
+[13:00:36]     ... 05 running: 603s, GPU 96%, 82.95W, 83C, 2444MHz
+[13:01:37]     ... 05 running: 664s, GPU 96%, 45.60W, 73C, 2470MHz
+[13:02:37]     ... 05 running: 724s, GPU 96%, 81.67W, 77C, 2450MHz
+[13:03:37]     ... 05 running: 784s, GPU 96%, 47.62W, 71C, 2489MHz
+[13:03:45] ── END 05 (792s) ──
+[13:03:45] ── START 06 ──
+[13:04:45]     ... 06 running: 60s, GPU 96%, 83.37W, 78C, 2437MHz
+[13:05:46]     ... 06 running: 121s, GPU 96%, 84.48W, 76C, 2444MHz
+[13:06:46]     ... 06 running: 181s, GPU 96%, 82.80W, 76C, 2437MHz
+[13:07:46]     ... 06 running: 241s, GPU 96%, 82.56W, 74C, 2444MHz
+[13:08:47]     ... 06 running: 302s, GPU 96%, 48.20W, 70C, 2489MHz
+[13:08:51] ── END 06 (306s) ──
+[13:08:51] ── START 07 ──
+[13:09:51]     ... 07 running: 60s, GPU 96%, 46.83W, 69C, 2489MHz
+[13:10:51]     ... 07 running: 120s, GPU 96%, 47.51W, 71C, 2489MHz
+[13:11:52]     ... 07 running: 181s, GPU 96%, 37.67W, 70C, 2496MHz
+[13:12:52]     ... 07 running: 241s, GPU 96%, 44.37W, 68C, 2496MHz
+[13:13:52]     ... 07 running: 301s, GPU 96%, 39.82W, 67C, 2489MHz
+[13:14:53]     ... 07 running: 362s, GPU 96%, 43.62W, 68C, 2489MHz
+[13:15:53]     ... 07 running: 422s, GPU 96%, 41.53W, 64C, 2496MHz
+[13:16:53]     ... 07 running: 482s, GPU 96%, 60.47W, 67C, 2457MHz
+[13:17:54]     ... 07 running: 543s, GPU 96%, 45.79W, 66C, 2496MHz
+[13:18:54]     ... 07 running: 603s, GPU 96%, 39.24W, 65C, 2489MHz
+[13:19:55]     ... 07 running: 664s, GPU 1%, 39.06W, 68C, 2463MHz
+[13:20:31] ── END 07 (700s) ──
+[13:20:31] ── START 08 ──
+[13:20:31] Kopieer ShareGPT naar container...
+[13:21:31]     ... 08 running: 60s, GPU 96%, 41.15W, 62C, 2489MHz
+[13:22:32]     ... 08 running: 121s, GPU 96%, 38.63W, 59C, 2496MHz
+[13:23:32]     ... 08 running: 181s, GPU 0%, 13.98W, 55C, 2411MHz
+[13:24:32]     ... 08 running: 241s, GPU 96%, 38.90W, 61C, 2496MHz
+[13:25:33]     ... 08 running: 302s, GPU 96%, 40.87W, 60C, 2515MHz
+[13:26:33]     ... 08 running: 362s, GPU 0%, 13.27W, 52C, 2405MHz
+[13:27:33]     ... 08 running: 422s, GPU 96%, 38.01W, 57C, 2509MHz
+[13:28:34]     ... 08 running: 483s, GPU 0%, 13.85W, 53C, 2411MHz
+[13:29:34]     ... 08 running: 543s, GPU 96%, 38.32W, 58C, 2496MHz
+[13:30:34]     ... 08 running: 603s, GPU 23%, 31.98W, 56C, 2496MHz
+[13:31:35]     ... 08 running: 664s, GPU 96%, 39.81W, 56C, 2515MHz
+[13:32:35]     ... 08 running: 724s, GPU 0%, 12.95W, 50C, 2405MHz
+[13:33:35]     ... 08 running: 784s, GPU 0%, 12.69W, 48C, 2405MHz
+[13:34:35]     ... 08 running: 844s, GPU 0%, 13.35W, 51C, 2405MHz
+[13:34:36] ── END 08 (845s) ──
+[13:34:36] ── START 09 ──
+[13:35:36]     ... 09 running: 60s, GPU 96%, 41.60W, 60C, 2515MHz
+[13:36:37]     ... 09 running: 121s, GPU 96%, 48.77W, 66C, 2489MHz
+[13:37:37]     ... 09 running: 181s, GPU 96%, 51.89W, 69C, 2496MHz
+[13:38:38]     ... 09 running: 242s, GPU 96%, 54.55W, 72C, 2470MHz
+[13:39:38]     ... 09 running: 302s, GPU 96%, 54.04W, 74C, 2470MHz
+[13:40:39]     ... 09 running: 363s, GPU 96%, 51.69W, 71C, 2489MHz
+[13:41:39]     ... 09 running: 423s, GPU 96%, 47.21W, 69C, 2489MHz
+[13:42:36] ── END 09 (480s) ──
+[13:42:36] ── START 10 ──
+[13:43:36]     ... 10 running: 60s, GPU 96%, 55.19W, 68C, 2489MHz
+[13:44:37]     ... 10 running: 121s, GPU 96%, 49.46W, 69C, 2489MHz
+[13:45:37]     ... 10 running: 181s, GPU 96%, 68.86W, 74C, 2444MHz
+[13:46:38]     ... 10 running: 242s, GPU 1%, 39.62W, 70C, 2431MHz
+[13:47:38]     ... 10 running: 302s, GPU 96%, 69.28W, 73C, 2450MHz
+[13:48:38]     ... 10 running: 362s, GPU 96%, 45.79W, 69C, 2489MHz
+[13:49:39]     ... 10 running: 423s, GPU 96%, 51.78W, 69C, 2489MHz
+[13:50:39]     ... 10 running: 483s, GPU 2%, 44.63W, 70C, 2444MHz
+[13:51:39]     ... 10 running: 543s, GPU 3%, 39.04W, 65C, 2450MHz
+[13:52:24] ── END 10 (588s) ──
+[13:52:24] ── START 11 ──
+[13:52:24]     K: rate 0.1 req/s, 100 prompts
+[13:53:24]     ... 11 running: 60s, GPU 0%, 14.60W, 59C, 2411MHz
+[13:54:24]     ... 11 running: 120s, GPU 0%, 14.57W, 59C, 2411MHz
+[13:55:25]     ... 11 running: 181s, GPU 96%, 63.37W, 63C, 2476MHz
+[13:56:25]     ... 11 running: 241s, GPU 96%, 37.96W, 55C, 2496MHz
+[13:57:25]     ... 11 running: 301s, GPU 0%, 13.78W, 53C, 2411MHz
+[13:58:25]     ... 11 running: 361s, GPU 0%, 13.43W, 52C, 2405MHz
+[13:59:26]     ... 11 running: 422s, GPU 0%, 12.94W, 50C, 2405MHz
+[14:00:26]     ... 11 running: 482s, GPU 96%, 37.50W, 57C, 2509MHz
+[14:01:26]     ... 11 running: 542s, GPU 96%, 37.40W, 53C, 2515MHz
+[14:02:26]     ... 11 running: 602s, GPU 96%, 37.38W, 53C, 2515MHz
+[14:03:27]     ... 11 running: 663s, GPU 0%, 13.39W, 52C, 2405MHz
+[14:04:27]     ... 11 running: 723s, GPU 0%, 13.08W, 51C, 2405MHz
+[14:05:27]     ... 11 running: 783s, GPU 96%, 40.35W, 57C, 2515MHz
+[14:06:28]     ... 11 running: 844s, GPU 1%, 46.90W, 58C, 2483MHz
+[14:07:28]     ... 11 running: 904s, GPU 96%, 37.35W, 53C, 2515MHz
+[14:08:28]     ... 11 running: 964s, GPU 96%, 39.70W, 55C, 2515MHz
+[14:09:29]     ... 11 running: 1025s, GPU 96%, 38.52W, 59C, 2496MHz
+[14:09:30]     K: rate 0.2 req/s, 100 prompts
+[14:10:29]     ... 11 running: 1085s, GPU 96%, 45.44W, 64C, 2489MHz
+[14:11:29]     ... 11 running: 1145s, GPU 0%, 14.21W, 56C, 2411MHz
+[14:12:30]     ... 11 running: 1206s, GPU 96%, 42.90W, 65C, 2489MHz
+[14:13:30]     ... 11 running: 1266s, GPU 96%, 44.05W, 67C, 2489MHz
+[14:14:30]     ... 11 running: 1326s, GPU 0%, 15.15W, 61C, 2411MHz
+[14:15:31]     ... 11 running: 1387s, GPU 96%, 44.59W, 69C, 2489MHz
+[14:16:31]     ... 11 running: 1447s, GPU 96%, 41.01W, 69C, 2489MHz
+[14:17:31]     ... 11 running: 1507s, GPU 96%, 40.63W, 67C, 2476MHz
+[14:18:19]     K: rate 0.3 req/s, 100 prompts
+[14:18:32]     ... 11 running: 1568s, GPU 96%, 40.24W, 67C, 2476MHz
+[14:19:32]     ... 11 running: 1628s, GPU 96%, 47.00W, 69C, 2489MHz
+[14:20:32]     ... 11 running: 1688s, GPU 96%, 57.08W, 69C, 2489MHz
+[14:21:33]     ... 11 running: 1749s, GPU 96%, 44.13W, 68C, 2496MHz
+[14:22:33]     ... 11 running: 1809s, GPU 96%, 46.76W, 69C, 2489MHz
+[14:23:24]     ... 11 running: 1860s, GPU 96%, 44.35W, 68C, 2496MHz
+[14:24:22]     K: rate 0.5 req/s, 125 prompts
+[14:24:24]     ... 11 running: 1920s, GPU 0%, 15.57W, 62C, 2405MHz
+[14:25:24]     ... 11 running: 1980s, GPU 53%, 54.08W, 65C, 2418MHz
+[14:26:25]     ... 11 running: 2041s, GPU 0%, 14.73W, 59C, 2411MHz
+[14:26:34]     K: kon 11-rate-sweep-0.5.json niet ophalen
+[14:26:34]     K: rate 0.7 req/s, 175 prompts
+[14:26:34]     K: kon 11-rate-sweep-0.7.json niet ophalen
+[14:26:34]     K: rate 1.0 req/s, 250 prompts
+[14:26:34]     K: kon 11-rate-sweep-1.0.json niet ophalen
+[14:26:34] ── FAILED 11 (2050s) ──
+[14:26:34] === klaar (7330s = 122m) ===

@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-08 16:32:11
+Benchmarking model: lfm2-5-2-6b-bf16 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'lfm2-5-2-6b-bf16': lfm2-5-2-6b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a773deb-4e5cc1b1712eb9b9354584df;f48f2bd9-d592-4c60-8efe-78ee3b375486)
+
+Repository Not Found for url: https://huggingface.co/lfm2-5-2-6b-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 10 tokens (Server: 32, Local: 22)
+Warmup (System+Probe) complete. Delta: 15 tokens (Server: 38, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 43.60 ms
+Running test: pp=2048, tg=512, depth=4, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=2048, tg=512, depth=4, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=2048, tg=512, depth=4, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model            |              test |       t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |        ttfr (ms) |     est_ppt (ms) |    e2e_ttft (ms) |
+|:-----------------|------------------:|------------------:|------------------:|--------------:|-----------------:|-----------------:|-----------------:|-----------------:|
+| lfm2-5-2-6b-bf16 |  pp2048 @ d4 (c1) | 14227.86 ± 171.95 | 14227.86 ± 171.95 |               |                  |    175.70 ± 5.24 |    132.10 ± 5.24 |    175.70 ± 5.24 |
+| lfm2-5-2-6b-bf16 |   tg512 @ d4 (c1) |      32.03 ± 0.36 |      32.03 ± 0.36 |  33.00 ± 0.00 |     33.00 ± 0.00 |                  |                  |                  |
+| lfm2-5-2-6b-bf16 |  pp2048 @ d4 (c5) |  12795.40 ± 34.49 | 5005.80 ± 4542.87 |               |                  |  617.52 ± 221.70 |  573.92 ± 221.70 |  617.52 ± 221.70 |
+| lfm2-5-2-6b-bf16 |   tg512 @ d4 (c5) |     187.08 ± 3.83 |      38.70 ± 1.02 | 200.00 ± 0.00 |     40.00 ± 0.00 |                  |                  |                  |
+| lfm2-5-2-6b-bf16 | pp2048 @ d4 (c10) |  13106.00 ± 17.82 | 3050.07 ± 3514.83 |               |                  | 1044.18 ± 405.31 | 1000.57 ± 405.31 | 1044.18 ± 405.31 |
+| lfm2-5-2-6b-bf16 |  tg512 @ d4 (c10) |     345.22 ± 6.89 |      36.76 ± 1.28 | 390.00 ± 0.00 |     39.00 ± 0.00 |                  |                  |                  |
+
+llama-benchy (0.4.0)
+date: 2026-08-08 16:32:11 | latency mode: generation

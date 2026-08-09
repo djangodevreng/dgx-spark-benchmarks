@@ -19,6 +19,86 @@ llama-benchy 0.3.8 voegde een warmup-fase toe. Binnen suite v1 zijn runs op 0.3.
 
 De `meta.json` van elke run vermeldt welke versies er daadwerkelijk zijn gebruikt, inclusief de door de server gerapporteerde vLLM-versie. Dat laatste omdat een image-tag geen identificatie is: `cu130-nightly` bleek achteraf `v0.19.2rc1.dev134+gfe9c3d6c5`.
 
+## Suite v2
+
+Elf genummerde tests, alles op vLLM v0.26.0 en llama-benchy 0.4.0, met
+telemetrie per test en een correctheidscheck op de modeloutput vóór elke
+suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
+
+### gemma-4
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| gemma-4-26b-a4b-it | `bf16-v23` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/](./results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/) |
+| gemma-4-26b-a4b-it | `nvfp4-v23` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
+| gemma-4-31b-it | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-31b-it/bf16/](./results/gemma-4/gemma-4-31b-it/bf16/) |
+
+### granite-4.1
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| granite-4.1-8b | `bf16` | 11/11 | `fp8` | 2026-08-09 | [results/granite-4.1/granite-4.1-8b/bf16/](./results/granite-4.1/granite-4.1-8b/bf16/) |
+
+### lfm2.5
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| lfm2.5-2.6b | `bf16` | 11/11 | `fp8` | 2026-08-08 | [results/lfm2.5/lfm2.5-2.6b/bf16/](./results/lfm2.5/lfm2.5-2.6b/bf16/) |
+
+### ministral-3
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| ministral-3-3b-instruct | `bf16` | 11/11 | `auto` | 2026-08-09 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
+| ministral-3-8b-instruct | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
+
+### nemotron-3
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| nemotron-3-nano-30b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-09 | [results/nemotron-3/nemotron-3-nano-30b-a3b/bf16/](./results/nemotron-3/nemotron-3-nano-30b-a3b/bf16/) |
+| nemotron-3-nano-30b-a3b | `fp8` | 11/11 | `fp8` | 2026-08-08 | [results/nemotron-3/nemotron-3-nano-30b-a3b/fp8/](./results/nemotron-3/nemotron-3-nano-30b-a3b/fp8/) |
+| nemotron-3-nano-4b | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-4b/bf16/](./results/nemotron-3/nemotron-3-nano-4b/bf16/) |
+| nemotron-3-nano-4b | `fp8` | 11/11 | `fp8` | 2026-08-08 | [results/nemotron-3/nemotron-3-nano-4b/fp8/](./results/nemotron-3/nemotron-3-nano-4b/fp8/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning | `bf16` | 11/11 | `auto` | 2026-08-05 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning | `fp8` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 11/11 | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
+
+### qwen-3.5
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| qwen-3.5-0.8b | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/qwen-3.5/qwen-3.5-0.8b/bf16/](./results/qwen-3.5/qwen-3.5-0.8b/bf16/) |
+| qwen-3.5-2b | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/qwen-3.5/qwen-3.5-2b/bf16/](./results/qwen-3.5/qwen-3.5-2b/bf16/) |
+| qwen-3.5-4b | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/qwen-3.5/qwen-3.5-4b/bf16/](./results/qwen-3.5/qwen-3.5-4b/bf16/) |
+| qwen-3.5-9b | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/qwen-3.5/qwen-3.5-9b/bf16/](./results/qwen-3.5/qwen-3.5-9b/bf16/) |
+
+### qwen-3.6
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| qwen-3.6-35b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-08 | [results/qwen-3.6/qwen-3.6-35b-a3b/bf16/](./results/qwen-3.6/qwen-3.6-35b-a3b/bf16/) |
+
+### Kanttekeningen bij deze generatie
+
+**Het Omni-trio is onderling niet vergelijkbaar.** `nemotron-3-nano-omni-30b-a3b-reasoning`
+draaide in bf16 en nvfp4 met `kv_cache_dtype=auto` en in fp8 met `fp8`. Bij de eerste twee
+meet je dus alleen de gewichtsprecisie, bij de derde ook een andere KV-cache. De losse
+cijfers kloppen; de vergelijking tussen die drie niet. Het text-only trio
+`nemotron-3-nano-30b-a3b` is wél schoon opgezet.
+
+**`ministral-3-3b-instruct` draait bewust met `kv_cache_dtype=auto`.** Op fp8 produceert
+dat model uitsluitend hekjes tot de tokenlimiet, live getoetst op 8 augustus 2026. Dat is
+een eigenschap van het model, geen fout in de opzet, maar het betekent wel dat zijn
+capaciteitscijfer niet een-op-een naast de rest ligt: de KV-cache bepaalt hoeveel
+aanvragen er tegelijk in passen.
+
+**De mapnamen `bf16-v23` en `nvfp4-v23` slaan op vLLM v0.23.0**, waarop die vergelijking
+oorspronkelijk is opgezet. De v2-runs in die mappen draaien gewoon op v0.26.0.
+
+**Waar v1 en v2 in dezelfde map staan** houden de bestandsnamen ze uit elkaar: letters
+`A`–`J` voor v1, cijfers `01`–`11` voor v2. De serverconfig van elke generatie staat in
+`meta-v1.json` en `meta.json`. Het `_runner.log` bevat beide, op tijdstempel.
 ## Suite v1
 
 ## gemma-4
