@@ -1,0 +1,21 @@
+{
+  "profile": "nvfp4",
+  "model": "mistralai/Mistral-Small-4-119B-2603-NVFP4",
+  "served_name": "mistral-small-4-119b-nvfp4",
+  "vllm_image": "vllm/vllm-openai:v0.26.0-aarch64-cu129-ubuntu2404",
+  "vllm_version_reported": "0.26.0",
+  "llama_benchy_version": "0.4.0",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.90,
+    "kv_cache_dtype": "fp8",
+    "enable_prefix_caching": false,
+    "async_scheduling": true,
+    "extra_vllm_args": "--language-model-only --tokenizer_mode mistral --config_format mistral --load_format mistral --moe-backend marlin --linear-backend marlin --max-num-batched-tokens 8192",
+    "profile_env_vars": ""
+  },
+  "generated_at": "2026-08-13T10:05:20+02:00"
+}

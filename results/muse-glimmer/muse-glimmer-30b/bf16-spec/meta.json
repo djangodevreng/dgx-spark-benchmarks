@@ -1,0 +1,21 @@
+{
+  "profile": "bf16-spec",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "served_name": "muse-glimmer-30b-bf16-spec",
+  "vllm_image": "vllm/vllm-openai:muse-glimmer",
+  "vllm_version_reported": "0.26.1rc1.dev608+g99a10304d",
+  "llama_benchy_version": "0.4.0",
+  "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
+  "server_config": {
+    "max_model_len": 131072,
+    "gpu_memory_utilization": 0.9,
+    "kv_cache_dtype": "auto",
+    "enable_prefix_caching": false,
+    "async_scheduling": false,
+    "extra_vllm_args": "--max-num-batched-tokens 8192 --max-num-seqs 256 --generation-config auto --enable-auto-tool-choice --tool-call-parser muse_glimmer --reasoning-parser muse_glimmer --speculative-config {\"method\":\"dflash\",\"model\":\"meta-models/Muse-Glimmer-30B-assistant\",\"num_speculative_tokens\":15}",
+    "profile_env_vars": ""
+  },
+  "generated_at": "2026-08-12T14:16:38+02:00"
+}

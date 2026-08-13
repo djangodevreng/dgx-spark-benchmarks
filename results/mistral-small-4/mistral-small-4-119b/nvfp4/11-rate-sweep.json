@@ -1,0 +1,92 @@
+{
+  "model": "mistralai/Mistral-Small-4-119B-2603-NVFP4",
+  "served_name": "mistral-small-4-119b-nvfp4",
+  "profile": "nvfp4",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.219,
+      "ttft_p95_ms": 4748.7,
+      "output_tps": 107.8,
+      "peak_concurrent": 46
+    },
+    "10000": {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.332,
+      "ttft_p95_ms": 7717.5,
+      "output_tps": 162.0,
+      "peak_concurrent": 156
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.096,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1455.4,
+      "ttft_p95_ms": 2854.5,
+      "ttft_p99_ms": 3970.4,
+      "output_tps": 47.4,
+      "peak_concurrent": 13
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.175,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 1679.8,
+      "ttft_p95_ms": 3737.3,
+      "ttft_p99_ms": 5025.3,
+      "output_tps": 86.1,
+      "peak_concurrent": 23
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.219,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 2027.2,
+      "ttft_p95_ms": 4748.7,
+      "ttft_p99_ms": 5095.7,
+      "output_tps": 107.8,
+      "peak_concurrent": 46
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.286,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 2660.3,
+      "ttft_p95_ms": 5417.1,
+      "ttft_p99_ms": 6812.5,
+      "output_tps": 139.9,
+      "peak_concurrent": 98
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.332,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 3783.7,
+      "ttft_p95_ms": 7717.5,
+      "ttft_p99_ms": 8626.1,
+      "output_tps": 162.0,
+      "peak_concurrent": 156
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.382,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 12027.5,
+      "ttft_p95_ms": 19723.5,
+      "ttft_p99_ms": 21336.0,
+      "output_tps": 187.8,
+      "peak_concurrent": 244
+    }
+  ]
+}

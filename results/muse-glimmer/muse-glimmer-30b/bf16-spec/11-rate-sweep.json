@@ -1,0 +1,80 @@
+{
+  "model": "meta-models/Muse-Glimmer-30B",
+  "served_name": "muse-glimmer-30b-bf16-spec",
+  "profile": "bf16-spec",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": null,
+    "10000": null
+  },
+  "queue_knee_rps": 0.1,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.072,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 6130.6,
+      "ttft_p95_ms": 13179.9,
+      "ttft_p99_ms": 16872.6,
+      "output_tps": 35.2,
+      "peak_concurrent": 40
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.076,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 11392.1,
+      "ttft_p95_ms": 25070.3,
+      "ttft_p99_ms": 30807.7,
+      "output_tps": 37.2,
+      "peak_concurrent": 89
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.076,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 19402.1,
+      "ttft_p95_ms": 48583.3,
+      "ttft_p99_ms": 54695.2,
+      "output_tps": 37.3,
+      "peak_concurrent": 97
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.079,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 94050.8,
+      "ttft_p95_ms": 223929.4,
+      "ttft_p99_ms": 233070.3,
+      "output_tps": 38.6,
+      "peak_concurrent": 125
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.079,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 192207.6,
+      "ttft_p95_ms": 510343.0,
+      "ttft_p99_ms": 527537.5,
+      "output_tps": 38.7,
+      "peak_concurrent": 175
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.081,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 370084.0,
+      "ttft_p95_ms": 1116348.6,
+      "ttft_p99_ms": 1206004.3,
+      "output_tps": 39.8,
+      "peak_concurrent": 250
+    }
+  ]
+}

@@ -9,7 +9,7 @@ De runs hieronder komen uit twee verschillende meetopstellingen. Vergelijk allee
 | | Suite v1 (t/m juli 2026) | Suite v2 (vanaf augustus 2026) |
 | --- | --- | --- |
 | Tests | 10, met losse letters `A` t/m `J` | 11, met `01-chat` t/m `11-rate-sweep` |
-| vLLM | v0.20.0, v0.20.1, v0.23.0 en een niet-gepinde nightly | v0.26.0 overal |
+| vLLM | v0.20.0, v0.20.1, v0.23.0 en een niet-gepinde nightly | v0.26.0, behalve `muse-glimmer` (zie kanttekeningen) |
 | llama-benchy | 0.3.7 en 0.3.8 door elkaar | 0.4.0 overal |
 | Driver / VBIOS | 580.159.03 / 9A.0B.25.00.00 | 580.173.02 / 9A.0B.2D.00.00 |
 | Telemetrie | geen | stroom, temperatuur, SM-klok per 10 s |
@@ -52,6 +52,19 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 | ministral-3-3b-instruct | `bf16` | 11/11 | `auto` | 2026-08-09 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
 | ministral-3-8b-instruct | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
 
+### mistral-small-4
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| mistral-small-4-119b | `nvfp4` | 11/11 | `fp8` | 2026-08-13 | [results/mistral-small-4/mistral-small-4-119b/nvfp4/](./results/mistral-small-4/mistral-small-4-119b/nvfp4/) |
+
+### muse-glimmer
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| muse-glimmer-30b | `bf16` | 11/11 | `auto` | 2026-08-12 | [results/muse-glimmer/muse-glimmer-30b/bf16/](./results/muse-glimmer/muse-glimmer-30b/bf16/) |
+| muse-glimmer-30b | `bf16-spec` | 11/11 | `auto` | 2026-08-12 | [results/muse-glimmer/muse-glimmer-30b/bf16-spec/](./results/muse-glimmer/muse-glimmer-30b/bf16-spec/) |
+
 ### nemotron-3
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
@@ -63,6 +76,12 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 | nemotron-3-nano-omni-30b-a3b-reasoning | `bf16` | 11/11 | `auto` | 2026-08-05 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `fp8` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 11/11 | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
+
+### nemotron-cascade-2
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| nemotron-cascade-2-30b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-13 | [results/nemotron-cascade-2/nemotron-cascade-2-30b-a3b/bf16/](./results/nemotron-cascade-2/nemotron-cascade-2-30b-a3b/bf16/) |
 
 ### qwen-3.5
 
@@ -80,6 +99,24 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 | qwen-3.6-35b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-08 | [results/qwen-3.6/qwen-3.6-35b-a3b/bf16/](./results/qwen-3.6/qwen-3.6-35b-a3b/bf16/) |
 
 ### Kanttekeningen bij deze generatie
+
+**`muse-glimmer` draait niet op v0.26.0 maar op een nightly.** De architectuur
+`muse_glimmer` zit niet in een uitgebrachte vLLM: v0.26.0 kent hem niet en in v0.27.1
+ontbreken de modelbestanden nog steeds. Meta en vLLM leverden bij de launch een aparte
+image `vllm/vllm-openai:muse-glimmer`, die zich meldt als `0.26.1rc1.dev608+g99a10304d`.
+De twee runs zijn onderling schoon vergelijkbaar — zelfde image, zelfde serverconfig, alleen
+de drafter verschilt — maar tegenover de rest van suite v2 draagt de vergelijking een
+versieverschil. De exacte versie staat per run in `meta.json`.
+
+**`muse-glimmer` gebruikt `kv_cache_dtype=auto`, niet `fp8`.** Bewust: het model wordt in
+bf16 gemeten met en zonder speculative decoding, en een gekwantiseerde KV-cache zou daar
+een tweede variabele bovenop leggen. Het capaciteitscijfer ligt daardoor niet een-op-een
+naast modellen die wel op `fp8` draaien.
+
+**`muse-glimmer-30b/bf16-spec` meet de DFlash-drafter bij Meta's eigen sampling**
+(temperature 1,0, top_p 0,95, top_k 64 via `--generation-config auto`). De acceptatiegraad
+van de drafter hangt sterk aan die sampling en lag tijdens de run tussen 5% en 17%. Bij
+greedy decoding zou dat getal fors hoger uitvallen; de gemeten winst is dus geen bovengrens.
 
 **Het Omni-trio is onderling niet vergelijkbaar.** `nemotron-3-nano-omni-30b-a3b-reasoning`
 draaide in bf16 en nvfp4 met `kv_cache_dtype=auto` en in fp8 met `fp8`. Bij de eerste twee

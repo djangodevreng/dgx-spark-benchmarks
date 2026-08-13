@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-12 07:39:10
+Benchmarking model: muse-glimmer-30b-bf16 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'muse-glimmer-30b-bf16': muse-glimmer-30b-bf16 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a7c06fe-0735e0e1430816f85fef30c7;5f163d56-1871-41da-995d-2b437736c3a4)
+
+Repository Not Found for url: https://huggingface.co/muse-glimmer-30b-bf16/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 55 tokens (Server: 77, Local: 22)
+Warmup (System+Probe) complete. Delta: 26 tokens (Server: 49, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 265.39 ms
+Running test: pp=2048, tg=512, depth=4, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=2048, tg=512, depth=4, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=2048, tg=512, depth=4, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model                 |              test |     t/s (total) |       t/s (req) |     peak t/s |   peak t/s (req) |         ttfr (ms) |      est_ppt (ms) |     e2e_ttft (ms) |
+|:----------------------|------------------:|----------------:|----------------:|-------------:|-----------------:|------------------:|------------------:|------------------:|
+| muse-glimmer-30b-bf16 |  pp2048 @ d4 (c1) | 1819.81 ± 23.07 | 1819.81 ± 23.07 |              |                  |   1287.43 ± 56.35 |   1022.04 ± 56.35 |  2134.69 ± 205.37 |
+| muse-glimmer-30b-bf16 |   tg512 @ d4 (c1) |     4.27 ± 0.02 |     4.27 ± 0.02 |  5.00 ± 0.00 |      5.00 ± 0.00 |                   |                   |                   |
+| muse-glimmer-30b-bf16 |  pp2048 @ d4 (c5) | 1413.61 ± 30.30 | 646.37 ± 584.19 |              |                  | 4706.88 ± 1755.03 | 4441.50 ± 1755.03 |  6485.87 ± 145.87 |
+| muse-glimmer-30b-bf16 |   tg512 @ d4 (c5) |    20.73 ± 0.07 |     4.16 ± 0.03 | 25.00 ± 0.00 |      5.00 ± 0.00 |                   |                   |                   |
+| muse-glimmer-30b-bf16 | pp2048 @ d4 (c10) |  1441.48 ± 5.58 | 398.76 ± 474.49 |              |                  | 8327.32 ± 3592.25 | 8061.93 ± 3592.25 | 12691.49 ± 225.97 |
+| muse-glimmer-30b-bf16 |  tg512 @ d4 (c10) |    39.74 ± 0.14 |     4.00 ± 0.04 | 50.00 ± 0.00 |      5.00 ± 0.00 |                   |                   |                   |
+
+llama-benchy (0.4.0)
+date: 2026-08-12 07:39:10 | latency mode: generation
