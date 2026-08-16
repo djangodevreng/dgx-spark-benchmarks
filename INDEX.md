@@ -33,11 +33,23 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 | gemma-4-26b-a4b-it | `nvfp4-v23` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
 | gemma-4-31b-it | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-31b-it/bf16/](./results/gemma-4/gemma-4-31b-it/bf16/) |
 
+### gpt-oss
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| gpt-oss-20b | `mxfp4` | 11/11 | `fp8` | 2026-08-14 | [results/gpt-oss/gpt-oss-20b/mxfp4/](./results/gpt-oss/gpt-oss-20b/mxfp4/) |
+
 ### granite-4.1
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
 | --- | --- | --- | --- | --- | --- |
 | granite-4.1-8b | `bf16` | 11/11 | `fp8` | 2026-08-09 | [results/granite-4.1/granite-4.1-8b/bf16/](./results/granite-4.1/granite-4.1-8b/bf16/) |
+
+### kat-coder
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| kat-coder-v2.5 | `bf16` | 11/11 | `fp8` | 2026-08-13 | [results/kat-coder/kat-coder-v2.5/bf16/](./results/kat-coder/kat-coder-v2.5/bf16/) |
 
 ### lfm2.5
 
@@ -71,11 +83,13 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 | --- | --- | --- | --- | --- | --- |
 | nemotron-3-nano-30b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-09 | [results/nemotron-3/nemotron-3-nano-30b-a3b/bf16/](./results/nemotron-3/nemotron-3-nano-30b-a3b/bf16/) |
 | nemotron-3-nano-30b-a3b | `fp8` | 11/11 | `fp8` | 2026-08-08 | [results/nemotron-3/nemotron-3-nano-30b-a3b/fp8/](./results/nemotron-3/nemotron-3-nano-30b-a3b/fp8/) |
+| nemotron-3-nano-30b-a3b | `nvfp4` | 11/11 | `fp8` | 2026-08-13 | [results/nemotron-3/nemotron-3-nano-30b-a3b/nvfp4/](./results/nemotron-3/nemotron-3-nano-30b-a3b/nvfp4/) |
 | nemotron-3-nano-4b | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-4b/bf16/](./results/nemotron-3/nemotron-3-nano-4b/bf16/) |
 | nemotron-3-nano-4b | `fp8` | 11/11 | `fp8` | 2026-08-08 | [results/nemotron-3/nemotron-3-nano-4b/fp8/](./results/nemotron-3/nemotron-3-nano-4b/fp8/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `bf16` | 11/11 | `auto` | 2026-08-05 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `fp8` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 11/11 | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
+| nemotron-3-super-120b-a12b | `nvfp4` | 11/11 | `fp8` | 2026-08-15 | [results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/](./results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/) |
 
 ### nemotron-cascade-2
 
@@ -96,9 +110,39 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
 | --- | --- | --- | --- | --- | --- |
+| qwen-3.6-27b | `bf16` | 11/11 | `fp8` | 2026-08-13 | [results/qwen-3.6/qwen-3.6-27b/bf16/](./results/qwen-3.6/qwen-3.6-27b/bf16/) |
+| qwen-3.6-27b | `fp8` | 11/11 | `fp8` | 2026-08-14 | [results/qwen-3.6/qwen-3.6-27b/fp8/](./results/qwen-3.6/qwen-3.6-27b/fp8/) |
 | qwen-3.6-35b-a3b | `bf16` | 11/11 | `fp8` | 2026-08-08 | [results/qwen-3.6/qwen-3.6-35b-a3b/bf16/](./results/qwen-3.6/qwen-3.6-35b-a3b/bf16/) |
+| qwen-3.6-35b-a3b | `fp8` | 11/11 | `fp8` | 2026-08-14 | [results/qwen-3.6/qwen-3.6-35b-a3b/fp8/](./results/qwen-3.6/qwen-3.6-35b-a3b/fp8/) |
+| qwen-3.6-35b-a3b | `nvfp4` | 11/11 | `fp8` | 2026-08-14 | [results/qwen-3.6/qwen-3.6-35b-a3b/nvfp4/](./results/qwen-3.6/qwen-3.6-35b-a3b/nvfp4/) |
+
+### qwen-3.8
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| qwen-3.8-27b | `bf16` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/bf16/](./results/qwen-3.8/qwen-3.8-27b/bf16/) |
+| qwen-3.8-27b | `fp8` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/fp8/](./results/qwen-3.8/qwen-3.8-27b/fp8/) |
 
 ### Kanttekeningen bij deze generatie
+
+**Vier configs draaien met een marlin-omweg om SM121-kernelgaten.** De GB10 is
+compute capability 12.1, en niet elke gekwantiseerde kernel bestaat daarvoor.
+Zonder deze vlaggen weigerde de engine te starten:
+
+| Config | Foutmelding zonder omweg | Toegevoegd |
+| --- | --- | --- |
+| `qwen-3.6-27b/fp8` | `cutlass_gemm_caller ... Error Internal` | `--linear-backend marlin` |
+| `qwen-3.6-35b-a3b/fp8` | idem | `--linear-backend marlin` |
+| `qwen-3.6-35b-a3b/nvfp4` | — | `--moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
+| `nemotron-3-super-120b-a12b/nvfp4` | `Failed to find a kernel ... ScaledMM` | `VLLM_TEST_FORCE_FP8_MARLIN=1` |
+
+De cijfers zijn eerlijk gemeten, maar ze zijn gehaald op Marlin-kernels waar
+CUTLASS of FlashInfer sneller zou kunnen zijn. Op hardware met wél die kernels
+liggen deze getallen vermoedelijk hoger. Alles staat per run in `meta.json`.
+
+**`qwen-3.8-27b` is gemeten op 131072 context, niet op zijn native 262144.**
+Dat is de suite-brede `MAX_MODEL_LEN`, gekozen voor vergelijkbaarheid met de rest
+van de arena. Het model kan dus meer dan hier te zien is.
 
 **`muse-glimmer` draait niet op v0.26.0 maar op een nightly.** De architectuur
 `muse_glimmer` zit niet in een uitgebrachte vLLM: v0.26.0 kent hem niet en in v0.27.1

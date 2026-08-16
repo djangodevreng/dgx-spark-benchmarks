@@ -6,7 +6,7 @@ Concurrency levels: [5, 10, 20]
 Error loading tokenizer: qwen3.6-27b-fp8 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
 If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
 Falling back to 'gpt2' tokenizer as approximation.
-Loading text from cache: /home/spark/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
 [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (159385 > 1024). Running this sequence through the model will result in indexing errors
 Total tokens available in text corpus: 159385
 Warming up...

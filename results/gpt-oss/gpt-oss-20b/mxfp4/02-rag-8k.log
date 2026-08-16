@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-14 11:51:54
+Benchmarking model: gpt-oss-20b-mxfp4 at http://localhost:8000/v1
+Concurrency levels: [5, 10, 20]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'gpt-oss-20b-mxfp4': gpt-oss-20b-mxfp4 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a7ee53a-765536ac64621f451124d8b9;748de36c-4cff-49d7-adec-e61554f677df)
+
+Repository Not Found for url: https://huggingface.co/gpt-oss-20b-mxfp4/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 66 tokens (Server: 88, Local: 22)
+Warmup (System+Probe) complete. Delta: 73 tokens (Server: 96, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 72.15 ms
+Running test: pp=8192, tg=512, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=8192, tg=512, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Running test: pp=8192, tg=512, depth=0, concurrency=20
+  Warmup (batch size 20)...
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model             |         test |       t/s (total) |         t/s (req) |       peak t/s |   peak t/s (req) |          ttfr (ms) |       est_ppt (ms) |      e2e_ttft (ms) |
+|:------------------|-------------:|------------------:|------------------:|---------------:|-----------------:|-------------------:|-------------------:|-------------------:|
+| gpt-oss-20b-mxfp4 |  pp8192 (c5) |  6948.03 ± 135.73 | 3332.20 ± 2088.48 |                |                  |  3287.77 ± 1473.58 |  2983.71 ± 1444.47 |   5051.45 ± 291.42 |
+| gpt-oss-20b-mxfp4 |   tg512 (c5) |    108.11 ± 30.06 |      28.42 ± 1.39 | 134.00 ± 24.78 |     31.08 ± 1.49 |                    |                    |                    |
+| gpt-oss-20b-mxfp4 | pp8192 (c10) | 4920.40 ± 1614.68 | 1971.14 ± 1786.22 |                |                  |  6112.75 ± 3046.22 |  5900.65 ± 3001.98 |  9186.41 ± 3713.74 |
+| gpt-oss-20b-mxfp4 |  tg512 (c10) |    162.14 ± 15.13 |      22.03 ± 1.87 | 224.67 ± 20.42 |     24.25 ± 6.48 |                    |                    |                    |
+| gpt-oss-20b-mxfp4 | pp8192 (c20) | 5636.24 ± 1881.09 | 1207.31 ± 1471.83 |                |                  | 11302.77 ± 5994.38 | 11086.74 ± 5941.34 | 15136.87 ± 8236.21 |
+| gpt-oss-20b-mxfp4 |  tg512 (c20) |     207.87 ± 9.58 |      14.72 ± 3.00 | 362.67 ± 31.48 |     19.34 ± 3.85 |                    |                    |                    |
+
+llama-benchy (0.4.0)
+date: 2026-08-14 11:51:54 | latency mode: generation

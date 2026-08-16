@@ -1,0 +1,1 @@
+1. één 2. twee 3. drie 4. vier 5. vijf We need to count from 1 to 5 in

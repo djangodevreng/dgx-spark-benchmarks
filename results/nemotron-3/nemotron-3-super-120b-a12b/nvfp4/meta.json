@@ -2,14 +2,20 @@
   "profile": "nvfp4",
   "model": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
   "served_name": "nemotron-3-super",
-  "vllm_image": "vllm/vllm-openai:cu130-nightly",
+  "vllm_image": "vllm/vllm-openai:v0.26.0-aarch64-cu129-ubuntu2404",
+  "vllm_version_reported": "0.26.0",
+  "llama_benchy_version": "0.4.0",
   "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
   "server_config": {
     "max_model_len": 131072,
-    "gpu_memory_utilization": 0.95,
+    "gpu_memory_utilization": 0.9,
     "kv_cache_dtype": "fp8",
     "enable_prefix_caching": false,
-    "async_scheduling": true
+    "async_scheduling": true,
+    "extra_vllm_args": "--trust-remote-code --enable-chunked-prefill --max-num-seqs 20 --moe-backend marlin --mamba_ssm_cache_dtype float32 --quantization fp4 --speculative_config {\"method\":\"mtp\",\"num_speculative_tokens\":3,\"moe_backend\":\"triton\"} --reasoning-parser-plugin /app/super_v3_reasoning_parser.py --reasoning-parser super_v3 --enable-auto-tool-choice --tool-call-parser qwen3_coder --linear-backend marlin",
+    "profile_env_vars": " VLLM_TEST_FORCE_FP8_MARLIN=1 VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 VLLM_FLASHINFER_ALLREDUCE_BACKEND=trtllm VLLM_USE_FLASHINFER_MOE_FP4=0"
   },
-  "generated_at": "2026-05-05T01:57:16+02:00"
+  "generated_at": "2026-08-15T04:22:40+02:00"
 }

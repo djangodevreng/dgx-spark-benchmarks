@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-14 14:54:38
+Benchmarking model: qwen3.6-35b-a3b-fp8 at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'qwen3.6-35b-a3b-fp8': qwen3.6-35b-a3b-fp8 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a7f100e-263697fc756939344c440fd0;a7d6f06b-e99f-49dd-b48e-250c7ca93712)
+
+Repository Not Found for url: https://huggingface.co/qwen3.6-35b-a3b-fp8/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 8 tokens (Server: 30, Local: 22)
+Warmup (System+Probe) complete. Delta: 13 tokens (Server: 36, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 69.09 ms
+Running test: pp=256, tg=4096, depth=0, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=256, tg=4096, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=256, tg=4096, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model               |         test |      t/s (total) |        t/s (req) |      peak t/s |   peak t/s (req) |       ttfr (ms) |    est_ppt (ms) |   e2e_ttft (ms) |
+|:--------------------|-------------:|-----------------:|-----------------:|--------------:|-----------------:|----------------:|----------------:|----------------:|
+| qwen3.6-35b-a3b-fp8 |   pp256 (c1) | 2947.48 ± 238.05 | 2947.48 ± 238.05 |               |                  |   148.32 ± 7.79 |    79.23 ± 7.79 |   148.32 ± 7.79 |
+| qwen3.6-35b-a3b-fp8 |  tg4096 (c1) |     51.93 ± 0.04 |     51.93 ± 0.04 |  53.67 ± 0.47 |     53.67 ± 0.47 |                 |                 |                 |
+| qwen3.6-35b-a3b-fp8 |   pp256 (c5) | 2692.41 ± 211.03 |  743.12 ± 235.04 |               |                  |  415.31 ± 72.49 |  346.22 ± 72.49 |  415.31 ± 72.49 |
+| qwen3.6-35b-a3b-fp8 |  tg4096 (c5) |    107.55 ± 2.99 |     24.24 ± 1.80 | 134.00 ± 1.41 |     34.73 ± 7.28 |                 |                 |                 |
+| qwen3.6-35b-a3b-fp8 |  pp256 (c10) |  3108.55 ± 48.48 |  513.32 ± 462.02 |               |                  | 653.64 ± 145.64 | 584.55 ± 145.64 | 653.64 ± 145.64 |
+| qwen3.6-35b-a3b-fp8 | tg4096 (c10) |    136.47 ± 2.78 |     17.89 ± 2.12 | 193.33 ± 4.71 |     26.13 ± 5.29 |                 |                 |                 |
+
+llama-benchy (0.4.0)
+date: 2026-08-14 14:54:38 | latency mode: generation

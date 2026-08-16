@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-15 05:08:44
+Benchmarking model: nemotron-3-super at http://localhost:8000/v1
+Concurrency levels: [1, 5, 10]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'nemotron-3-super': nemotron-3-super is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a7fd83c-3a2e3d631f47a8bf45176cf7;201e5aa3-d587-4b2f-80cc-447e30db69a2)
+
+Repository Not Found for url: https://huggingface.co/nemotron-3-super/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 16 tokens (Server: 38, Local: 22)
+Warmup (System+Probe) complete. Delta: 16 tokens (Server: 39, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 203.84 ms
+Running test: pp=256, tg=4096, depth=0, concurrency=1
+  Warmup (batch size 1)...
+  Run 1/3 (batch size 1)...
+  Run 2/3 (batch size 1)...
+  Run 3/3 (batch size 1)...
+Running test: pp=256, tg=4096, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=256, tg=4096, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Printing results in MD format:
+
+
+
+| model            |         test |    t/s (total) |     t/s (req) |      peak t/s |   peak t/s (req) |        ttfr (ms) |     est_ppt (ms) |    e2e_ttft (ms) |
+|:-----------------|-------------:|---------------:|--------------:|--------------:|-----------------:|-----------------:|-----------------:|-----------------:|
+| nemotron-3-super |   pp256 (c1) |  677.72 ± 6.11 | 677.72 ± 6.11 |               |                  |    572.71 ± 2.33 |    368.87 ± 2.33 |    572.71 ± 2.33 |
+| nemotron-3-super |  tg4096 (c1) |   21.73 ± 0.65 |  21.73 ± 0.65 |  33.00 ± 1.63 |     33.00 ± 1.63 |                  |                  |                  |
+| nemotron-3-super |   pp256 (c5) |  752.71 ± 9.26 | 179.40 ± 8.98 |               |                  |  1488.63 ± 85.79 |  1284.79 ± 85.79 |  1488.63 ± 85.79 |
+| nemotron-3-super |  tg4096 (c5) |   42.58 ± 1.92 |  11.60 ± 1.71 |  79.67 ± 4.03 |     21.80 ± 5.99 |                  |                  |                  |
+| nemotron-3-super |  pp256 (c10) | 878.92 ± 21.71 | 106.13 ± 7.85 |               |                  | 2396.02 ± 142.69 | 2192.18 ± 142.69 | 2396.02 ± 142.69 |
+| nemotron-3-super | tg4096 (c10) |   60.10 ± 9.79 |   8.62 ± 1.50 | 124.67 ± 8.38 |     17.10 ± 5.33 |                  |                  |                  |
+
+llama-benchy (0.4.0)
+date: 2026-08-15 05:08:44 | latency mode: generation

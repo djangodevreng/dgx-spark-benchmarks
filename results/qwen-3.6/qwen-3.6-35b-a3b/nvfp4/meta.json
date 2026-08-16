@@ -2,14 +2,20 @@
   "profile": "nvfp4",
   "model": "RedHatAI/Qwen3.6-35B-A3B-NVFP4",
   "served_name": "qwen3.6-35b-a3b-nvfp4",
-  "vllm_image": "vllm/vllm-openai:cu130-nightly",
+  "vllm_image": "vllm/vllm-openai:v0.26.0-aarch64-cu129-ubuntu2404",
+  "vllm_version_reported": "0.26.0",
+  "llama_benchy_version": "0.4.0",
   "hardware": "DGX Spark NVIDIA GB10 128GB unified",
+  "driver_version": "580.173.02",
+  "vbios_version": "9A.0B.2D.00.00",
   "server_config": {
     "max_model_len": 131072,
-    "gpu_memory_utilization": 0.95,
-    "kv_cache_dtype": "auto",
+    "gpu_memory_utilization": 0.90,
+    "kv_cache_dtype": "fp8",
     "enable_prefix_caching": false,
-    "async_scheduling": false
+    "async_scheduling": true,
+    "extra_vllm_args": "--language-model-only --reasoning-parser qwen3 --trust-remote-code --moe-backend marlin --linear-backend marlin",
+    "profile_env_vars": "VLLM_USE_FLASHINFER_MOE_FP4=0"
   },
-  "generated_at": "2026-06-26T06:25:07+02:00"
+  "generated_at": "2026-08-14T06:58:43+02:00"
 }
