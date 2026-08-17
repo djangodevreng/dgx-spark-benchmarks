@@ -1,0 +1,53 @@
+llama-benchy (0.4.0)
+Date: 2026-08-16 15:43:41
+Benchmarking model: gemma-4-26b-a4b-nvfp4 at http://localhost:8000/v1
+Concurrency levels: [5, 10, 20]
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Error loading tokenizer 'gemma-4-26b-a4b-nvfp4': gemma-4-26b-a4b-nvfp4 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>` (lightweight tokenizer error: 404 Client Error. (Request ID: Root=1-6a81be8d-7e06c6cc76691c986ba7d731;9407cd8d-a178-460b-9667-116208ecdc32)
+
+Repository Not Found for url: https://huggingface.co/gemma-4-26b-a4b-nvfp4/resolve/main/tokenizer.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication)
+Falling back to 'gpt2' tokenizer as approximation.
+Loading text from cache: /home/eugene/.cache/llama-benchy/cc6a0b5782734ee3b9069aa3b64cc62c.txt
+Total tokens available in text corpus: 159385
+Warming up...
+Warmup (User only) complete. Delta: 11 tokens (Server: 33, Local: 22)
+Warmup (System+Probe) complete. Delta: 17 tokens (Server: 40, Local context: 22, Probe: 1)
+
+Running coherence test...
+Coherence test PASSED.
+Measuring latency using mode: generation...
+Average latency (generation): 64.72 ms
+Running test: pp=8192, tg=512, depth=0, concurrency=5
+  Warmup (batch size 5)...
+  Run 1/3 (batch size 5)...
+  Run 2/3 (batch size 5)...
+  Run 3/3 (batch size 5)...
+Running test: pp=8192, tg=512, depth=0, concurrency=10
+  Warmup (batch size 10)...
+  Run 1/3 (batch size 10)...
+  Run 2/3 (batch size 10)...
+  Run 3/3 (batch size 10)...
+Running test: pp=8192, tg=512, depth=0, concurrency=20
+  Warmup (batch size 20)...
+  Run 1/3 (batch size 20)...
+  Run 2/3 (batch size 20)...
+  Run 3/3 (batch size 20)...
+Printing results in MD format:
+
+
+
+| model                 |         test |     t/s (total) |         t/s (req) |      peak t/s |   peak t/s (req) |          ttfr (ms) |       est_ppt (ms) |      e2e_ttft (ms) |
+|:----------------------|-------------:|----------------:|------------------:|--------------:|-----------------:|-------------------:|-------------------:|-------------------:|
+| gemma-4-26b-a4b-nvfp4 |  pp8192 (c5) | 5236.92 ± 13.19 | 2382.74 ± 1556.90 |               |                  |  4378.79 ± 2025.46 |  4314.07 ± 2025.46 |  4378.79 ± 2025.46 |
+| gemma-4-26b-a4b-nvfp4 |   tg512 (c5) |    90.19 ± 2.64 |      21.20 ± 2.04 | 125.00 ± 0.00 |     27.00 ± 1.10 |                    |                    |                    |
+| gemma-4-26b-a4b-nvfp4 | pp8192 (c10) | 5239.45 ± 57.27 | 1527.37 ± 1430.21 |               |                  |  8118.50 ± 4258.98 |  8053.78 ± 4258.98 |  8118.50 ± 4258.98 |
+| gemma-4-26b-a4b-nvfp4 |  tg512 (c10) |   121.63 ± 4.74 |      16.02 ± 2.33 | 200.00 ± 0.00 |     22.67 ± 2.23 |                    |                    |                    |
+| gemma-4-26b-a4b-nvfp4 | pp8192 (c20) |  5208.19 ± 4.14 |  909.67 ± 1160.27 |               |                  | 15611.44 ± 8235.34 | 15546.72 ± 8235.34 | 15611.44 ± 8235.34 |
+| gemma-4-26b-a4b-nvfp4 |  tg512 (c20) |   151.17 ± 1.92 |      10.41 ± 1.81 | 290.67 ± 8.22 |     16.97 ± 1.97 |                    |                    |                    |
+
+llama-benchy (0.4.0)
+date: 2026-08-16 15:43:41 | latency mode: generation

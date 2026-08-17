@@ -29,9 +29,14 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
 | --- | --- | --- | --- | --- | --- |
+| gemma-4-26b-a4b-it | `bf16` | 11/11 | `fp8` | 2026-08-16 | [results/gemma-4/gemma-4-26b-a4b-it/bf16/](./results/gemma-4/gemma-4-26b-a4b-it/bf16/) |
+| gemma-4-26b-a4b-it | `nvfp4` | 11/11 | `fp8` | 2026-08-16 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4/) |
 | gemma-4-26b-a4b-it | `bf16-v23` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/](./results/gemma-4/gemma-4-26b-a4b-it/bf16-v23/) |
 | gemma-4-26b-a4b-it | `nvfp4-v23` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/](./results/gemma-4/gemma-4-26b-a4b-it/nvfp4-v23/) |
 | gemma-4-31b-it | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/gemma-4/gemma-4-31b-it/bf16/](./results/gemma-4/gemma-4-31b-it/bf16/) |
+| gemma-4-31b-it | `nvfp4` | 11/11 | `fp8` | 2026-08-17 | [results/gemma-4/gemma-4-31b-it/nvfp4/](./results/gemma-4/gemma-4-31b-it/nvfp4/) |
+| gemma-4-e2b-it | `bf16` | 11/11 | `fp8` | 2026-08-17 | [results/gemma-4/gemma-4-e2b-it/bf16/](./results/gemma-4/gemma-4-e2b-it/bf16/) |
+| gemma-4-e4b-it | `bf16` | 11/11 | `fp8` | 2026-08-17 | [results/gemma-4/gemma-4-e4b-it/bf16/](./results/gemma-4/gemma-4-e4b-it/bf16/) |
 
 ### gpt-oss
 
@@ -125,7 +130,7 @@ suite. Deze runs zijn onderling vergelijkbaar; met suite v1 hieronder niet.
 
 ### Kanttekeningen bij deze generatie
 
-**Vier configs draaien met een marlin-omweg om SM121-kernelgaten.** De GB10 is
+**Zes configs draaien met een marlin-omweg om SM121-kernelgaten.** De GB10 is
 compute capability 12.1, en niet elke gekwantiseerde kernel bestaat daarvoor.
 Zonder deze vlaggen weigerde de engine te starten:
 
@@ -135,6 +140,8 @@ Zonder deze vlaggen weigerde de engine te starten:
 | `qwen-3.6-35b-a3b/fp8` | idem | `--linear-backend marlin` |
 | `qwen-3.6-35b-a3b/nvfp4` | — | `--moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
 | `nemotron-3-super-120b-a12b/nvfp4` | `Failed to find a kernel ... ScaledMM` | `VLLM_TEST_FORCE_FP8_MARLIN=1` |
+| `gemma-4-26b-a4b-it/nvfp4` | niet getest — vlaggen stonden al in het profiel | `--moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
+| `gemma-4-31b-it/nvfp4` | idem | `--quantization modelopt --moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
 
 De cijfers zijn eerlijk gemeten, maar ze zijn gehaald op Marlin-kernels waar
 CUTLASS of FlashInfer sneller zou kunnen zijn. Op hardware met wél die kernels
@@ -176,6 +183,23 @@ aanvragen er tegelijk in passen.
 
 **De mapnamen `bf16-v23` en `nvfp4-v23` slaan op vLLM v0.23.0**, waarop die vergelijking
 oorspronkelijk is opgezet. De v2-runs in die mappen draaien gewoon op v0.26.0.
+
+**`gemma-4-26b-a4b-it` staat er twee keer in, en dat is geen duplicaat.** Zelfde model,
+zelfde image, één verschil: `bf16`/`nvfp4` draaien op `gpu-memory-utilization` 0,90 —
+de suite-brede standaard — en `bf16-v23`/`nvfp4-v23` op 0,85. Vergelijk dit model dus
+met de rest van de arena via `bf16`/`nvfp4`, en onderling binnen één van de twee paren.
+
+**`gemma-4-26b-a4b-it/mtp` ontbreekt: die kán niet op v0.26.0.** De MTP-drafter
+`google/gemma-4-26B-A4B-it-assistant` valt om tijdens engine-init met
+`a and b must have same reduction dim, but got [s47, 3840] X [5632, 1024]`. Dat is een
+fout in vLLM zelf, niet in de opzet: `Gemma4MTPModel.forward()` doet
+`cat([inputs_embeds, hidden_states])` met de eigen embedding van de drafter (1024) waar
+`pre_projection` twee backbone-vectoren verwacht (2 × 2816 = 5632). Het checkpoint
+bevestigt die maten — `model.embed_tokens` is `[262144, 1024]`, `pre_projection` is
+`[1024, 5632]` — dus de embedding van het *doelmodel* (2816) had erin moeten gaan. Het
+gaat alleen goed als `backbone_hidden_size == hidden_size`, en juist bij deze drafter
+verschillen ze. `num_speculative_tokens` maakt geen verschil; op 1 én op 4 dezelfde fout.
+De v1-meting in `mtp-v23` blijft daarom voorlopig de enige MTP-data voor dit model.
 
 **Waar v1 en v2 in dezelfde map staan** houden de bestandsnamen ze uit elkaar: letters
 `A`–`J` voor v1, cijfers `01`–`11` voor v2. De serverconfig van elke generatie staat in
