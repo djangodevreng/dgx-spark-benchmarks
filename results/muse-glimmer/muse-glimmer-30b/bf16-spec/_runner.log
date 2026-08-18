@@ -1,5 +1,3 @@
-
-════════ nieuwe sessie 2026-08-12T14:16:30+02:00 ════════
 [14:16:30] === bench-spark run ===
 [14:16:30] Profile: muse-glimmer-30b-bf16-spec
 [14:16:30] Tests:   01 02 03 04 05 06 07 08 09 10 11
