@@ -9,6 +9,11 @@ website-repo schoon en leeft alle dataset-publicatie hier, bij de data.
     python scripts/build_hf_dataset.py        # schrijft hf-dataset/
     hf upload Djangodevreng/dgx-spark-benchmarks ./hf-dataset . --repo-type=dataset
 
+De rate sweep krijgt een eigen bestand. Die meet geen enkel punt maar een
+curve, en levert per model drie capaciteitscijfers (de hoogste request rate die
+onder een p95-TTFT-grens van 2, 5 of 10 seconden blijft). Dat in results.csv
+persen zou de vorm geweld aandoen; long-format in capacity.csv houdt het heel.
+
 Over de kwaliteitsscores: de site levert ze als knowledge/science/coding, elk
 met de benchmark waar het cijfer vandaan komt. Dat label hoort in de dataset,
 want het verschilt per model -- knowledge is bij het ene model MMLU-Pro en bij
@@ -127,6 +132,30 @@ def main() -> None:
                     ]
                 )
 
+    # capacity.csv: long-format, één rij per (model, SLO-drempel).
+    # Lege velden = die drempel is bij geen enkele trede gehaald.
+    with open(os.path.join(OUT_DIR, "capacity.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(
+            [
+                "model_id", "slo_ms", "configured_rps", "achieved_rps",
+                "ttft_p95_ms", "output_tokens_per_sec", "peak_concurrent",
+            ]
+        )
+        for m in data["models"]:
+            sweep = m.get("rateSweep") or {}
+            for slo_key in sorted(sweep, key=lambda k: int("".join(filter(str.isdigit, k)) or 0)):
+                cap = sweep.get(slo_key) or {}
+                w.writerow(
+                    [
+                        m.get("id"),
+                        "".join(filter(str.isdigit, slo_key)),
+                        blank(cap.get("configuredRps")), blank(cap.get("achievedRps")),
+                        blank(cap.get("ttftP95Ms")), blank(cap.get("outputTps")),
+                        blank(cap.get("peakConcurrent")),
+                    ]
+                )
+
     n_closed = sum(1 for b in data["benchmarks"] if b.get("mode") == "closed")
     n_open = sum(1 for b in data["benchmarks"] if b.get("mode") == "open")
     # Niet elke test van de suite haalt de per-model resultaten van de site;
@@ -153,6 +182,8 @@ configs:
     data_files: models.csv
   - config_name: results
     data_files: results.csv
+  - config_name: capacity
+    data_files: capacity.csv
 ---
 
 # DGX Spark LLM Arena benchmarks
@@ -168,7 +199,19 @@ configs:
 ## Configs
 
 - `models`: one row per model ({len(data["models"])} rows). Metadata, quality scores and the leaderboard composite scores per use-case preset.
-- `results`: long format, one row per measured (model, benchmark) pair. The suite has {len(data["benchmarks"])} benchmarks — {n_closed} closed-loop (llama-benchy) and {n_open} open-loop (vllm bench serve) — of which {len(covered)} carry per-model figures here.
+- `results`: long format, one row per measured (model, benchmark) pair. Covers the {len(covered)} throughput tests.
+- `capacity`: long format, one row per (model, latency threshold). The rate sweep, reported separately because it measures a curve rather than a single point.
+
+The suite has {len(data["benchmarks"])} benchmarks: {n_closed} closed-loop (llama-benchy) and {n_open} open-loop (vllm bench serve). All {len(data["benchmarks"])} are represented — {len(covered)} in `results`, the rate sweep in `capacity`.
+
+### Capacity columns
+
+`capacity` reports the highest sustained request rate that stayed under a p95
+TTFT ceiling, at three thresholds: 2000, 5000 and 10000 ms. Empty fields mean
+the model never met that threshold at any step of the sweep — that is a result,
+not missing data. `configured_rps` is the rate that was offered,
+`achieved_rps` what the server actually sustained; the gap between them shows
+where a model starts falling behind.
 
 ### Quality columns
 
@@ -213,8 +256,9 @@ methodology and the raw stdout per run live in this repo.
         f.write(card)
 
     print(
-        f"hf-dataset/ geschreven: README.md, models.csv ({len(data['models'])} modellen), "
-        f"results.csv (uit {DATA_URL})."
+        f"hf-dataset/ geschreven uit {DATA_URL}: README.md, "
+        f"models.csv ({len(data['models'])} modellen), "
+        f"results.csv ({len(covered)} tests), capacity.csv (3 drempels per model)."
     )
 
 
