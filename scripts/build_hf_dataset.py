@@ -101,7 +101,7 @@ def main() -> None:
         w.writerow(
             [
                 "model_id", "name", "vendor", "architecture", "params_b",
-                "vram_gb", "context_k", "precision",
+                "vram_gb", "context_k", "measured_context_k", "precision",
                 *[c for d in QUALITY_DIMS for c in (d, f"{d}_bench")],
                 "quality_avg", "size_bucket",
                 *[f"score_{p}" for p in preset_ids],
@@ -119,7 +119,8 @@ def main() -> None:
             w.writerow(
                 [
                     m.get("id"), m.get("name"), m.get("vendor"), m.get("architecture"),
-                    m.get("params"), m.get("vramGb"), m.get("contextK"), m.get("precision"),
+                    m.get("params"), m.get("vramGb"), m.get("contextK"),
+                    blank(m.get("measuredContextK")), m.get("precision"),
                     *quality_cells,
                     blank(avg), m.get("sizeBucket"),
                     *[m.get("scores", {}).get(p, "") for p in preset_ids],
@@ -244,6 +245,15 @@ repeats on all three rows of a model because it qualifies each of them.
 doubles while throughput rises by less than a quarter: the point where added
 load buys queueing instead of work. Empty means no such knee was detected in
 the measured range.
+
+### Context columns
+
+`context_k` is the model's native context window as published by the vendor.
+`measured_context_k` is the `max_model_len` the server actually ran with, which
+is what these throughput figures rest on. They are usually not the same: the
+suite standardises on 128K so models stay comparable, and a few runs sit lower
+still because the model or the memory did not allow more. Read throughput
+against `measured_context_k`, not against the spec.
 
 ### Quality columns
 
