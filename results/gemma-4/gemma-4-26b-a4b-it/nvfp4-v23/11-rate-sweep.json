@@ -1,6 +1,6 @@
 {
   "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
-  "served_name": "x",
+  "served_name": "gemma-4-26b-a4b-nvfp4",
   "profile": "nvfp4-v23",
   "aborted_at_rps": null,
   "capacity_by_slo_ms": {

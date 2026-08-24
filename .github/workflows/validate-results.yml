@@ -1,0 +1,29 @@
+name: Validate benchmark results
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "benchmark-suite.json"
+      - "results/**"
+      - "scripts/validate_results.py"
+      - ".github/workflows/validate-results.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate result contract
+        run: |
+          python scripts/validate_results.py
+          python scripts/stamp_contract.py
+          python scripts/render_commands.py results/gpt-oss/gpt-oss-20b/mxfp4 --test 09-reasoning

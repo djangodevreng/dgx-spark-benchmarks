@@ -17,5 +17,24 @@
     "extra_vllm_args": "--language-model-only --reasoning-parser qwen3 --trust-remote-code --linear-backend marlin",
     "profile_env_vars": "VLLM_TEST_FORCE_FP8_MARLIN=1"
   },
-  "generated_at": "2026-08-15T22:23:08+02:00"
+  "generated_at": "2026-08-15T22:23:08+02:00",
+  "contract_version": 1,
+  "suite_version": "2026-08",
+  "command_provenance": "reconstructed_from_raw_artifacts",
+  "validity": {
+    "sanity": "passed",
+    "tests": {
+      "01-chat": "complete",
+      "02-rag-8k": "complete",
+      "03-long-output": "complete",
+      "04-multi-turn": "complete",
+      "05-big-context": "complete",
+      "06-concurrency-stress": "complete",
+      "07-office-baseline": "complete",
+      "08-sharegpt": "complete",
+      "09-reasoning": "complete",
+      "10-monday-peak": "complete",
+      "11-rate-sweep": "complete"
+    }
+  }
 }

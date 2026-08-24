@@ -1,6 +1,6 @@
 {
   "model": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4",
-  "served_name": "x",
+  "served_name": "nemotron-3-nano-omni-30b-nvfp4",
   "profile": "nvfp4",
   "aborted_at_rps": 0.5,
   "capacity_by_slo_ms": {

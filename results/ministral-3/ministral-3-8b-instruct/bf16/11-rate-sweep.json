@@ -1,6 +1,6 @@
 {
   "model": "mistralai/Ministral-3-8B-Instruct-2512",
-  "served_name": "x",
+  "served_name": "ministral-3-8b-instruct-bf16",
   "profile": "bf16",
   "aborted_at_rps": 0.2,
   "capacity_by_slo_ms": {

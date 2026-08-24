@@ -1,0 +1,139 @@
+{
+  "contractVersion": 1,
+  "suiteVersion": "2026-08",
+  "description": "Canonical command contract for the eleven DGX Spark Arena tests.",
+  "placeholders": {
+    "model": "Hugging Face model id from meta.json:model",
+    "served_name": "OpenAI-compatible model name from meta.json:served_name",
+    "llama_benchy_version": "Pinned version from meta.json:llama_benchy_version"
+  },
+  "defaults": {
+    "baseUrl": "http://localhost:8000/v1",
+    "openLoopBaseUrl": "http://localhost:8000",
+    "seed": 42,
+    "randomRangeRatio": 0.9,
+    "metricPercentiles": [50, 90, 95, 99]
+  },
+  "tests": [
+    {
+      "id": "01-chat",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [1024],
+      "outputTokens": [1024],
+      "depth": [0],
+      "concurrency": [1, 5, 10],
+      "runs": 3
+    },
+    {
+      "id": "02-rag-8k",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [8192],
+      "outputTokens": [512],
+      "depth": [0],
+      "concurrency": [5, 10, 20],
+      "runs": 3
+    },
+    {
+      "id": "03-long-output",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [256],
+      "outputTokens": [4096],
+      "depth": [0],
+      "concurrency": [1, 5, 10],
+      "runs": 3
+    },
+    {
+      "id": "04-multi-turn",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [2048],
+      "outputTokens": [512],
+      "depth": [4],
+      "concurrency": [1, 5, 10],
+      "runs": 3
+    },
+    {
+      "id": "05-big-context",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [4096, 8192, 16384, 25000],
+      "outputTokens": [256],
+      "depth": [0],
+      "concurrency": [1, 5, 10],
+      "runs": 3
+    },
+    {
+      "id": "06-concurrency-stress",
+      "mode": "closed",
+      "runner": "llama-benchy",
+      "promptTokens": [25000],
+      "outputTokens": [256],
+      "depth": [0],
+      "concurrency": [20],
+      "runs": 3
+    },
+    {
+      "id": "07-office-baseline",
+      "mode": "open",
+      "runner": "vllm-bench-serve",
+      "dataset": "random",
+      "randomInputTokens": 4000,
+      "randomOutputTokens": 500,
+      "requestRate": 0.3,
+      "burstiness": 0.7,
+      "numPrompts": 200,
+      "maxConcurrency": null
+    },
+    {
+      "id": "08-sharegpt",
+      "mode": "open",
+      "runner": "vllm-bench-serve",
+      "dataset": "sharegpt",
+      "datasetPath": "/tmp/ShareGPT_V3.json",
+      "requestRate": 0.3,
+      "burstiness": 0.7,
+      "numPrompts": 250,
+      "maxConcurrency": null
+    },
+    {
+      "id": "09-reasoning",
+      "mode": "open",
+      "runner": "vllm-bench-serve",
+      "dataset": "random",
+      "randomInputTokens": 1024,
+      "randomOutputTokens": 4096,
+      "requestRate": 0.2,
+      "burstiness": 1.0,
+      "numPrompts": 50,
+      "maxConcurrency": null
+    },
+    {
+      "id": "10-monday-peak",
+      "mode": "open",
+      "runner": "vllm-bench-serve",
+      "dataset": "random",
+      "randomInputTokens": 4000,
+      "randomOutputTokens": 500,
+      "requestRate": 1.5,
+      "burstiness": 1.0,
+      "numPrompts": 300,
+      "maxConcurrency": 25
+    },
+    {
+      "id": "11-rate-sweep",
+      "mode": "open",
+      "runner": "vllm-bench-serve",
+      "dataset": "random",
+      "randomInputTokens": 4000,
+      "randomOutputTokens": 500,
+      "requestRates": [0.1, 0.2, 0.3, 0.5, 0.7, 1.0],
+      "burstiness": 0.7,
+      "minimumPrompts": 100,
+      "arrivalWindowSeconds": 250,
+      "maxConcurrency": null
+    }
+  ]
+}

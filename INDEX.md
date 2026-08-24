@@ -4,7 +4,8 @@ Alle runs in deze repo. Per model staan de gedraaide precisies, status, vLLM-ver
 
 ## Meetopstelling
 
-Alle runs komen uit dezelfde opstelling en zijn onderling vergelijkbaar.
+Alle runs komen van dezelfde DGX Spark. Versie- en profielverschillen staan per
+run in `meta.json` en bepalen welke vergelijkingen methodologisch geldig zijn.
 
 | | |
 | --- | --- |
@@ -13,7 +14,7 @@ Alle runs komen uit dezelfde opstelling en zijn onderling vergelijkbaar.
 | llama-benchy | 0.4.0 |
 | Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 |
 | Telemetrie | stroom, temperatuur, SM-klok per 10 s |
-| Correctheidscheck | modeloutput gecontroleerd vóór elke suite |
+| Correctheidscheck | huidige runner controleert modeloutput; historische status staat in `meta.json` |
 
 De `meta.json` van elke run vermeldt welke versies er daadwerkelijk zijn gebruikt,
 inclusief de door de server gerapporteerde vLLM-versie. Dat laatste omdat een
@@ -63,8 +64,8 @@ image-tag geen identificatie is: `cu130-nightly` bleek achteraf
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
 | --- | --- | --- | --- | --- | --- |
-| ministral-3-3b-instruct | `bf16` | 11/11 | `auto` | 2026-08-09 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
-| ministral-3-8b-instruct | `bf16` | 11/11 | `fp8` | 2026-08-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
+| ministral-3-3b-instruct | `bf16` | 10 + afgebroken sweep · sanity failed | `auto` | 2026-08-09 | [results/ministral-3/ministral-3-3b-instruct/bf16/](./results/ministral-3/ministral-3-3b-instruct/bf16/) |
+| ministral-3-8b-instruct | `bf16` | 10 + afgebroken sweep | `fp8` | 2026-08-07 | [results/ministral-3/ministral-3-8b-instruct/bf16/](./results/ministral-3/ministral-3-8b-instruct/bf16/) |
 
 ### mistral-small-4
 
@@ -89,8 +90,8 @@ image-tag geen identificatie is: `cu130-nightly` bleek achteraf
 | nemotron-3-nano-4b | `bf16` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-4b/bf16/](./results/nemotron-3/nemotron-3-nano-4b/bf16/) |
 | nemotron-3-nano-4b | `fp8` | 11/11 | `fp8` | 2026-08-08 | [results/nemotron-3/nemotron-3-nano-4b/fp8/](./results/nemotron-3/nemotron-3-nano-4b/fp8/) |
 | nemotron-3-nano-omni-30b-a3b-reasoning | `bf16` | 11/11 | `auto` | 2026-08-05 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/bf16/) |
-| nemotron-3-nano-omni-30b-a3b-reasoning | `fp8` | 11/11 | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
-| nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 11/11 | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning | `fp8` | 10/11 · sweep zonder data | `fp8` | 2026-08-06 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/fp8/) |
+| nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 10 + afgebroken sweep | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
 | nemotron-3-super-120b-a12b | `nvfp4` | 11/11 | `fp8` | 2026-08-15 | [results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/](./results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/) |
 
 ### nemotron-cascade-2
@@ -172,11 +173,11 @@ meet je dus alleen de gewichtsprecisie, bij de derde ook een andere KV-cache. De
 cijfers kloppen; de vergelijking tussen die drie niet. Het text-only trio
 `nemotron-3-nano-30b-a3b` is wél schoon opgezet.
 
-**`ministral-3-3b-instruct` draait bewust met `kv_cache_dtype=auto`.** Op fp8 produceert
-dat model uitsluitend hekjes tot de tokenlimiet, live getoetst op 8 augustus 2026. Dat is
-een eigenschap van het model, geen fout in de opzet, maar het betekent wel dat zijn
-capaciteitscijfer niet een-op-een naast de rest ligt: de KV-cache bepaalt hoeveel
-aanvragen er tegelijk in passen.
+**Gebruik de huidige `ministral-3-3b-instruct`-run niet voor conclusies.** De
+gepubliceerde BF16-run met `kv_cache_dtype=auto` produceerde tijdens de bewaarde
+sanity-check uitsluitend hekjes tot de tokenlimiet. `validity.sanity` staat daarom
+op `failed`. De cijfers blijven als audit trail aanwezig, maar horen niet in een
+ranking totdat het model opnieuw geldig is gestart en gemeten.
 
 **De mapnamen `bf16-v23` en `nvfp4-v23` slaan op vLLM v0.23.0**, waarop die vergelijking
 oorspronkelijk is opgezet. De runs in die mappen draaien gewoon op v0.26.0, net als de rest.

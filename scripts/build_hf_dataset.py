@@ -265,9 +265,10 @@ results = load_dataset("Djangodevreng/dgx-spark-benchmarks", "results")
 ## Method
 
 Closed-loop benchmarks run three times per measurement point and are reported as
-the mean; open-loop benchmarks run once with a fixed seed (42). Run-to-run
-variance stays within about 2%. No latency gate: slow models stay visible. Full
-methodology and the raw stdout per run live in this repo.
+the mean and standard deviation; open-loop benchmarks run once with a fixed seed
+(42). Variance is reported per measurement rather than hidden behind one global
+bound. No latency gate: slow models stay visible. Full methodology and the raw
+stdout per run live in this repo.
 
 ## License
 
