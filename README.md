@@ -4,7 +4,9 @@ Ruwe benchmark-runs van LLMs op een **NVIDIA DGX Spark** (GB10, 128 GB unified m
 
 Visualisaties en uitleg staan op [djangodevreng.nl/arena/](https://djangodevreng.nl/arena/). De posts erover staan op [djangodevreng.nl/blog/](https://djangodevreng.nl/blog/).
 
-Deze repo is de bronlaag: per model en per precisie de complete suite van elf tests, met markdown-tabellen, telemetrie en de ruwe stdout van de runners.
+Deze repo is de bronlaag: per model en per precisie de gepubliceerde suite van
+elf tests, met markdown-tabellen, telemetrie, ruwe stdout en een expliciete
+geldigheidsstatus. Historische gaten worden als zodanig gemarkeerd.
 
 ## Hardware en stack
 
@@ -58,9 +60,12 @@ in `05-big-context`.
 ## Correctheidscheck
 
 Een doorvoerbenchmark ziet een kapot model niet: een model dat alleen `!`
-produceert levert keurige tokens per seconde. Daarom genereert elke suite eerst
-een kort antwoord en controleert of dat geen onzin is. Het resultaat staat in
-`_sanity.txt`; bij twijfel wordt de ruwe respons bewaard in `_sanity-raw.json`.
+produceert levert keurige tokens per seconde. De huidige runner genereert daarom
+eerst een kort antwoord en controleert of dat geen onzin is. Het resultaat staat
+in `_sanity.txt`; bij twijfel wordt de ruwe respons bewaard in
+`_sanity-raw.json`. Bij oudere runs ontbreekt dat bewijs soms. `validity.sanity`
+in `meta.json` onderscheidt `passed`, `failed`, `captured_unreviewed` en
+`not_recorded`.
 
 ## Structuur
 
@@ -79,11 +84,18 @@ results/<family>/<model>/<precisie>/
   ...
 ```
 
-Volledig overzicht van alle runs in [INDEX.md](./INDEX.md).
+Volledig overzicht van alle runs in [INDEX.md](./INDEX.md). De canonieke
+testdefinities staan machineleesbaar in
+[`benchmark-suite.json`](./benchmark-suite.json). Iedere wijziging aan een run
+wordt in CI gecontroleerd met `python scripts/validate_results.py`.
+`validity` in iedere `meta.json` maakt ontbrekende sanity-evidence, afgebroken
+rate-sweeps en andere onvolledige resultaten zichtbaar zonder ze als compleet
+te behandelen.
 
 ## Wat erin zit
 
-38 complete runs over 24 modellen in dertien families:
+38 gepubliceerde runs over 24 modellen in dertien families. Niet iedere
+historische run is volledig; de validator rapporteert de status per onderdeel:
 
 | Familie              | Modellen | Runs |
 | -------------------- | -------: | ---: |
@@ -103,7 +115,18 @@ Volledig overzicht van alle runs in [INDEX.md](./INDEX.md).
 
 ## Reproduceren
 
-De runner-tool (`bench-spark`) is nog niet publiek. Tot dat zover is staan de exacte commands per test in de bijbehorende `meta.json` en bovenaan elke `.log`.
+De runner-tool (`bench-spark`) is nog niet publiek. Voor historische runs worden
+de commando's gereconstrueerd uit `benchmark-suite.json`, `meta.json` en de ruwe
+logs; `command_provenance` in `meta.json` maakt dat expliciet. Nieuwe runners
+kunnen de exacte argv-arrays onder `commands` vastleggen en de provenance op
+`captured` zetten. De validator accepteert zo'n claim alleen als alle elf
+commando's aanwezig zijn.
+
+Een commando opvragen kan zonder de private runner, bijvoorbeeld:
+
+```bash
+python scripts/render_commands.py results/gpt-oss/gpt-oss-20b/mxfp4 --test 09-reasoning
+```
 
 Heb je zelf een Spark en kom je tot andere cijfers? Open een issue, vooral interessant als de afwijking groot is.
 
