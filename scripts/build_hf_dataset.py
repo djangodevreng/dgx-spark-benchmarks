@@ -47,6 +47,23 @@ def quality_of(model: dict, dim: str) -> tuple:
     return (model.get("qualityLegacy") or {}).get(legacy_key), None
 
 
+def sweep_of(model: dict) -> tuple:
+    """(capaciteitsmap, aborted_at_rps, queue_knee_rps) voor een model.
+
+    De site exporteerde `rateSweep` eerst als kale capaciteitsmap en sinds
+    augustus 2026 als {capacity, abortedAtRps, queueKneeRps}. Beide vormen
+    worden gelezen, zodat het niet uitmaakt welke kant er eerst uitrolt.
+    """
+    sweep = model.get("rateSweep") or {}
+    if "capacity" in sweep:
+        return (
+            sweep.get("capacity") or {},
+            sweep.get("abortedAtRps"),
+            sweep.get("queueKneeRps"),
+        )
+    return sweep, None, None
+
+
 def title_of(bench: dict) -> str:
     """Testnaam zoals die in de repo en op de arena heet, bv. `02-rag-8k`.
 
@@ -140,12 +157,16 @@ def main() -> None:
             [
                 "model_id", "slo_ms", "configured_rps", "achieved_rps",
                 "ttft_p95_ms", "output_tokens_per_sec", "peak_concurrent",
+                "sweep_aborted_at_rps", "queue_knee_rps",
             ]
         )
         for m in data["models"]:
-            sweep = m.get("rateSweep") or {}
-            for slo_key in sorted(sweep, key=lambda k: int("".join(filter(str.isdigit, k)) or 0)):
-                cap = sweep.get(slo_key) or {}
+            caps, aborted, knee = sweep_of(m)
+            # aborted en knee gelden per model, niet per drempel. Ze staan toch
+            # op elke rij: wie alleen deze tabel laadt moet het voorbehoud zien
+            # naast het getal dat het kwalificeert.
+            for slo_key in sorted(caps, key=lambda k: int("".join(filter(str.isdigit, k)) or 0)):
+                cap = caps.get(slo_key) or {}
                 w.writerow(
                     [
                         m.get("id"),
@@ -153,6 +174,7 @@ def main() -> None:
                         blank(cap.get("configuredRps")), blank(cap.get("achievedRps")),
                         blank(cap.get("ttftP95Ms")), blank(cap.get("outputTps")),
                         blank(cap.get("peakConcurrent")),
+                        blank(aborted), blank(knee),
                     ]
                 )
 
@@ -212,6 +234,16 @@ the model never met that threshold at any step of the sweep — that is a result
 not missing data. `configured_rps` is the rate that was offered,
 `achieved_rps` what the server actually sustained; the gap between them shows
 where a model starts falling behind.
+
+**Read `sweep_aborted_at_rps` before using a capacity figure.** When it is set,
+the server died at that rate and the steps above it were never measured, so the
+capacity for that model is a lower bound rather than a measured ceiling. It
+repeats on all three rows of a model because it qualifies each of them.
+
+`queue_knee_rps` is the lowest rate after which peak concurrency more than
+doubles while throughput rises by less than a quarter: the point where added
+load buys queueing instead of work. Empty means no such knee was detected in
+the measured range.
 
 ### Quality columns
 
