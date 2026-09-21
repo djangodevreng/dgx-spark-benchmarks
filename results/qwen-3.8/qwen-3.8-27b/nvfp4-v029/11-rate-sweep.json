@@ -1,0 +1,80 @@
+{
+  "model": "nvidia/Qwen3.8-27B-NVFP4",
+  "served_name": "qwen3.8-27b-nvfp4",
+  "profile": "nvfp4-v029",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": null,
+    "10000": null
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.092,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 9887.8,
+      "ttft_p95_ms": 23566.4,
+      "ttft_p99_ms": 25997.4,
+      "output_tps": 45.2,
+      "peak_concurrent": 20
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.133,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 40080.7,
+      "ttft_p95_ms": 64739.4,
+      "ttft_p99_ms": 71256.5,
+      "output_tps": 65.3,
+      "peak_concurrent": 95
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.133,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 118238.6,
+      "ttft_p95_ms": 224436.8,
+      "ttft_p99_ms": 231528.2,
+      "output_tps": 65.6,
+      "peak_concurrent": 98
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.139,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 233747.8,
+      "ttft_p95_ms": 437734.4,
+      "ttft_p99_ms": 451558.2,
+      "output_tps": 67.9,
+      "peak_concurrent": 125
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.142,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 368915.9,
+      "ttft_p95_ms": 721869.2,
+      "ttft_p99_ms": 735690.0,
+      "output_tps": 69.2,
+      "peak_concurrent": 175
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.145,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 588831.6,
+      "ttft_p95_ms": 1150946.2,
+      "ttft_p99_ms": 1194104.1,
+      "output_tps": 71.3,
+      "peak_concurrent": 250
+    }
+  ]
+}

@@ -10,7 +10,7 @@ run in `meta.json` en bepalen welke vergelijkingen methodologisch geldig zijn.
 | | |
 | --- | --- |
 | Tests | 11, van `01-chat` t/m `11-rate-sweep` |
-| vLLM | v0.26.0, behalve `muse-glimmer` (zie kanttekeningen) |
+| vLLM | v0.26.0, behalve `muse-glimmer` en `qwen-3.8-27b/nvfp4-v029` (zie kanttekeningen) |
 | llama-benchy | 0.4.0 |
 | Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 |
 | Telemetrie | stroom, temperatuur, SM-klok per 10 s |
@@ -125,10 +125,11 @@ image-tag geen identificatie is: `cu130-nightly` bleek achteraf
 | --- | --- | --- | --- | --- | --- |
 | qwen-3.8-27b | `bf16` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/bf16/](./results/qwen-3.8/qwen-3.8-27b/bf16/) |
 | qwen-3.8-27b | `fp8` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/fp8/](./results/qwen-3.8/qwen-3.8-27b/fp8/) |
+| qwen-3.8-27b | `nvfp4-v029` | 11/11 | `fp8` | 2026-09-21 | [results/qwen-3.8/qwen-3.8-27b/nvfp4-v029/](./results/qwen-3.8/qwen-3.8-27b/nvfp4-v029/) |
 
 ## Kanttekeningen
 
-**Zes configs draaien met een marlin-omweg om SM121-kernelgaten.** De GB10 is
+**Zeven configs draaien met een marlin-omweg om SM121-kernelgaten.** De GB10 is
 compute capability 12.1, en niet elke gekwantiseerde kernel bestaat daarvoor.
 Zonder deze vlaggen weigerde de engine te starten:
 
@@ -140,10 +141,38 @@ Zonder deze vlaggen weigerde de engine te starten:
 | `nemotron-3-super-120b-a12b/nvfp4` | `Failed to find a kernel ... ScaledMM` | `VLLM_TEST_FORCE_FP8_MARLIN=1` |
 | `gemma-4-26b-a4b-it/nvfp4` | niet getest — vlaggen stonden al in het profiel | `--moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
 | `gemma-4-31b-it/nvfp4` | idem | `--quantization modelopt --moe-backend marlin --linear-backend marlin`, `VLLM_USE_FLASHINFER_MOE_FP4=0` |
+| `qwen-3.8-27b/nvfp4-v029` | `CUDA error: no kernel image is available for execution on the device` | `--linear-backend marlin` |
 
 De cijfers zijn eerlijk gemeten, maar ze zijn gehaald op Marlin-kernels waar
 CUTLASS of FlashInfer sneller zou kunnen zijn. Op hardware met wél die kernels
 liggen deze getallen vermoedelijk hoger. Alles staat per run in `meta.json`.
+
+**`qwen-3.8-27b/nvfp4-v029` draait op v0.29.0 en meet W4A16, niet W4A4.** Twee
+dingen wijken af van de rest van de arena, allebei gedwongen.
+
+Ten eerste de versie. Het checkpoint `nvidia/Qwen3.8-27B-NVFP4` is een ModelOpt
+`MIXED_PRECISION`-model: 193 lagen NVFP4 met group_size 16 op de MLP's en de
+lm_head, 208 lagen FP8 op self-attention en linear-attention. Dat vraagt vLLM's
+`ModelOptMixedPrecisionConfig`, die in v0.26.0 nog niet bestaat. Vandaar v0.29.0.
+Vergelijkingen met `bf16` en `fp8` in dezelfde modelfolder dragen dus een
+versieverschil naast het precisieverschil.
+
+Ten tweede de kernel. Bij `--linear-backend auto` koos vLLM
+`FlashInferCutlassNvFp4LinearKernel` en klapte de engine tijdens de profile-run op
+`cudaErrorNoKernelImageForDevice`. Oorzaak: FlashInfer's CUTLASS-FP4-pad heeft geen
+`@supported_compute_capability`-decorator en meldt zich dus overal als bruikbaar,
+terwijl de arch-conditional cubins (`sm_100a`, `sm_120a`) geen sm_121-image bevatten.
+Ter vergelijking: het cute-dsl-pad is wél afgeschermd met `[100, 103, 107]` en werd
+correct overgeslagen. De crash staat in `_server-crash.log` bij de run.
+
+De Marlin-terugval die daarop volgt is **weight-only (W4A16)**: de gewichten staan
+in 4 bits, maar worden voor elke matmul uitgepakt naar bf16. De bandbreedtewinst
+blijft, de rekenwinst niet. Dat is zichtbaar in de cijfers: decode haalt 2,4 tot
+2,7x bf16, terwijl prefill op elke test en elke concurrency vastloopt rond 790 t/s
+— tegen ~1100 t/s voor bf16. Het door NVIDIA bedoelde pad is W4A4, waarbij ook de
+activaties gequantiseerd worden; dat vereist de `b12x`-bibliotheek, die SM121
+expliciet ondersteunt maar niet in het vLLM-image zit. Deze run meet dus de
+ondergrens van wat NVFP4 op een GB10 kan.
 
 **`qwen-3.8-27b` is gemeten op 131072 context, niet op zijn native 262144.**
 Dat is de suite-brede `MAX_MODEL_LEN`, gekozen voor vergelijkbaarheid met de rest
@@ -203,5 +232,5 @@ Er is daarom geen MTP-meting voor dit model.
 
 - **Family-folder** = de model-familie (`gemma-4`, `gpt-oss`, `granite-4.1`, `kat-coder`, `lfm2.5`, `ministral-3`, `mistral-small-4`, `muse-glimmer`, `nemotron-3`, `nemotron-cascade-2`, `qwen-3.5`, `qwen-3.6`, `qwen-3.8`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
-- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen).
+- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen), `nvfp4-v029` (andere vLLM-versie, zie kanttekeningen).
 - **Tests 01–11** worden uitgelegd in [README.md](./README.md).
