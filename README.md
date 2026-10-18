@@ -94,7 +94,7 @@ te behandelen.
 
 ## Wat erin zit
 
-38 gepubliceerde runs over 24 modellen in dertien families. Niet iedere
+40 gepubliceerde runs over 25 modellen in veertien families. Niet iedere
 historische run is volledig; de validator rapporteert de status per onderdeel:
 
 | Familie              | Modellen | Runs |
@@ -108,10 +108,11 @@ historische run is volledig; de validator rapporteert de status per onderdeel:
 | `mistral-small-4`    |        1 |    1 |
 | `muse-glimmer`       |        1 |    2 |
 | `nemotron-3`         |        4 |    9 |
+| `nemotron-3.5`       |        1 |    1 |
 | `nemotron-cascade-2` |        1 |    1 |
 | `qwen-3.5`           |        4 |    4 |
 | `qwen-3.6`           |        2 |    5 |
-| `qwen-3.8`           |        1 |    2 |
+| `qwen-3.8`           |        1 |    3 |
 
 ## Reproduceren
 
