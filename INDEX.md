@@ -10,9 +10,9 @@ run in `meta.json` en bepalen welke vergelijkingen methodologisch geldig zijn.
 | | |
 | --- | --- |
 | Tests | 11, van `01-chat` t/m `11-rate-sweep` |
-| vLLM | v0.26.0, behalve `muse-glimmer` en `qwen-3.8-27b/nvfp4-v029` (zie kanttekeningen) |
+| vLLM | v0.26.0, behalve `muse-glimmer`, `qwen-3.8-27b/nvfp4-v029` en `nemotron-3.5-super-120b-a12b/nvfp4-v031` (zie kanttekeningen) |
 | llama-benchy | 0.4.0 |
-| Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 |
+| Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 (`nvfp4-v031`: driver 580.178.04) |
 | Telemetrie | stroom, temperatuur, SM-klok per 10 s |
 | Correctheidscheck | huidige runner controleert modeloutput; historische status staat in `meta.json` |
 
@@ -94,6 +94,12 @@ image-tag geen identificatie is: `cu130-nightly` bleek achteraf
 | nemotron-3-nano-omni-30b-a3b-reasoning | `nvfp4` | 10 + afgebroken sweep | `auto` | 2026-08-07 | [results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/](./results/nemotron-3/nemotron-3-nano-omni-30b-a3b-reasoning/nvfp4/) |
 | nemotron-3-super-120b-a12b | `nvfp4` | 11/11 | `fp8` | 2026-08-15 | [results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/](./results/nemotron-3/nemotron-3-super-120b-a12b/nvfp4/) |
 
+### nemotron-3.5
+
+| Model | Precisie | Tests | KV-cache | Datum | Path |
+| --- | --- | --- | --- | --- | --- |
+| nemotron-3.5-super-120b-a12b | `nvfp4-v031` | 11/11 | `fp8` | 2026-10-18 | [results/nemotron-3.5/nemotron-3.5-super-120b-a12b/nvfp4-v031/](./results/nemotron-3.5/nemotron-3.5-super-120b-a12b/nvfp4-v031/) |
+
 ### nemotron-cascade-2
 
 | Model | Precisie | Tests | KV-cache | Datum | Path |
@@ -174,6 +180,36 @@ activaties gequantiseerd worden; dat vereist de `b12x`-bibliotheek, die SM121
 expliciet ondersteunt maar niet in het vLLM-image zit. Deze run meet dus de
 ondergrens van wat NVFP4 op een GB10 kan.
 
+**`nemotron-3.5-super-120b-a12b/nvfp4-v031` wijkt op vijf punten af van de basislijn.**
+Het checkpoint is `nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4`, revisie
+`2e5cc3953bb1ea66b2fb7c831fee3aa317427e69`.
+
+- **vLLM v0.31.0.** Het vLLM-recept voor dit checkpoint vraagt v0.31.0 of nieuwer.
+- **`gpu-memory-utilization` 0,85 in plaats van 0,90.** Op de GB10 delen CPU en GPU
+  dezelfde 128 GB. Bij 0,90 bleef met dit model ongeveer 2,7 GB RAM over, en de
+  open-loop client (`vllm bench serve` in de servercontainer) duwde dat tijdens
+  `07-office-baseline` onder de grens van een tijdelijke geheugenwatchdog (buiten de runner),
+  die de server stopte.
+  Op 0,85 is de KV-pool nog 4,5M tokens, 34x de volle context van 131072, dus de
+  KV-cache is in geen enkele test de beperking. Zie ook het 0,85-paar van
+  `gemma-4-26b-a4b-it`.
+- **Speculative decoding: MTP met 3 drafttokens.** Het model levert een eigen
+  MTP-laag mee en alle Spark-recepten van NVIDIA gebruiken speculative decoding. Decode-cijfers liggen
+  daardoor niet één-op-één naast modellen zonder speculative decoding, zoals
+  `qwen-3.8-27b/nvfp4-v029`.
+- **`--language-model-only`.** Alleen het taalmodel; de vision-encoder wordt niet geladen.
+- **Voorgevulde FlashInfer-autotunecache.** De autotune draait na de KV-allocatie en
+  piekt 24 tot 30 GB boven het budget, wat op 0,85 niet past. De cache is daarom eerst
+  gevuld met een run op 0,63 en daarna hergebruikt. `gpu_memory_utilization` telt niet
+  mee in de cachesleutel; aantal sequenties, contextlengte en spec-config wel, en die
+  zijn gelijk. De kernelkeuze is dus dezelfde als bij een eigen autotune.
+
+De Mamba-vlaggen volgen NVIDIA's Spark-recept. De vlaggen die prefix caching vereisen
+(`--mamba-cache-mode align`, `--enable-mamba-shared-prefix-checkpoint`,
+`--prefix-match-unit`) zijn weggelaten, omdat prefix caching suite-breed uit staat.
+`_runner.log` bevat ook twee afgebroken sessies van 16 oktober (de poging op 0,90);
+alle resultaatbestanden komen uit de run van 17 en 18 oktober.
+
 **`qwen-3.8-27b` is gemeten op 131072 context, niet op zijn native 262144.**
 Dat is de suite-brede `MAX_MODEL_LEN`, gekozen voor vergelijkbaarheid met de rest
 van de arena. Het model kan dus meer dan hier te zien is.
@@ -230,7 +266,7 @@ Er is daarom geen MTP-meting voor dit model.
 
 ## Conventies
 
-- **Family-folder** = de model-familie (`gemma-4`, `gpt-oss`, `granite-4.1`, `kat-coder`, `lfm2.5`, `ministral-3`, `mistral-small-4`, `muse-glimmer`, `nemotron-3`, `nemotron-cascade-2`, `qwen-3.5`, `qwen-3.6`, `qwen-3.8`).
+- **Family-folder** = de model-familie (`gemma-4`, `gpt-oss`, `granite-4.1`, `kat-coder`, `lfm2.5`, `ministral-3`, `mistral-small-4`, `muse-glimmer`, `nemotron-3`, `nemotron-3.5`, `nemotron-cascade-2`, `qwen-3.5`, `qwen-3.6`, `qwen-3.8`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
-- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen), `nvfp4-v029` (andere vLLM-versie, zie kanttekeningen).
+- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen), `nvfp4-v029` en `nvfp4-v031` (andere vLLM-versie, zie kanttekeningen).
 - **Tests 01–11** worden uitgelegd in [README.md](./README.md).

@@ -1,0 +1,86 @@
+{
+  "model": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+  "served_name": "nemotron-3.5-super",
+  "profile": "nvfp4-v031",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": null,
+    "10000": {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.251,
+      "ttft_p95_ms": 8772.1,
+      "output_tps": 123.3,
+      "peak_concurrent": 30
+    }
+  },
+  "queue_knee_rps": null,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.097,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 2703.4,
+      "ttft_p95_ms": 5536.8,
+      "ttft_p99_ms": 6965.4,
+      "output_tps": 47.6,
+      "peak_concurrent": 12
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.183,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 3356.3,
+      "ttft_p95_ms": 7795.3,
+      "ttft_p99_ms": 8647.4,
+      "output_tps": 90.1,
+      "peak_concurrent": 19
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.251,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 4337.5,
+      "ttft_p95_ms": 8772.1,
+      "ttft_p99_ms": 10094.4,
+      "output_tps": 123.3,
+      "peak_concurrent": 30
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.349,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 14789.6,
+      "ttft_p95_ms": 34485.8,
+      "ttft_p99_ms": 37355.2,
+      "output_tps": 170.9,
+      "peak_concurrent": 81
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.365,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 66629.5,
+      "ttft_p95_ms": 132573.0,
+      "ttft_p99_ms": 136301.4,
+      "output_tps": 178.5,
+      "peak_concurrent": 126
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.383,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 149261.0,
+      "ttft_p95_ms": 294698.5,
+      "ttft_p99_ms": 303023.2,
+      "output_tps": 188.6,
+      "peak_concurrent": 198
+    }
+  ]
+}
