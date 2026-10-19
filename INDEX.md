@@ -10,9 +10,9 @@ run in `meta.json` en bepalen welke vergelijkingen methodologisch geldig zijn.
 | | |
 | --- | --- |
 | Tests | 11, van `01-chat` t/m `11-rate-sweep` |
-| vLLM | v0.26.0, behalve `muse-glimmer`, `qwen-3.8-27b/nvfp4-v029` en `nemotron-3.5-super-120b-a12b/nvfp4-v031` (zie kanttekeningen) |
+| vLLM | v0.26.0, behalve `muse-glimmer`, `qwen-3.8-27b/nvfp4-v029`, `nemotron-3.5-super-120b-a12b/nvfp4-v031` en `qwen-3.8-flash-next/nvfp4-b12x` (zie kanttekeningen) |
 | llama-benchy | 0.4.0 |
-| Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 (`nvfp4-v031`: driver 580.178.04) |
+| Driver / VBIOS | 580.173.02 / 9A.0B.2D.00.00 (`nvfp4-v031` en `nvfp4-b12x`: driver 580.178.04) |
 | Telemetrie | stroom, temperatuur, SM-klok per 10 s |
 | Correctheidscheck | huidige runner controleert modeloutput; historische status staat in `meta.json` |
 
@@ -132,6 +132,7 @@ image-tag geen identificatie is: `cu130-nightly` bleek achteraf
 | qwen-3.8-27b | `bf16` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/bf16/](./results/qwen-3.8/qwen-3.8-27b/bf16/) |
 | qwen-3.8-27b | `fp8` | 11/11 | `fp8` | 2026-08-15 | [results/qwen-3.8/qwen-3.8-27b/fp8/](./results/qwen-3.8/qwen-3.8-27b/fp8/) |
 | qwen-3.8-27b | `nvfp4-v029` | 11/11 | `fp8` | 2026-09-21 | [results/qwen-3.8/qwen-3.8-27b/nvfp4-v029/](./results/qwen-3.8/qwen-3.8-27b/nvfp4-v029/) |
+| qwen-3.8-flash-next | `nvfp4-b12x` | 11/11 | `fp8` | 2026-10-18 | [results/qwen-3.8/qwen-3.8-flash-next/nvfp4-b12x/](./results/qwen-3.8/qwen-3.8-flash-next/nvfp4-b12x/) |
 
 ## Kanttekeningen
 
@@ -210,6 +211,42 @@ De Mamba-vlaggen volgen NVIDIA's Spark-recept. De vlaggen die prefix caching ver
 `_runner.log` bevat ook twee afgebroken sessies van 16 oktober (de poging op 0,90);
 alle resultaatbestanden komen uit de run van 17 en 18 oktober.
 
+**`qwen-3.8-flash-next/nvfp4-b12x` draait niet op upstream vLLM en wijkt op zes punten af van de basislijn.**
+Het checkpoint is `nvidia/Qwen3.8-Flash-Next-FP4-Local`, revisie
+`b9ce18a6887e18c089fdea8509a33e63429a3300`.
+
+- **Community-image `eugr/spark-vllm-b12x`**, vastgezet op digest, met
+  vLLM-ontwikkelversie `0.1.dev21830+g8244d1c44`. Upstream vLLM, ook v0.32.0, kan
+  dit checkpoint nog niet laden: het lezen van de PLE-tabel vanaf de schijf en het
+  gecomprimeerde schaalformaat ontbreken daar. Het image gebruikt b12x-kernels voor
+  MoE, lineaire lagen en GDN-decode; de FlashInfer-autotune staat uit.
+- **De n-gram/PLE-tabel (ongeveer 48 GiB) blijft op de schijf** en wordt via io_uring
+  gelezen, buiten de page cache om. Docker's standaard-seccompprofiel blokkeert
+  io_uring, dus de container draait met `seccomp=unconfined`.
+- **`gpu-memory-utilization` 0,75 in plaats van 0,90.** Direct na het laden van de
+  gewichten piekt het geheugen tijdelijk zo'n 40 GB, en de koude b12x-autotune komt
+  daar bovenop. Op 0,85 en 0,80 zakte het vrije RAM daardoor onder de grens van een
+  tijdelijke geheugenwatchdog (buiten de runner), die de server stopte.
+- **`--max-num-seqs 32`** in plaats van de vLLM-standaard (1024 op deze GPU), omdat de
+  werkruimte van de b12x-autotune met dit getal meegroeit. Meer gelijktijdige
+  verzoeken wachten in de wachtrij van de server; dat drukt vooral de TTFT in de
+  open-loop-tests 07 tot en met 11.
+- **Speculative decoding: MTP met 3 drafttokens**, zoals in NVIDIA's Spark-recept.
+  Decode-cijfers liggen daardoor niet één-op-één naast modellen zonder speculative
+  decoding.
+- **`--language-model-only`.** Alleen het taalmodel; de vision-encoder wordt niet geladen.
+
+De overige vlaggen en omgevingsvariabelen volgen NVIDIA's Spark-recept en staan in
+`meta.json`. Een herhaling van 07, 09 en 11 op 0,90 met `--max-num-seqs 128` en
+`B12X_AUTOTUNE=0` (geen autotune en dus geen autotunepiek) laat zien dat die wachtrij
+de TTFT bepaalde: in `07-office-baseline` daalde de gemiddelde TTFT van 102 naar 20 s
+(p95 van 207 naar 52 s), in `09-reasoning` de p95 van 458 naar 2,5 s, en in
+`11-rate-sweep` steeg de verzadigde doorvoer van 0,21 naar 0,25 req/s. De capaciteit
+onder een p95-TTFT van 10 s bleef gelijk: de trede van 0,2 req/s haalde 9,95 en 10,1 s.
+Die herhaling dekt 3 van de 11 tests en staat daarom niet als eigen run in deze repo.
+`_runner.log` bevat ook een eerste, mislukte poging van 07 tot en met 11 (tokenizer
+offline niet gevonden); alle resultaatbestanden komen uit de herhaling direct daarna.
+
 **`qwen-3.8-27b` is gemeten op 131072 context, niet op zijn native 262144.**
 Dat is de suite-brede `MAX_MODEL_LEN`, gekozen voor vergelijkbaarheid met de rest
 van de arena. Het model kan dus meer dan hier te zien is.
@@ -268,5 +305,5 @@ Er is daarom geen MTP-meting voor dit model.
 
 - **Family-folder** = de model-familie (`gemma-4`, `gpt-oss`, `granite-4.1`, `kat-coder`, `lfm2.5`, `ministral-3`, `mistral-small-4`, `muse-glimmer`, `nemotron-3`, `nemotron-3.5`, `nemotron-cascade-2`, `qwen-3.5`, `qwen-3.6`, `qwen-3.8`).
 - **Model-folder** = de specifieke variant binnen een familie (`gemma-4-26b-a4b-it`, `nemotron-3-super-120b-a12b`, etc.).
-- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen), `nvfp4-v029` en `nvfp4-v031` (andere vLLM-versie, zie kanttekeningen).
+- **Precisie-folder** = `bf16`, `fp8`, `nvfp4`, `mxfp4`. Varianten met een achtervoegsel meten hetzelfde model onder een afwijkende serverconfig: `bf16-spec` (speculative decoding), `bf16-v23` en `nvfp4-v23` (zie kanttekeningen), `nvfp4-v029` en `nvfp4-v031` (andere vLLM-versie), `nvfp4-b12x` (community-image met b12x-kernels); zie kanttekeningen.
 - **Tests 01–11** worden uitgelegd in [README.md](./README.md).
