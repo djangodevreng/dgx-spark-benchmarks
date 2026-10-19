@@ -1,0 +1,86 @@
+{
+  "model": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "served_name": "qwen3.8-flash-next",
+  "profile": "nvfp4-b12x",
+  "aborted_at_rps": null,
+  "capacity_by_slo_ms": {
+    "2000": null,
+    "5000": null,
+    "10000": {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.177,
+      "ttft_p95_ms": 9952.8,
+      "output_tps": 86.8,
+      "peak_concurrent": 23
+    }
+  },
+  "queue_knee_rps": 0.2,
+  "steps": [
+    {
+      "configured_rps": 0.1,
+      "achieved_rps": 0.097,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 2980.2,
+      "ttft_p95_ms": 7199.5,
+      "ttft_p99_ms": 7598.6,
+      "output_tps": 47.7,
+      "peak_concurrent": 14
+    },
+    {
+      "configured_rps": 0.2,
+      "achieved_rps": 0.177,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 4351.0,
+      "ttft_p95_ms": 9952.8,
+      "ttft_p99_ms": 10340.0,
+      "output_tps": 86.8,
+      "peak_concurrent": 23
+    },
+    {
+      "configured_rps": 0.3,
+      "achieved_rps": 0.195,
+      "completed": 100,
+      "total_requests": 100,
+      "ttft_p50_ms": 40971.5,
+      "ttft_p95_ms": 102844.0,
+      "ttft_p99_ms": 113848.5,
+      "output_tps": 95.8,
+      "peak_concurrent": 48
+    },
+    {
+      "configured_rps": 0.5,
+      "achieved_rps": 0.203,
+      "completed": 125,
+      "total_requests": 125,
+      "ttft_p50_ms": 140353.6,
+      "ttft_p95_ms": 285516.5,
+      "ttft_p99_ms": 297970.9,
+      "output_tps": 99.4,
+      "peak_concurrent": 88
+    },
+    {
+      "configured_rps": 0.7,
+      "achieved_rps": 0.206,
+      "completed": 175,
+      "total_requests": 175,
+      "ttft_p50_ms": 255734.2,
+      "ttft_p95_ms": 497399.0,
+      "ttft_p99_ms": 516190.7,
+      "output_tps": 100.7,
+      "peak_concurrent": 139
+    },
+    {
+      "configured_rps": 1.0,
+      "achieved_rps": 0.207,
+      "completed": 250,
+      "total_requests": 250,
+      "ttft_p50_ms": 420818.5,
+      "ttft_p95_ms": 837702.8,
+      "ttft_p99_ms": 880867.0,
+      "output_tps": 101.6,
+      "peak_concurrent": 211
+    }
+  ]
+}
